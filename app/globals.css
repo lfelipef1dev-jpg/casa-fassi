@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #F7F4EF;
+  --ink: #1B3D2A;
+  --brand: #1B3D2A;
+  --brand-light: #2A5640;
+  --accent: #C9B37C;
+  --ad: #A68A4B;
+  --muted: #8A8278;
+  --line: #E8E2D8;
+  --card: #FFFCF7;
+  --sage: #7A8B6F;
+  --terra: #A47864;
+  --teal: #1B3D2A;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+@layer base {
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', serif;
+  }
+}
+
+@layer components {
+  .card-fassi {
+    @apply bg-card rounded-2xl border border-line shadow-sm transition-all duration-300;
+  }
+  .card-fassi:hover {
+    @apply shadow-md border-accent/30;
+  }
+  .btn-primary {
+    @apply bg-ink text-accent px-6 py-3 rounded-xl font-medium text-sm tracking-wide transition-all duration-300 hover:bg-accent hover:text-ink active:scale-95;
+  }
+  .btn-gold {
+    @apply bg-gradient-to-r from-accent to-accent-dark text-ink px-6 py-3 rounded-xl font-semibold text-sm tracking-wide transition-all duration-300 hover:shadow-lg hover:shadow-accent/30 active:scale-95;
+  }
+  .btn-ghost {
+    @apply bg-transparent text-ink px-4 py-2 rounded-xl font-medium text-sm border border-line transition-all duration-200 hover:border-accent hover:bg-accent/5;
+  }
+  .section-title {
+    @apply font-serif text-2xl font-semibold text-ink mb-1;
+  }
+  .section-sub {
+    @apply text-sm text-muted mb-6;
+  }
+  .gold-line {
+    @apply w-10 h-px bg-accent;
+  }
+  .badge-gold {
+    @apply inline-flex items-center gap-1.5 bg-accent/15 text-accent-dark px-3 py-1 rounded-full text-xs font-semibold;
+  }
+  .badge-dark {
+    @apply inline-flex items-center gap-1.5 bg-ink text-accent px-3 py-1 rounded-full text-xs font-semibold;
+  }
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #C9B37C, #A68A4B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.brand-gradient-text {
+  background: linear-gradient(135deg, #1B3D2A, #2A5640);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shimmer-bg {
+  background: linear-gradient(90deg, var(--line) 25%, var(--accent) 50%, var(--line) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
