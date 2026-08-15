@@ -155,7 +155,7 @@ export default function AulaPage() {
                 className="group relative rounded-xl overflow-hidden border border-line bg-bg aspect-[4/3] flex items-center justify-center"
               >
                 {img.url ? (
-                  <img src={img.url} alt={img.legenda} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                  <img src={img.url} alt={img.legenda} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
                 ) : (
                   <div className="flex flex-col items-center text-muted">
                     <ImageIcon size={24} className="mb-1 opacity-40" />
@@ -183,7 +183,7 @@ export default function AulaPage() {
           <div className="max-w-3xl w-full" onClick={(e) => e.stopPropagation()}>
             <div className="rounded-xl overflow-hidden bg-bg aspect-[4/3] flex items-center justify-center mb-3">
               {aula.galeria[galeriaAberta].url ? (
-                <img src={aula.galeria[galeriaAberta].url} alt="" className="w-full h-full object-contain" />
+                <img src={aula.galeria[galeriaAberta].url} alt="" decoding="async" className="w-full h-full object-contain" />
               ) : (
                 <ImageIcon size={48} className="text-muted opacity-40" />
               )}

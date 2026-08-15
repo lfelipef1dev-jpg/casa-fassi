@@ -88,7 +88,7 @@ export default function PerfilPage() {
             className="w-20 h-20 rounded-full bg-bg border-2 border-line hover:border-brand flex items-center justify-center overflow-hidden flex-shrink-0 transition-all"
           >
             {photo ? (
-              <img src={photo} alt="" className="w-full h-full object-cover" />
+              <img src={photo} alt="" width={80} height={80} loading="lazy" decoding="async" className="w-full h-full object-cover" />
             ) : (
               <Camera size={22} className="text-muted" />
             )}
@@ -241,7 +241,7 @@ export default function PerfilPage() {
           <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
             {fotosVitrine.slice(0, 4).map((f) => (
               <div key={f.id} className="aspect-square rounded-lg overflow-hidden bg-bg">
-                {f.url && <img src={f.url} alt={f.legenda} className="w-full h-full object-cover" />}
+                {f.url && <img src={f.url} alt={f.legenda} loading="lazy" decoding="async" className="w-full h-full object-cover" />}
               </div>
             ))}
           </div>

@@ -62,7 +62,7 @@ export function Sidebar({ open, onClose }: { open: boolean; onClose: () => void 
           <div className="flex items-center gap-3 mb-2">
             <div className="w-11 h-11 rounded-full bg-brand/10 border border-line flex items-center justify-center overflow-hidden flex-shrink-0">
               {photo ? (
-                <img src={photo} alt="" className="w-full h-full object-cover" />
+                <img src={photo} alt="" width={44} height={44} loading="lazy" decoding="async" className="w-full h-full object-cover" />
               ) : (
                 <Camera size={16} className="text-muted" />
               )}

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
+import { LazyMotion, domAnimation, m } from "framer-motion";
 import {
   BookOpen,
   Users,
@@ -61,8 +61,17 @@ export default function RootPage() {
 
   useEffect(() => {
     setMounted(true);
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll);
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 40);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -87,6 +96,7 @@ export default function RootPage() {
   ];
 
   return (
+    <LazyMotion features={domAnimation}>
     <div className="min-h-screen bg-bg">
       {/* Navbar */}
       <header
@@ -137,25 +147,25 @@ export default function RootPage() {
         </div>
 
         <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
-          <motion.p
+          <m.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-accent/90 text-sm font-semibold tracking-[0.2em] uppercase mb-4"
           >
             Casa Marken Fassi
-          </motion.p>
+          </m.p>
 
-          <motion.h1
+          <m.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="font-serif text-3xl md:text-5xl font-semibold text-card leading-tight mb-6"
           >
             Uma casa para quem transforma enxoval em experiência
-          </motion.h1>
+          </m.h1>
 
-          <motion.p
+          <m.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -164,9 +174,9 @@ export default function RootPage() {
             A Casa Marken Fassi é o espaço de formação, relacionamento e reconhecimento da Marken Fassi
             para lojistas, vendedores, representantes e parceiros que levam o cuidado da nossa marca
             até cada cliente.
-          </motion.p>
+          </m.p>
 
-          <motion.p
+          <m.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
@@ -174,9 +184,9 @@ export default function RootPage() {
           >
             Aqui, conhecimento, repertório e inspiração se encontram para tornar cada atendimento
             ainda mais especial.
-          </motion.p>
+          </m.p>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -195,19 +205,19 @@ export default function RootPage() {
             >
               Entrar na Casa Marken Fassi
             </button>
-          </motion.div>
+          </m.div>
 
-          <motion.p
+          <m.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.8 }}
             className="text-card/40 text-xs mt-6"
           >
             Conteúdos, vídeos, materiais e benefícios exclusivos para parceiros Marken Fassi.
-          </motion.p>
+          </m.p>
 
           {/* Três conceitos no lugar de números fictícios */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
@@ -227,7 +237,7 @@ export default function RootPage() {
               <HeartHandshake size={16} className="text-accent" />
               <span className="text-xs font-medium">Relacionamento com a marca</span>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -253,7 +263,7 @@ export default function RootPage() {
             {pilares.map((p, i) => {
               const Icon = p.icon;
               return (
-                <motion.div
+                <m.div
                   key={p.titulo}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -266,7 +276,7 @@ export default function RootPage() {
                   </div>
                   <h3 className="font-serif text-lg font-semibold text-ink mb-2">{p.titulo}</h3>
                   <p className="text-sm text-muted leading-relaxed">{p.descricao}</p>
-                </motion.div>
+                </m.div>
               );
             })}
           </div>
@@ -298,7 +308,7 @@ export default function RootPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {categoriasUniversidade.map((c, i) => (
-              <motion.div
+              <m.div
                 key={c.letra}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -316,7 +326,7 @@ export default function RootPage() {
                   <h3 className="font-serif text-base font-semibold text-ink">{c.titulo}</h3>
                 </div>
                 <p className="text-sm text-muted leading-relaxed">{c.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
           </div>
 
@@ -439,7 +449,7 @@ export default function RootPage() {
         </div>
 
         <div className="relative z-10 text-center max-w-2xl mx-auto">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -474,7 +484,7 @@ export default function RootPage() {
                 Conhecer a Universidade
               </button>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -507,5 +517,6 @@ export default function RootPage() {
         </div>
       </footer>
     </div>
+    </LazyMotion>
   );
 }

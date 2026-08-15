@@ -62,7 +62,7 @@ export default function JornadaPage() {
           <div className="flex items-center gap-4">
             <div className="w-16 h-16 rounded-full bg-card/10 border border-card/20 flex items-center justify-center overflow-hidden">
               {photo ? (
-                <img src={photo} alt="" className="w-full h-full object-cover" />
+                <img src={photo} alt="" width={64} height={64} loading="lazy" decoding="async" className="w-full h-full object-cover" />
               ) : (
                 <Camera size={22} className="text-card/40" />
               )}

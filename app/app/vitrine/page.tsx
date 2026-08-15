@@ -111,7 +111,7 @@ export default function MinhaVitrinePage() {
               <div key={foto.id} className="card-fassi overflow-hidden">
                 <div className="aspect-[4/3] bg-bg relative">
                   {foto.url ? (
-                    <img src={foto.url} alt={foto.legenda} className="w-full h-full object-cover" />
+                    <img src={foto.url} alt={foto.legenda} loading="lazy" decoding="async" className="w-full h-full object-cover" />
                   ) : (
                     <div className="flex items-center justify-center h-full">
                       <ImageIcon size={32} className="text-muted opacity-30" />

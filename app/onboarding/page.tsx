@@ -119,7 +119,7 @@ export default function OnboardingPage() {
                         className="w-20 h-20 rounded-full bg-bg border-2 border-line hover:border-brand flex items-center justify-center overflow-hidden transition-all"
                       >
                         {photo ? (
-                          <img src={photo} alt="" className="w-full h-full object-cover" />
+                          <img src={photo} alt="" width={80} height={80} loading="lazy" decoding="async" className="w-full h-full object-cover" />
                         ) : (
                           <Camera size={24} className="text-muted" />
                         )}

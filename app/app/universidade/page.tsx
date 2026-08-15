@@ -351,7 +351,7 @@ function CursoCard({ curso, aulasConcluidas }: { curso: typeof cursos[0]; aulasC
           style={{ background: "linear-gradient(135deg, #1B3D2A 0%, #2A5640 100%)" }}
         >
           {curso.imagem ? (
-            <img src={curso.imagem} alt="" className="absolute inset-0 w-full h-full object-cover" />
+            <img src={curso.imagem} alt="" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
           ) : null}
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
           <div className="relative z-10 flex items-center gap-2">
