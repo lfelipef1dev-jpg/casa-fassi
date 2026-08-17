@@ -1,5 +1,5 @@
 /*
-  Content-Security-Policy: frame-ancestors https://expostacker.com.br https://*.expostacker.com.br;
+  Content-Security-Policy: frame-ancestors https://expostacker.com.br https://*.expostacker.com.br http://localhost:* http://127.0.0.1:*;
   Cache-Control: public, max-age=0, must-revalidate
 
 /_next/static/*
