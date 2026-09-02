@@ -11,6 +11,11 @@ import {
   GraduationCap,
   Library,
   HeartHandshake,
+  Camera,
+  Calendar,
+  Award,
+  BookOpen,
+  Sparkles,
 } from "lucide-react";
 import { LogoFull } from "@/components/Logo";
 import { HeroCarousel } from "@/components/HeroCarousel";
@@ -87,13 +92,10 @@ export default function RootPage() {
   const ctaLabel = mounted && onboardingCompleto ? "Acessar plataforma" : "Entrar";
 
   const navLinks = [
-    { label: "Início", href: "#inicio" },
     { label: "Universidade", href: "#universidade" },
-    { label: "Conteúdos", href: "#pilares" },
     { label: "Comunidade", href: "#comunidade" },
     { label: "Ambientação", href: "#galeria" },
     { label: "Benefícios", href: "#beneficios" },
-    { label: "Minha jornada", href: "#jornada" },
   ];
 
   return (
@@ -127,7 +129,7 @@ export default function RootPage() {
           <button
             onClick={handleEntrar}
             aria-label={ctaLabel}
-            className="inline-flex items-center gap-1.5 px-5 py-2 rounded-lg font-semibold text-sm transition-all active:scale-95 bg-accent text-ink hover:bg-accent-dark"
+            className="inline-flex items-center gap-1.5 px-5 py-2 rounded-lg font-semibold text-sm transition-all active:scale-95 bg-accent text-ink hover:bg-accent-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
           >
             {ctaLabel}
             <ArrowRight size={15} />
@@ -238,28 +240,44 @@ export default function RootPage() {
         </div>
       </section>
 
-      {/* Comunidade */}
-      <section id="comunidade" className="py-16 px-6 bg-bg scroll-mt-16">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-accent-dark text-sm font-semibold tracking-[0.15em] uppercase mb-3">
-            Comunidade Casa Fassi
-          </p>
-          <h2 className="font-serif text-3xl md:text-4xl font-semibold text-ink mb-4">
-            Uma casa feita de encontros
-          </h2>
-          <p className="text-muted text-base max-w-2xl mx-auto leading-relaxed">
-            A Casa Fassi também é um espaço para compartilhar experiências, conhecer boas práticas e
-            encontrar novas formas de levar o bem-viver para cada loja.
-          </p>
-          <div className="w-12 h-px bg-accent mx-auto mt-6 mb-10" />
+      {/* Comunidade — mais humana, editorial */}
+      <section id="comunidade" className="py-20 px-6 bg-bg scroll-mt-16">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-accent-dark text-sm font-semibold tracking-[0.15em] uppercase mb-3">
+              Comunidade Casa Fassi
+            </p>
+            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-ink mb-4">
+              Uma casa feita de encontros
+            </h2>
+            <p className="text-muted text-base max-w-2xl mx-auto leading-relaxed">
+              A Casa Fassi também é um espaço para compartilhar experiências, conhecer boas práticas e
+              encontrar novas formas de levar o bem-viver para cada loja.
+            </p>
+            <div className="w-12 h-px bg-accent mx-auto mt-6" />
+          </div>
+
+          {/* Quote editorial — voz humana */}
+          <blockquote className="text-center mb-12 max-w-2xl mx-auto">
+            <p className="font-serif text-xl md:text-2xl text-ink/80 italic leading-relaxed">
+              “Cada loja parceira carrega uma história. Cada vitrine, um cuidado.
+              Cada atendimento, uma oportunidade de surpreender.”
+            </p>
+          </blockquote>
+
           <div className="grid md:grid-cols-3 gap-4 text-left">
             {[
-              { titulo: "Vitrines que inspiram", desc: "Composições e ideias de outras lojas parceiras." },
-              { titulo: "Histórias de atendimento", desc: "Experiências reais vividas no dia a dia das lojas." },
-              { titulo: "Agenda de encontros", desc: "Eventos, lives e momentos de convivência da Casa." },
+              { titulo: "Vitrines que inspiram", desc: "Composições e ideias de outras lojas parceiras.", icon: "camera" },
+              { titulo: "Histórias de atendimento", desc: "Experiências reais vividas no dia a dia das lojas.", icon: "heart" },
+              { titulo: "Agenda de encontros", desc: "Eventos, lives e momentos de convivência da Casa.", icon: "calendar" },
             ].map((item) => (
-              <div key={item.titulo} className="card-fassi p-5">
-                <h3 className="font-serif text-base font-semibold text-ink mb-1">{item.titulo}</h3>
+              <div key={item.titulo} className="card-fassi p-6">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
+                  {item.icon === "camera" && <Camera size={18} className="text-primary" strokeWidth={1.75} />}
+                  {item.icon === "heart" && <HeartHandshake size={18} className="text-primary" strokeWidth={1.75} />}
+                  {item.icon === "calendar" && <Calendar size={18} className="text-primary" strokeWidth={1.75} />}
+                </div>
+                <h3 className="font-serif text-base font-semibold text-ink mb-2">{item.titulo}</h3>
                 <p className="text-sm text-muted leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -311,7 +329,7 @@ export default function RootPage() {
         </div>
       </section>
 
-      {/* Benefícios */}
+      {/* Benefícios — 3 principais + secundários */}
       <section id="beneficios" className="py-24 px-6 bg-bg scroll-mt-16">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-accent-dark text-sm font-semibold tracking-[0.15em] uppercase mb-3">
@@ -324,57 +342,124 @@ export default function RootPage() {
             A participação nas formações, encontros e ações da Casa Fassi pode dar acesso a benefícios
             pensados para valorizar quem faz parte da nossa história.
           </p>
-          <div className="w-12 h-px bg-accent mx-auto mt-6 mb-10" />
-          <div className="grid md:grid-cols-3 gap-4 text-left">
+          <div className="w-12 h-px bg-accent mx-auto mt-6 mb-12" />
+
+          {/* 3 benefícios principais — destaque */}
+          <div className="grid md:grid-cols-3 gap-5 mb-10 text-left">
             {[
-              "Certificados",
+              { titulo: "Certificados", desc: "Reconhecimento oficial do seu conhecimento e participação nas formações.", icon: Award },
+              { titulo: "Lançamentos antecipados", desc: "Acesso prioritário a novas coleções, produtos e campanhas da marca.", icon: Sparkles },
+              { titulo: "Encontros com especialistas", desc: "Conversas, visitas e momentos de convivência com a equipe Marken Fassi.", icon: Users },
+            ].map((b) => {
+              const Icon = b.icon;
+              return (
+                <div key={b.titulo} className="card-fassi p-6">
+                  <div className="w-11 h-11 rounded-xl bg-accent/15 flex items-center justify-center mb-4">
+                    <Icon size={20} className="text-accent-dark" strokeWidth={1.75} />
+                  </div>
+                  <h3 className="font-serif text-base font-semibold text-ink mb-2">{b.titulo}</h3>
+                  <p className="text-sm text-muted leading-relaxed">{b.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Benefícios secundários — lista compacta */}
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 max-w-2xl mx-auto">
+            {[
               "Conteúdos antecipados",
-              "Participação em lançamentos",
-              "Encontros com especialistas",
-              "Visitas à marca",
-              "Produtos e experiências",
               "Materiais exclusivos",
               "Convites para eventos",
+              "Produtos e experiências",
               "Reconhecimento editorial",
             ].map((b) => (
-              <div key={b} className="card-fassi p-4 flex items-center gap-3">
-                <Gift size={16} className="text-primary flex-shrink-0" strokeWidth={1.75} />
-                <span className="text-sm text-ink/85">{b}</span>
-              </div>
+              <span key={b} className="inline-flex items-center gap-2 text-sm text-muted">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                {b}
+              </span>
             ))}
           </div>
-          <p className="text-xs text-muted mt-8 italic">
+
+          <p className="text-xs text-muted mt-10 italic">
             Os benefícios podem variar conforme a participação nas formações e ações da Casa Fassi.
           </p>
         </div>
       </section>
 
-      {/* Minha Jornada */}
+      {/* Minha Jornada — preview de produto */}
       <section id="jornada" className="py-20 px-6 bg-surface border-t border-line scroll-mt-16">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-accent-dark text-sm font-semibold tracking-[0.15em] uppercase mb-3">
-            Minha jornada
-          </p>
-          <h2 className="font-serif text-3xl md:text-4xl font-semibold text-ink mb-4">
-            Acompanhe seu percurso na Casa Fassi
-          </h2>
-          <p className="text-muted text-base max-w-2xl mx-auto leading-relaxed">
-            Cursos iniciados, conteúdos concluídos, certificados, vídeos salvos e próximos passos —
-            tudo em um só lugar, no seu ritmo.
-          </p>
-          <div className="w-12 h-px bg-accent mx-auto mt-6 mb-10" />
-          <div className="grid md:grid-cols-4 gap-4 text-left">
-            {[
-              { titulo: "Cursos iniciados", desc: "Continue de onde parou." },
-              { titulo: "Certificados", desc: "Reconhecimento do seu conhecimento." },
-              { titulo: "Vídeos salvos", desc: "Conteúdos para rever quando precisar." },
-              { titulo: "Próximos conteúdos", desc: "Novos caminhos para explorar." },
-            ].map((item) => (
-              <div key={item.titulo} className="card-fassi p-5">
-                <h3 className="font-serif text-sm font-semibold text-ink mb-1">{item.titulo}</h3>
-                <p className="text-xs text-muted leading-relaxed">{item.desc}</p>
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-accent-dark text-sm font-semibold tracking-[0.15em] uppercase mb-3">
+              Minha jornada
+            </p>
+            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-ink mb-4">
+              Acompanhe seu percurso na Casa Fassi
+            </h2>
+            <p className="text-muted text-base max-w-2xl mx-auto leading-relaxed">
+              Cursos iniciados, conteúdos concluídos, certificados, vídeos salvos e próximos passos —
+              tudo em um só lugar, no seu ritmo.
+            </p>
+            <div className="w-12 h-px bg-accent mx-auto" />
+          </div>
+
+          {/* Preview do dashboard — cards com indicadores */}
+          <div className="grid md:grid-cols-2 gap-5">
+            {/* Card principal — progresso de formação */}
+            <div className="card-fassi p-6 md:col-span-2">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <BookOpen size={18} className="text-primary" strokeWidth={1.75} />
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-base font-semibold text-ink">Formação em andamento</h3>
+                    <p className="text-xs text-muted">Essência Marken Fassi — Módulo 2 de 5</p>
+                  </div>
+                </div>
+                <span className="text-xs font-semibold text-accent-dark tabular-nums">40%</span>
               </div>
-            ))}
+              {/* Barra de progresso */}
+              <div className="h-2 bg-line rounded-full overflow-hidden">
+                <div className="h-full bg-accent rounded-full" style={{ width: "40%" }} />
+              </div>
+              <div className="flex items-center justify-between mt-4">
+                <span className="text-xs text-muted">Próxima aula: Algodão egípcio vs. Tencel™</span>
+                <span className="text-xs font-medium text-ink/70">8 min</span>
+              </div>
+            </div>
+
+            {/* Cards menores — métricas */}
+            {[
+              { titulo: "Certificados", valor: "3", desc: "concluídos", icon: Award },
+              { titulo: "Vídeos salvos", valor: "12", desc: "para rever", icon: Library },
+              { titulo: "Conteúdos novos", valor: "5", desc: "esta semana", icon: Sparkles },
+              { titulo: "Próximos passos", valor: "2", desc: "trilhas sugeridas", icon: ArrowRight },
+            ].map((item) => {
+              const Icon = item.icon;
+              return (
+                <div key={item.titulo} className="card-fassi p-5 flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Icon size={18} className="text-primary" strokeWidth={1.75} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-serif text-sm font-semibold text-ink">{item.titulo}</h3>
+                    <p className="text-xs text-muted">{item.desc}</p>
+                  </div>
+                  <span className="font-serif text-2xl font-semibold text-accent-dark tabular-nums">{item.valor}</span>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="text-center mt-10">
+            <button
+              onClick={handleEntrar}
+              className="group inline-flex items-center gap-2 btn-gold"
+            >
+              Acessar minha jornada
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
         </div>
       </section>
@@ -411,14 +496,16 @@ export default function RootPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={handleEntrar}
-                className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-ink px-8 py-4 rounded-xl font-semibold text-sm tracking-wide transition-all duration-300 hover:shadow-elevated active:scale-95"
+                aria-label="Entrar na Casa Fassi"
+                className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-ink px-8 py-4 rounded-xl font-semibold text-sm tracking-wide transition-all duration-300 hover:shadow-elevated active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surface focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
               >
                 Entrar na Casa Fassi
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </button>
               <button
                 onClick={() => router.push("/app/universidade")}
-                className="inline-flex items-center gap-2 border border-surface/20 text-surface hover:bg-surface/10 px-8 py-4 rounded-xl font-semibold text-sm tracking-wide transition-all"
+                aria-label="Conhecer a Universidade Marken Fassi"
+                className="inline-flex items-center gap-2 border border-surface/20 text-surface hover:bg-surface/10 px-8 py-4 rounded-xl font-semibold text-sm tracking-wide transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surface focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
               >
                 Conhecer a Universidade
               </button>

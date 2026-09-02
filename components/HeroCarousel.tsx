@@ -204,28 +204,32 @@ export function HeroCarousel() {
       </button>
 
       {/* Controles inferiores — indicadores + pause/play + contador */}
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
             aria-label={`Ir para slide ${i + 1}`}
             aria-current={i === current}
-            className="rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
-            style={{
-              width: i === current ? 28 : 7,
-              height: 7,
-              backgroundColor: i === current ? "rgba(184, 154, 106, 0.95)" : "rgba(248, 246, 241, 0.45)",
-            }}
-          />
+            className="flex items-center justify-center w-11 h-11 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+          >
+            <span
+              className="block rounded-full transition-all duration-300"
+              style={{
+                width: i === current ? 28 : 7,
+                height: 7,
+                backgroundColor: i === current ? "rgba(184, 154, 106, 0.95)" : "rgba(248, 246, 241, 0.45)",
+              }}
+            />
+          </button>
         ))}
       </div>
 
-      {/* Botão pause/play explícito */}
+      {/* Botão pause/play explícito — 44x44 WCAG 2.2 */}
       <button
         onClick={togglePause}
         aria-label={isPaused ? "Retomar apresentação" : "Pausar apresentação"}
-        className="absolute bottom-4 right-6 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-ink/40 backdrop-blur-sm text-surface/80 hover:bg-ink/60 hover:text-surface transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent md:opacity-0 md:group-hover:opacity-100"
+        className="absolute bottom-4 right-6 z-20 w-11 h-11 flex items-center justify-center rounded-full bg-ink/40 backdrop-blur-sm text-surface/80 hover:bg-ink/60 hover:text-surface transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink md:opacity-0 md:group-hover:opacity-100"
         style={{ opacity: 1 }}
       >
         {isPaused ? <Play size={16} strokeWidth={2} /> : <Pause size={16} strokeWidth={2} />}

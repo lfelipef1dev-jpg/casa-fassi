@@ -1,0 +1,28 @@
+feat: sprint cirurgica 10/10 — ritmo, CTAs, acessibilidade, preview produto
+
+HOME — ritmo editorial diferenciado:
+- Navegacao: 7 itens -> 4 (Universidade, Comunidade, Ambientacao, Beneficios)
+  Destaque maior no botao Entrar, institucionais reduzidos
+- Comunidade: adicionado quote editorial serif italic + icones por card
+  (Camera, HeartHandshake, Calendar) — voz mais humana
+- Beneficios: 9 cards iguais -> 3 principais em destaque (Certificados,
+  Lancamentos, Encontros) + 5 secundarios em lista compacta com bullets
+- Jornada: 4 cards textuais -> preview de produto com:
+  - Card principal: barra de progresso 40% + proxima aula
+  - 4 cards metrica: Certificados (3), Videos salvos (12),
+    Conteudos novos (5), Proximos passos (2)
+  - CTA "Acessar minha jornada"
+- CTA final: adicionado aria-label + focus-visible ring
+
+HERO — acessibilidade WCAG 2.2:
+- Botao pause/play: w-9 h-9 (36px) -> w-11 h-11 (44px) = minimo WCAG
+- Indicadores: area touch 44x44 com dot visual menor dentro
+  (flex center + span 7px) — touch target sem mudar visual
+- focus-visible:ring-offset em todos os controles
+
+Header:
+- Botao Entrar: adicionado focus-visible ring
+
+Generated with [Devin](https://devin.ai)
+
+Co-Authored-By: Devin <158243242+devin-ai-integration[bot]@users.noreply.github.com>
