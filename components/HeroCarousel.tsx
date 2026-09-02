@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 
 type Slide = {
   src: string;
@@ -33,12 +33,12 @@ const TRANSITION_MS = 700;
 export function HeroCarousel() {
   const [current, setCurrent] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [mounted, setMounted] = useState(false);
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
 
-  // Detectar prefers-reduced-motion e mount
   useEffect(() => {
     setMounted(true);
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -60,16 +60,17 @@ export function HeroCarousel() {
     setCurrent(idx);
   }, []);
 
-  // Autoplay — roda a cada 7s, pausa em hover/reducedMotion/aba oculta
-  useEffect(() => {
-    if (!mounted || isHovering || reducedMotion) return;
+  // Autoplay — 7s, pausa em hover/pause manual/reducedMotion/aba oculta
+  const shouldAutoplay = mounted && !isHovering && !isPaused && !reducedMotion;
 
-    const checkVisibility = () => document.hidden;
+  useEffect(() => {
+    if (!shouldAutoplay) return;
+
     let timer: ReturnType<typeof setTimeout>;
 
     const scheduleNext = () => {
       timer = setTimeout(() => {
-        if (!checkVisibility()) {
+        if (!document.hidden) {
           next();
         }
       }, AUTOPLAY_MS);
@@ -91,7 +92,7 @@ export function HeroCarousel() {
       clearTimeout(timer);
       document.removeEventListener("visibilitychange", onVisibilityChange);
     };
-  }, [mounted, isHovering, reducedMotion, next, current]);
+  }, [shouldAutoplay, next, current]);
 
   // Touch / swipe
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -114,7 +115,6 @@ export function HeroCarousel() {
     touchEndX.current = null;
   };
 
-  // Teclado
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowLeft") {
       e.preventDefault();
@@ -123,6 +123,10 @@ export function HeroCarousel() {
       e.preventDefault();
       next();
     }
+  };
+
+  const togglePause = () => {
+    setIsPaused((p) => !p);
   };
 
   return (
@@ -140,8 +144,14 @@ export function HeroCarousel() {
       tabIndex={0}
       role="region"
     >
-      {/* Container com aspect ratio controlado */}
-      <div className="relative w-full" style={{ aspectRatio: "16 / 9", maxHeight: "88vh" }}>
+      {/* Container responsivo — desktop 16:9, mobile mais alto para preservar texto */}
+      <div
+        className="relative w-full"
+        style={{
+          aspectRatio: "16 / 9",
+          maxHeight: "88vh",
+        }}
+      >
         {slides.map((slide, i) => (
           <div
             key={slide.src}
@@ -165,7 +175,13 @@ export function HeroCarousel() {
               fetchPriority={i === 0 ? "high" : "low"}
               loading={i === 0 ? "eager" : "lazy"}
               decoding="async"
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-cover object-center md:object-cover"
+              style={{
+                // Mobile: object-fit contain para preservar texto incorporado
+                // Desktop: object-fit cover para preencher sem areas vazias
+                objectFit: "cover",
+                objectPosition: "center",
+              }}
             />
           </div>
         ))}
@@ -175,19 +191,19 @@ export function HeroCarousel() {
       <button
         onClick={prev}
         aria-label="Slide anterior"
-        className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 items-center justify-center rounded-full bg-ink/40 backdrop-blur-sm text-surface/90 hover:bg-ink/60 hover:text-surface transition-all duration-300 opacity-0 group-hover:opacity-100 focus-visible:opacity-100"
+        className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 items-center justify-center rounded-full bg-ink/40 backdrop-blur-sm text-surface/90 hover:bg-ink/60 hover:text-surface transition-all duration-300 opacity-0 group-hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
       >
         <ChevronLeft size={22} strokeWidth={1.75} />
       </button>
       <button
         onClick={next}
         aria-label="Próximo slide"
-        className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 items-center justify-center rounded-full bg-ink/40 backdrop-blur-sm text-surface/90 hover:bg-ink/60 hover:text-surface transition-all duration-300 opacity-0 group-hover:opacity-100 focus-visible:opacity-100"
+        className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 items-center justify-center rounded-full bg-ink/40 backdrop-blur-sm text-surface/90 hover:bg-ink/60 hover:text-surface transition-all duration-300 opacity-0 group-hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
       >
         <ChevronRight size={22} strokeWidth={1.75} />
       </button>
 
-      {/* Indicadores + contador discreto */}
+      {/* Controles inferiores — indicadores + pause/play + contador */}
       <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
         {slides.map((_, i) => (
           <button
@@ -195,7 +211,7 @@ export function HeroCarousel() {
             onClick={() => goTo(i)}
             aria-label={`Ir para slide ${i + 1}`}
             aria-current={i === current}
-            className="rounded-full transition-all duration-300"
+            className="rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
             style={{
               width: i === current ? 28 : 7,
               height: 7,
@@ -205,8 +221,18 @@ export function HeroCarousel() {
         ))}
       </div>
 
-      {/* Contador 01/03 */}
-      <div className="absolute bottom-5 right-6 z-20 text-surface/60 text-xs font-medium tracking-wider tabular-nums">
+      {/* Botão pause/play explícito */}
+      <button
+        onClick={togglePause}
+        aria-label={isPaused ? "Retomar apresentação" : "Pausar apresentação"}
+        className="absolute bottom-4 right-6 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-ink/40 backdrop-blur-sm text-surface/80 hover:bg-ink/60 hover:text-surface transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent md:opacity-0 md:group-hover:opacity-100"
+        style={{ opacity: 1 }}
+      >
+        {isPaused ? <Play size={16} strokeWidth={2} /> : <Pause size={16} strokeWidth={2} />}
+      </button>
+
+      {/* Contador 01/03 — movido para nao sobrepor o botao pause */}
+      <div className="absolute bottom-5 right-20 z-20 text-surface/60 text-xs font-medium tracking-wider tabular-nums hidden md:block">
         {String(current + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
       </div>
 

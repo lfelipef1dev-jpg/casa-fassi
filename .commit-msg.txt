@@ -1,41 +1,29 @@
-fix: substituir SVGs por fotografias reais Unsplash exclusivas por tema
+feat: novo logo horizontal Marken Fassi + hero carousel com pause/play
 
-PROBLEMA:
-- SVGs eram todos identicos, so mudava o texto
-- Pareciam placeholders, nao fotografia editorial
+NOVO LOGO:
+- Localizado em Downloads: ChatGPT Image 2 de set. de 2026, 15_53_13.png
+- Formato: PNG 2172x724 (3:1 horizontal)
+- Convertido para WebP (446KB -> 207KB, quality 92)
+- Caminho: /public/brand/marken-fassi/logo-horizontal.webp
+- Caracteristicas: fundo escuro, dourado/champagne, MF + MARKEN FASSI + CASA FASSI
+- Aplicado em: Logo.tsx (LogoFull), JsonLd.tsx (schema.org)
+- Proporcao real preservada (3:1) — sem deformar
+- height controlada, width auto no componente
 
-CORRECAO:
-- Baixadas 17 fotografias reais do Unsplash (licenca livre)
-- Cada foto relacionada ao tema especifico do curso/conteudo
-- Convertidas para WebP (qualidade 85, 1200x675 / 400x400 / 800x1000)
-- Pesos entre 4KB e 89KB
+HERO CAROUSEL MELHORADO:
+- Adicionado botao pause/play explicito (canto inferior direito)
+- aria-label dinamico: "Pausar apresentacao" / "Retomar apresentacao"
+- Estado isPaused separado de isHovering (controle manual independente)
+- focus-visible:ring-2 ring-accent em todos os controles
+- focus-visible:ring-offset-2 ring-offset-ink nos indicadores
+- Contador 01/03 reposicionado (nao sobrepor botao pause)
+- Botao pause sempre visivel no mobile, hover no desktop
 
-Universidade (7 capas 1200x675):
-- capa-essencia.webp: quarto premium com travesseiros neutros
-- capa-tecidos.webp: close-up de lencois brancos
-- capa-alameda.webp: quarto moderno com cama feita
-- capa-atendimento.webp: quarto luxuoso com decor elegante
-- capa-vitrine.webp: loja minimalista com design clean
-- capa-conteudo-digital.webp: flat lay de fotografia e tech
-- capa-vendas.webp: lencois brancos em cama de hotel
+LOGO ANTIGO:
+- /logo-casa-fassi.png removido das referencias ativas
+- JsonLd atualizado para novo logo
 
-Aulas rapidas (4 capas 1200x675):
-- aula-live-alameda: quarto moderno
-- aula-boas-praticas: quarto luxuoso
-- aula-tecidos-especialistas: close-up lencois
-- aula-banho-ritual: close-up lencois
-
-Conteudos (3 thumbnails 400x400):
-- thumb-01: textura de tecido
-- thumb-02: quarto luxuoso
-- thumb-03: quarto moderno
-
-Vitrine (3 referencias 800x1000):
-- ref-composicao: quarto premium
-- ref-detalhe: close-up lencois
-- ref-ambiente: quarto moderno
-
-SVGs antigos removidos. Scripts temporarios removidos.
+Scripts temporarios removidos.
 
 Generated with [Devin](https://devin.ai)
 

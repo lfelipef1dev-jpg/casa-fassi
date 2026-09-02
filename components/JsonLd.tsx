@@ -7,7 +7,7 @@ const organizationSchema = {
   "@id": `${SITE_URL}/#organization`,
   name: "Casa Fassi — Marken Fassi",
   url: SITE_URL,
-  logo: `${SITE_URL}/logo-casa-fassi.png`,
+  logo: `${SITE_URL}/brand/marken-fassi/logo-horizontal.webp`,
   description:
     "Plataforma de capacitação, reconhecimento e comunidade para embaixadores da Marken Fassi.",
   sameAs: [],
