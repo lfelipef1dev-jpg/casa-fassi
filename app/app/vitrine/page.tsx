@@ -97,6 +97,43 @@ export default function MinhaVitrinePage() {
         <Camera size={18} strokeWidth={1.75} /> Enviar foto da vitrine
       </button>
 
+      {/* Referências de apresentação */}
+      {fotosVitrine.length === 0 && (
+        <section className="space-y-4">
+          <div className="flex items-baseline justify-between">
+            <div>
+              <p className="text-accent text-xs font-semibold tracking-[0.15em] uppercase mb-1">Referência editorial</p>
+              <h2 className="font-serif text-lg md:text-xl font-semibold text-ink">Inspiração de apresentação</h2>
+              <p className="text-xs text-muted mt-1 max-w-md leading-relaxed">
+                Exemplos de composição para orientar a montagem da sua vitrine. Use como referência comercial ao fotografar sua loja.
+              </p>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { src: "/produto-1.png", alt: "Referência de composição Marken Fassi", legenda: "Composição" },
+              { src: "/produto-2.png", alt: "Referência de detalhe Marken Fassi", legenda: "Detalhe" },
+              { src: "/produto-3.png", alt: "Referência de ambiente Marken Fassi", legenda: "Ambiente" },
+            ].map((ref) => (
+              <figure key={ref.src} className="card-fassi overflow-hidden">
+                <div className="aspect-[4/5] bg-bg">
+                  <img
+                    src={ref.src}
+                    alt={ref.alt}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover rounded-xl"
+                  />
+                </div>
+                <figcaption className="px-4 py-3 text-xs text-muted text-center tracking-wide uppercase">
+                  {ref.legenda}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Grid de fotos */}
       {fotosVitrine.length === 0 ? (
         <div className="card-fassi p-10 text-center">

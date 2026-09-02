@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Search, Play, FileText, Download, Clock, BookOpen, Video, Sparkles } from "lucide-react";
+import { Search, Play, FileText, Download, Clock, BookOpen, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const filtros = [
@@ -101,11 +101,16 @@ export default function ConteudosPage() {
           Conteúdos rápidos para a rotina
         </h2>
         <div className="grid md:grid-cols-2 gap-3">
-          {conteudosRapidos.map((r) => (
+          {conteudosRapidos.map((r, i) => {
+            const thumb = `/conteudo-${(i % 3) + 1}.png`;
+            return (
             <div key={r.id} className="card-fassi p-4 flex items-center gap-3 group cursor-pointer">
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Video size={18} className="text-primary" strokeWidth={1.75} />
-              </div>
+              <img
+                src={thumb}
+                alt={r.titulo}
+                loading="lazy"
+                className="w-12 h-12 rounded-xl object-cover flex-shrink-0"
+              />
               <div className="flex-1 min-w-0">
                 <div className="text-sm font-medium text-ink truncate">{r.titulo}</div>
                 <div className="text-xs text-muted flex items-center gap-1 mt-0.5">
@@ -114,7 +119,8 @@ export default function ConteudosPage() {
               </div>
               <Play size={16} className="text-muted group-hover:text-primary transition-colors" strokeWidth={1.75} />
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -122,13 +128,20 @@ export default function ConteudosPage() {
       <div>
         <h2 className="font-serif text-lg font-semibold text-ink mb-3">Todos os conteúdos</h2>
         <div className="space-y-2">
-          {filtrados.map((c) => {
+          {filtrados.map((c, i) => {
             const config = formatoConfig[c.formato];
             const Icon = config.icon;
+            const thumb = `/conteudo-${(i % 3) + 1}.png`;
             return (
               <div key={c.id} className="card-fassi p-4 flex items-center gap-4 group cursor-pointer">
-                <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Icon size={20} className="text-primary" strokeWidth={1.75} />
+                <img
+                  src={thumb}
+                  alt={c.titulo}
+                  loading="lazy"
+                  className="w-20 h-20 rounded-xl object-cover flex-shrink-0"
+                />
+                <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Icon size={18} className="text-primary" strokeWidth={1.75} />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="text-sm font-semibold text-ink truncate">{c.titulo}</div>

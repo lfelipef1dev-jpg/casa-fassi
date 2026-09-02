@@ -1,11 +1,45 @@
-feat: adicionar fotos de ambientacao + favicon + OG image
+feat: passada visual final — novo logo, hero editorial, fotografia nas rotas
 
-- 3 fotos de ambientacao editorial adicionadas (public/ambientacao-1/2/3.png)
-- Galeria editorial na landing page (secao "Ambientacao")
-- Nav link "Ambientacao" adicionado
-- OG image atualizada para og-image.png
-- Favicon/app icon criados (app/icon.png, app/apple-icon.png)
-- JSON-LD Organization logo atualizado para logo-verde-escuro.png
+Branding:
+- Novo logo Casa Fassi integrado (logo-casa-fassi.png)
+- Indice MF como favicon/app icon (icon-mf.png)
+- OG image atualizada (og-image.png)
+- Componente Logo reescrito para usar novos assets
+- JSON-LD Organization logo atualizado
+- Sidebar com novo branding, largura 72, barra accent no estado ativo
+- Logo antigo (logo-verde-escuro, logo-branco) nao referenciado no codigo
+
+Hero editorial:
+- Fotografia premium de fundo (hero-marken-fassi.png)
+- Overlay escuro gradiente da esquerda para direita
+- Conteudo alinhado a esquerda (nao centralizado)
+- CTAs e texto em HTML responsivo sobre a imagem
+- fetchPriority high na imagem do hero
+
+Universidade:
+- Capa fotografica nos cards de "Continue de onde parou"
+- Capa nos cards de "Aulas rapidas"
+- CursoCard com imagem de capa (fallback distribuido entre 5 fotos)
+- Biblioteca de materiais e Agenda sem imagem (preservado)
+
+Conteudos:
+- Thumbnail fotografica nos cards da lista principal
+- Thumbnail menor nos "Conteudos rapidos"
+- Cycling entre 3 imagens editoriais
+
+Vitrine:
+- Secao "Inspiracao de apresentacao" com 3 referencias editoriais
+- Aparece apenas quando o embaixador ainda nao enviou fotos
+- Sem preco, carrinho ou checkout
+
+Galeria editorial (landing):
+- Secao "Ambientacao" com 3 fotos em grid responsivo
+
+QA:
+- Zero referencias ao logo antigo no codigo
+- Zero emojis no codigo
+- Build passa sem erros TS/ESLint
+- 73 paginas estaticas geradas
 
 Generated with [Devin](https://devin.ai)
 

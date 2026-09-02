@@ -45,6 +45,14 @@ const materialIcon: Record<string, typeof FileText> = {
   imagem: ImageIcon,
 };
 
+const imagensCursos = [
+  "/curso-1.png",
+  "/curso-2.png",
+  "/curso-3.png",
+  "/curso-4.png",
+  "/curso-5.png",
+];
+
 export default function UniversidadePage() {
   const { aulasConcluidas, role, funcao } = useGameStore();
   const [filtro, setFiltro] = useState("Tudo");
@@ -98,26 +106,35 @@ export default function UniversidadePage() {
               const pct = Math.round((feitas / ids.length) * 100);
               return (
                 <Link key={c.id} href={`/app/universidade/curso/${c.id}`}>
-                  <div className="card-fassi p-5 group cursor-pointer h-full">
-                    <div className="flex items-start gap-3 mb-3">
-                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <BookOpen size={20} strokeWidth={1.75} className="text-primary" />
+                  <div className="card-fassi overflow-hidden group cursor-pointer h-full flex flex-col">
+                    <img
+                      src={imagensCursos[cursos.findIndex((cc) => cc.id === c.id) % imagensCursos.length]}
+                      alt={`Capa — ${c.titulo}`}
+                      loading="lazy"
+                      decoding="async"
+                      className="aspect-[16/9] w-full object-cover"
+                    />
+                    <div className="p-5 flex-1 flex flex-col">
+                      <div className="flex items-start gap-3 mb-3">
+                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <BookOpen size={20} strokeWidth={1.75} className="text-primary" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-semibold text-sm text-ink truncate">{c.titulo}</h3>
+                          <p className="text-xs text-muted">{c.categoria}</p>
+                        </div>
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-semibold text-sm text-ink truncate">{c.titulo}</h3>
-                        <p className="text-xs text-muted">{c.categoria}</p>
+                      <div className="flex items-center justify-between text-xs text-muted mb-1.5">
+                        <span>{feitas} de {ids.length} aulas</span>
+                        <span className="font-semibold text-primary">{pct}%</span>
                       </div>
+                      <div className="h-1.5 bg-line rounded-full overflow-hidden mb-3">
+                        <div className="h-full bg-primary rounded-full transition-all" style={{ width: `${pct}%` }} />
+                      </div>
+                      <span className="text-xs font-semibold text-primary inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Continuar <ArrowRight size={14} strokeWidth={1.75} />
+                      </span>
                     </div>
-                    <div className="flex items-center justify-between text-xs text-muted mb-1.5">
-                      <span>{feitas} de {ids.length} aulas</span>
-                      <span className="font-semibold text-primary">{pct}%</span>
-                    </div>
-                    <div className="h-1.5 bg-line rounded-full overflow-hidden mb-3">
-                      <div className="h-full bg-primary rounded-full transition-all" style={{ width: `${pct}%` }} />
-                    </div>
-                    <span className="text-xs font-semibold text-primary inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                      Continuar <ArrowRight size={14} strokeWidth={1.75} />
-                    </span>
                   </div>
                 </Link>
               );
@@ -168,19 +185,30 @@ export default function UniversidadePage() {
         </h2>
         <p className="text-sm text-muted mb-4">Vídeos de 2 a 5 minutos para dúvidas práticas da rotina.</p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-          {aulasRapidas.map((a) => (
+          {aulasRapidas.map((a, idx) => (
             <Link key={a.id} href={`/app/universidade/aula/${a.id}`}>
-              <div className="card-fassi p-4 flex items-center gap-3 group cursor-pointer">
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Play size={16} strokeWidth={1.75} className="text-primary" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="text-sm font-medium text-ink truncate">{a.titulo}</div>
-                  <div className="text-xs text-muted flex items-center gap-1 mt-0.5">
-                    <Clock size={11} strokeWidth={1.75} /> {a.duracao}
+              <div className="card-fassi overflow-hidden group cursor-pointer h-full flex flex-col">
+                <img
+                  src={imagensCursos[idx % imagensCursos.length]}
+                  alt={`Capa — ${a.titulo}`}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[16/9] w-full object-cover"
+                />
+                <div className="p-4 flex-1 flex flex-col">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Play size={16} strokeWidth={1.75} className="text-primary" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm font-medium text-ink truncate">{a.titulo}</div>
+                      <div className="text-xs text-muted flex items-center gap-1 mt-0.5">
+                        <Clock size={11} strokeWidth={1.75} /> {a.duracao}
+                      </div>
+                    </div>
+                    <ChevronRight size={16} strokeWidth={1.75} className="text-muted group-hover:text-primary transition-colors" />
                   </div>
                 </div>
-                <ChevronRight size={16} strokeWidth={1.75} className="text-muted group-hover:text-primary transition-colors" />
               </div>
             </Link>
           ))}
@@ -342,6 +370,8 @@ function CursoCard({ curso, aulasConcluidas }: { curso: typeof cursos[0]; aulasC
   const totalModulos = curso.modulos.length;
   const concluido = feitas === ids.length && feitas > 0;
   const iniciado = feitas > 0 && !concluido;
+  const cursoIndex = cursos.findIndex((c) => c.id === curso.id);
+  const imagemCapa = curso.imagem || imagensCursos[cursoIndex % imagensCursos.length];
 
   return (
     <Link href={`/app/universidade/curso/${curso.id}`}>
@@ -350,9 +380,7 @@ function CursoCard({ curso, aulasConcluidas }: { curso: typeof cursos[0]; aulasC
           className="h-32 relative flex items-end p-4"
           style={{ background: "linear-gradient(135deg, #1F1C18 0%, #3D3833 100%)" }}
         >
-          {curso.imagem ? (
-            <img src={curso.imagem} alt="" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
-          ) : null}
+          <img src={imagemCapa} alt={`Capa — ${curso.titulo}`} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
           <div className="relative z-10 flex items-center gap-2">
             {curso.novo && (

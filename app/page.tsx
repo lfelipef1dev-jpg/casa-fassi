@@ -134,14 +134,23 @@ export default function RootPage() {
       {/* Hero */}
       <section
         id="inicio"
-        className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-ink"
+        className="relative min-h-[90vh] flex items-center overflow-hidden bg-ink"
       >
-        <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-accent blur-[120px]" />
-          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-accent blur-[100px]" />
+        {/* Fotografia editorial de fundo */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/hero-marken-fassi.png"
+            alt=""
+            aria-hidden="true"
+            className="w-full h-full object-cover object-center"
+            fetchPriority="high"
+          />
         </div>
+        {/* Overlay escuro para legibilidade */}
+        <div className="absolute inset-0 z-[1] bg-gradient-to-r from-ink via-ink/85 to-ink/40" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-t from-ink/60 via-transparent to-ink/30 md:hidden" />
 
-        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
+        <div className="relative z-10 px-6 md:px-12 lg:px-20 max-w-2xl py-20 md:py-0">
           <m.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -164,7 +173,7 @@ export default function RootPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-surface/70 text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-4"
+            className="text-surface/75 text-base md:text-lg max-w-xl leading-relaxed mb-4"
           >
             A Casa Fassi é o espaço de formação, relacionamento e reconhecimento da Marken Fassi
             para lojistas, vendedores, representantes e parceiros que levam o cuidado da nossa marca
@@ -175,7 +184,7 @@ export default function RootPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-surface/50 text-sm md:text-base max-w-xl mx-auto leading-relaxed mb-10"
+            className="text-surface/55 text-sm md:text-base max-w-lg leading-relaxed mb-10"
           >
             Aqui, conhecimento, repertório e inspiração se encontram para tornar cada atendimento
             ainda mais especial.
@@ -185,7 +194,7 @@ export default function RootPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-start gap-4"
           >
             <button
               onClick={() => router.push("/app/universidade")}
@@ -196,7 +205,7 @@ export default function RootPage() {
             </button>
             <button
               onClick={handleEntrar}
-              className="inline-flex items-center gap-2 border border-surface/20 text-surface hover:bg-surface/10 px-8 py-4 rounded-xl font-semibold text-sm tracking-wide transition-all"
+              className="inline-flex items-center gap-2 border border-surface/25 text-surface hover:bg-surface/10 px-8 py-4 rounded-xl font-semibold text-sm tracking-wide transition-all"
             >
               Entrar na Casa Fassi
             </button>
@@ -206,20 +215,20 @@ export default function RootPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
-            className="mt-14 flex flex-wrap items-center justify-center gap-6 text-surface/60"
+            className="mt-12 flex flex-wrap items-center gap-6 text-surface/60"
           >
             <div className="flex items-center gap-2">
-              <BookOpen size={16} className="text-accent" />
+              <BookOpen size={16} className="text-accent" strokeWidth={1.75} />
               <span className="text-xs font-medium">Formação contínua</span>
             </div>
             <div className="w-px h-4 bg-surface/20" />
             <div className="flex items-center gap-2">
-              <Sparkles size={16} className="text-accent" />
+              <Sparkles size={16} className="text-accent" strokeWidth={1.75} />
               <span className="text-xs font-medium">Conteúdo para o atendimento</span>
             </div>
             <div className="w-px h-4 bg-surface/20" />
             <div className="flex items-center gap-2">
-              <HeartHandshake size={16} className="text-accent" />
+              <HeartHandshake size={16} className="text-accent" strokeWidth={1.75} />
               <span className="text-xs font-medium">Relacionamento com a marca</span>
             </div>
           </m.div>
@@ -372,9 +381,9 @@ export default function RootPage() {
           </div>
           <div className="grid md:grid-cols-3 gap-4">
             {[
-              { src: "/ambientacao-1.png", alt: "Detalhe de tecido e composição de cama premium Marken Fassi" },
-              { src: "/ambientacao-2.png", alt: "Ambiente acolhedor com enxoval Marken Fassi" },
-              { src: "/ambientacao-3.png", alt: "Composição editorial de bem-viver Marken Fassi" },
+              { src: "/curso-1.png", alt: "Detalhe de tecido e composição de cama premium Marken Fassi" },
+              { src: "/curso-2.png", alt: "Ambiente acolhedor com enxoval Marken Fassi" },
+              { src: "/curso-3.png", alt: "Composição editorial de bem-viver Marken Fassi" },
             ].map((img, i) => (
               <m.div
                 key={img.src}
