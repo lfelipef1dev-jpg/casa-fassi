@@ -1,39 +1,18 @@
-feat: hero carousel editorial premium com 3 banners Marken Fassi
+fix: corrigir carousel hero — ID duplicado, setas, autoplay, contador
 
-3 banners integrados:
-- marken-hero-01.webp (Institucional — "Uma casa para quem transforma enxoval em experiencia")
-- marken-hero-02.webp (Universidade — "Conhecimento que inspira excelencia")
-- marken-hero-03.webp (Experiencia — "Relacionamento que gera valor")
-- Convertidos de PNG para WebP (qualidade 88): ~2MB -> ~165-230KB cada
-- Dimensoes originais preservadas: 1717x916 / 1672x941
-
-Componente HeroCarousel:
-- Crossfade suave entre 3 slides (700ms)
-- Autoplay a cada 7 segundos
-- Pausa em hover, focus e aba nao visivel
-- prefers-reduced-motion: remove autoplay e transicoes
-- Swipe touch para mobile
-- Navegacao por teclado (ArrowLeft/Right)
-- Setas laterais discretas (desktop, hover)
-- Indicadores discretos (barras de progresso)
-- aria-roledescription="carousel", aria-label, aria-hidden
-- Banner 01: fetchPriority high + eager (LCP)
-- Banners 02 e 03: loading lazy
-- Aspect ratio 16/9 com maxHeight 88vh (evita CLS)
-- object-cover object-center (sem deformar)
-- NAO duplica headline da imagem em HTML
-
-Header revisado:
-- bg-gradient from-ink/40 quando transparente (sobre o hero)
-- Links em text-surface/80 quando nao scrolled
-- Botao CTA em accent (dourado) sobre o hero
-- Logo preservado
-
-Hero antigo removido:
-- hero-marken-fassi.png nao referenciado
-- Imports BookOpen e Sparkles removidos (nao usados)
-
-Build: 73 paginas estaticas, 0 erros TS/ESLint
+Correcoes:
+- Removido id="inicio" duplicado do wrapper div (HTML invalido)
+- Setas laterais: removido style inline opacity:0 que bloqueava group-hover
+- Setas agora usam apenas classes CSS: opacity-0 group-hover:opacity-100
+- Autoplay reescrito com setTimeout recursivo (mais robusto que setInterval)
+- Removido onFocus/onBlur da section inteira (pausava autoplay sem motivo)
+- Pausa apenas em hover real (isHovering state)
+- Adicionado contador visivel "01 / 03" no canto inferior direito
+- Adicionado label do slide no aria-label ("1 de 3: Institucional")
+- Overlay topo reforcado (from-ink/50)
+- Indicadores mais visiveis (28px ativo, 7px inativo)
+- Setas maiores (w-11 h-11, icon 22px)
+- group class movido para a section (era no wrapper div removido)
 
 Generated with [Devin](https://devin.ai)
 

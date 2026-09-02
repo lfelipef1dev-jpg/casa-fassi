@@ -6,20 +6,24 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 type Slide = {
   src: string;
   alt: string;
+  label: string;
 };
 
 const slides: Slide[] = [
   {
     src: "/images/hero/marken-hero-01.webp",
     alt: "Casa Fassi — Uma casa para quem transforma enxoval em experiência",
+    label: "Institucional",
   },
   {
     src: "/images/hero/marken-hero-02.webp",
     alt: "Universidade Marken Fassi — Conhecimento que inspira excelência",
+    label: "Universidade",
   },
   {
     src: "/images/hero/marken-hero-03.webp",
     alt: "Casa Fassi — Relacionamento que gera valor. Experiência que fortalece parcerias.",
+    label: "Experiência",
   },
 ];
 
@@ -28,14 +32,15 @@ const TRANSITION_MS = 700;
 
 export function HeroCarousel() {
   const [current, setCurrent] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // Detectar prefers-reduced-motion
+  // Detectar prefers-reduced-motion e mount
   useEffect(() => {
+    setMounted(true);
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     setReducedMotion(mq.matches);
     const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
@@ -55,27 +60,38 @@ export function HeroCarousel() {
     setCurrent(idx);
   }, []);
 
-  // Autoplay
+  // Autoplay — roda a cada 7s, pausa em hover/reducedMotion/aba oculta
   useEffect(() => {
-    if (isPaused || reducedMotion) return;
-    intervalRef.current = setInterval(next, AUTOPLAY_MS);
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-  }, [isPaused, reducedMotion, next, current]);
+    if (!mounted || isHovering || reducedMotion) return;
 
-  // Pausar quando aba não visível
-  useEffect(() => {
-    const handler = () => {
+    const checkVisibility = () => document.hidden;
+    let timer: ReturnType<typeof setTimeout>;
+
+    const scheduleNext = () => {
+      timer = setTimeout(() => {
+        if (!checkVisibility()) {
+          next();
+        }
+      }, AUTOPLAY_MS);
+    };
+
+    scheduleNext();
+
+    const onVisibilityChange = () => {
       if (document.hidden) {
-        setIsPaused(true);
+        clearTimeout(timer);
       } else {
-        setIsPaused(false);
+        scheduleNext();
       }
     };
-    document.addEventListener("visibilitychange", handler);
-    return () => document.removeEventListener("visibilitychange", handler);
-  }, []);
+
+    document.addEventListener("visibilitychange", onVisibilityChange);
+
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    };
+  }, [mounted, isHovering, reducedMotion, next, current]);
 
   // Touch / swipe
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -112,13 +128,11 @@ export function HeroCarousel() {
   return (
     <section
       id="inicio"
-      className="relative w-full overflow-hidden bg-ink"
+      className="relative w-full overflow-hidden bg-ink group"
       aria-roledescription="carousel"
       aria-label="Banners Casa Fassi"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onFocus={() => setIsPaused(true)}
-      onBlur={() => setIsPaused(false)}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -141,7 +155,7 @@ export function HeroCarousel() {
             aria-hidden={i !== current}
             role="group"
             aria-roledescription="slide"
-            aria-label={`${i + 1} de ${slides.length}`}
+            aria-label={`${i + 1} de ${slides.length}: ${slide.label}`}
           >
             <img
               src={slide.src}
@@ -152,38 +166,29 @@ export function HeroCarousel() {
               loading={i === 0 ? "eager" : "lazy"}
               decoding="async"
               className="w-full h-full object-cover object-center"
-              style={{
-                objectPosition: "center",
-              }}
             />
           </div>
         ))}
       </div>
 
-      {/* Setas laterais (desktop, hover) */}
+      {/* Setas laterais (desktop, hover no grupo) */}
       <button
         onClick={prev}
         aria-label="Slide anterior"
-        className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 items-center justify-center rounded-full bg-ink/30 backdrop-blur-sm text-surface/80 hover:bg-ink/50 hover:text-surface opacity-0 group-hover:opacity-100 focus:opacity-100 transition-all duration-300"
-        style={{ opacity: 0 }}
-        onMouseOver={(e) => (e.currentTarget.style.opacity = "1")}
-        onMouseOut={(e) => (e.currentTarget.style.opacity = "0")}
+        className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 items-center justify-center rounded-full bg-ink/40 backdrop-blur-sm text-surface/90 hover:bg-ink/60 hover:text-surface transition-all duration-300 opacity-0 group-hover:opacity-100 focus-visible:opacity-100"
       >
-        <ChevronLeft size={20} strokeWidth={1.75} />
+        <ChevronLeft size={22} strokeWidth={1.75} />
       </button>
       <button
         onClick={next}
         aria-label="Próximo slide"
-        className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 items-center justify-center rounded-full bg-ink/30 backdrop-blur-sm text-surface/80 hover:bg-ink/50 hover:text-surface opacity-0 transition-all duration-300"
-        style={{ opacity: 0 }}
-        onMouseOver={(e) => (e.currentTarget.style.opacity = "1")}
-        onMouseOut={(e) => (e.currentTarget.style.opacity = "0")}
+        className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 items-center justify-center rounded-full bg-ink/40 backdrop-blur-sm text-surface/90 hover:bg-ink/60 hover:text-surface transition-all duration-300 opacity-0 group-hover:opacity-100 focus-visible:opacity-100"
       >
-        <ChevronRight size={20} strokeWidth={1.75} />
+        <ChevronRight size={22} strokeWidth={1.75} />
       </button>
 
-      {/* Indicadores discretos */}
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5">
+      {/* Indicadores + contador discreto */}
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
         {slides.map((_, i) => (
           <button
             key={i}
@@ -192,16 +197,21 @@ export function HeroCarousel() {
             aria-current={i === current}
             className="rounded-full transition-all duration-300"
             style={{
-              width: i === current ? 24 : 6,
-              height: 6,
-              backgroundColor: i === current ? "rgba(184, 154, 106, 0.9)" : "rgba(248, 246, 241, 0.4)",
+              width: i === current ? 28 : 7,
+              height: 7,
+              backgroundColor: i === current ? "rgba(184, 154, 106, 0.95)" : "rgba(248, 246, 241, 0.45)",
             }}
           />
         ))}
       </div>
 
+      {/* Contador 01/03 */}
+      <div className="absolute bottom-5 right-6 z-20 text-surface/60 text-xs font-medium tracking-wider tabular-nums">
+        {String(current + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
+      </div>
+
       {/* Overlay sutil no topo para o header */}
-      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-ink/40 to-transparent z-10 pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-ink/50 to-transparent z-10 pointer-events-none" />
     </section>
   );
 }

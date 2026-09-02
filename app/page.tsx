@@ -135,9 +135,7 @@ export default function RootPage() {
       </header>
 
       {/* Hero Carousel */}
-      <div className="group" id="inicio">
-        <HeroCarousel />
-      </div>
+      <HeroCarousel />
 
       {/* Apresentação da Casa Fassi */}
       <section id="pilares" className="py-20 px-6 bg-bg scroll-mt-16">
