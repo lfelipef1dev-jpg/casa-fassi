@@ -107,7 +107,7 @@ export default function RootPage() {
         }`}
       >
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <LogoFull theme="light" height={28} />
+          <LogoFull theme="light" height={40} />
 
           <nav className="hidden lg:flex items-center gap-6" aria-label="Navegação da página">
             {navLinks.map((link) => (

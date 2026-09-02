@@ -1,29 +1,4 @@
-feat: novo logo horizontal Marken Fassi + hero carousel com pause/play
-
-NOVO LOGO:
-- Localizado em Downloads: ChatGPT Image 2 de set. de 2026, 15_53_13.png
-- Formato: PNG 2172x724 (3:1 horizontal)
-- Convertido para WebP (446KB -> 207KB, quality 92)
-- Caminho: /public/brand/marken-fassi/logo-horizontal.webp
-- Caracteristicas: fundo escuro, dourado/champagne, MF + MARKEN FASSI + CASA FASSI
-- Aplicado em: Logo.tsx (LogoFull), JsonLd.tsx (schema.org)
-- Proporcao real preservada (3:1) — sem deformar
-- height controlada, width auto no componente
-
-HERO CAROUSEL MELHORADO:
-- Adicionado botao pause/play explicito (canto inferior direito)
-- aria-label dinamico: "Pausar apresentacao" / "Retomar apresentacao"
-- Estado isPaused separado de isHovering (controle manual independente)
-- focus-visible:ring-2 ring-accent em todos os controles
-- focus-visible:ring-offset-2 ring-offset-ink nos indicadores
-- Contador 01/03 reposicionado (nao sobrepor botao pause)
-- Botao pause sempre visivel no mobile, hover no desktop
-
-LOGO ANTIGO:
-- /logo-casa-fassi.png removido das referencias ativas
-- JsonLd atualizado para novo logo
-
-Scripts temporarios removidos.
+fix: aumentar logo do header (28px -> 40px)
 
 Generated with [Devin](https://devin.ai)
 
