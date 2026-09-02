@@ -56,7 +56,7 @@ export function Sidebar({ open, onClose }: { open: boolean; onClose: () => void 
         {/* Branding */}
         <div className="h-20 flex items-center justify-between px-6 border-b border-line flex-shrink-0">
           <Link href="/app" onClick={onClose} aria-label="Página inicial" className="flex-1 min-w-0">
-            <LogoFull theme="light" height={32} />
+            <LogoFull theme="light" height={36} />
           </Link>
           <button
             onClick={onClose}

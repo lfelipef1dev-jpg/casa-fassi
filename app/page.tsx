@@ -238,7 +238,7 @@ export default function RootPage() {
       </section>
 
       {/* Comunidade */}
-      <section id="comunidade" className="py-20 px-6 bg-bg scroll-mt-16">
+      <section id="comunidade" className="py-16 px-6 bg-bg scroll-mt-16">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-accent-dark text-sm font-semibold tracking-[0.15em] uppercase mb-3">
             Comunidade Casa Fassi
@@ -311,7 +311,7 @@ export default function RootPage() {
       </section>
 
       {/* Benefícios */}
-      <section id="beneficios" className="py-20 px-6 bg-bg scroll-mt-16">
+      <section id="beneficios" className="py-24 px-6 bg-bg scroll-mt-16">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-accent-dark text-sm font-semibold tracking-[0.15em] uppercase mb-3">
             Benefícios
@@ -349,7 +349,7 @@ export default function RootPage() {
       </section>
 
       {/* Minha Jornada */}
-      <section id="jornada" className="py-20 px-6 bg-bg scroll-mt-16">
+      <section id="jornada" className="py-20 px-6 bg-surface border-t border-line scroll-mt-16">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-accent-dark text-sm font-semibold tracking-[0.15em] uppercase mb-3">
             Minha jornada
