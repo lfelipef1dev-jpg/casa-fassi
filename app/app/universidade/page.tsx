@@ -46,24 +46,24 @@ const materialIcon: Record<string, typeof FileText> = {
 };
 
 const capaPorCurso: Record<string, string> = {
-  "essencia-marken-fassi": "/images/marken/universidade/capa-essencia.svg",
-  "tecidos-fios": "/images/marken/universidade/capa-tecidos.svg",
-  "colecao-alameda": "/images/marken/universidade/capa-alameda.svg",
-  "atendimento-premium": "/images/marken/universidade/capa-atendimento.svg",
-  "vitrine-composicao": "/images/marken/universidade/capa-vitrine.svg",
-  "conteudo-digital": "/images/marken/universidade/capa-conteudo-digital.svg",
-  "vendas-marken-fassi": "/images/marken/universidade/capa-vendas.svg",
+  "essencia-marken-fassi": "/images/marken/universidade/capa-essencia.webp",
+  "tecidos-fios": "/images/marken/universidade/capa-tecidos.webp",
+  "colecao-alameda": "/images/marken/universidade/capa-alameda.webp",
+  "atendimento-premium": "/images/marken/universidade/capa-atendimento.webp",
+  "vitrine-composicao": "/images/marken/universidade/capa-vitrine.webp",
+  "conteudo-digital": "/images/marken/universidade/capa-conteudo-digital.webp",
+  "vendas-marken-fassi": "/images/marken/universidade/capa-vendas.webp",
 };
 
 const capaAulaRapida: Record<string, string> = {
-  "live-alameda": "/images/marken/universidade/aula-live-alameda.svg",
-  "boas-praticas": "/images/marken/universidade/aula-boas-praticas.svg",
-  "tecidos-especialistas": "/images/marken/universidade/aula-tecidos-especialistas.svg",
-  "banho-ritual": "/images/marken/universidade/aula-banho-ritual.svg",
+  "live-alameda": "/images/marken/universidade/aula-live-alameda.webp",
+  "boas-praticas": "/images/marken/universidade/aula-boas-praticas.webp",
+  "tecidos-especialistas": "/images/marken/universidade/aula-tecidos-especialistas.webp",
+  "banho-ritual": "/images/marken/universidade/aula-banho-ritual.webp",
 };
 
 function getCapaCurso(cursoId: string): string {
-  return capaPorCurso[cursoId] || "/images/marken/universidade/capa-essencia.svg";
+  return capaPorCurso[cursoId] || "/images/marken/universidade/capa-essencia.webp";
 }
 
 export default function UniversidadePage() {
@@ -202,7 +202,7 @@ export default function UniversidadePage() {
             <Link key={a.id} href={`/app/universidade/aula/${a.id}`}>
               <div className="card-fassi overflow-hidden group cursor-pointer h-full flex flex-col">
                 <img
-                  src={capaAulaRapida[a.id] || "/images/marken/universidade/aula-boas-praticas.svg"}
+                  src={capaAulaRapida[a.id] || "/images/marken/universidade/aula-boas-praticas.webp"}
                   alt={`Capa — ${a.titulo}`}
                   loading="lazy"
                   decoding="async"
