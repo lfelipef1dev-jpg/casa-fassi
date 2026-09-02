@@ -1,31 +1,42 @@
-feat: auditoria app interna — padronizar linguagem premium
+feat: auditoria final 10/10 — loading, error, 404, assets, sidebar
 
-AUDITORIA COMPLETA DAS PAGINAS /app/*:
+ROTAS:
+- 19 rotas mapeadas, zero quebras, zero orfas
+- loading.tsx criado para /app/ (skeleton editorial)
+- loading.tsx criado para / (skeleton home)
+- error.tsx criado para /app/ (erro elegante com retry)
+- not-found.tsx criado (404 premium com logo)
 
-Tipografia:
-- Dashboard: font-bold -> font-serif font-semibold tabular-nums (progresso + 4 cards)
-- Perfil: font-bold -> font-serif font-semibold tabular-nums (4 stats)
-- Equipe: font-bold -> font-serif font-semibold tabular-nums (3 metricas + pct)
-- Padronizado com a home (numeros serif, nao sans bold)
+NAVEGACAO:
+- Sidebar ja usa <Link> do Next.js (prefetch automatico em prod)
+- Zero <a href> internos (so # anchors na home, correto)
+- Sidebar persistente (layout nao remonta entre rotas)
 
-Beneficios (app):
-- 9 cards iguais -> 3 principais em destaque (accent) + 6 secundarios compactos
-- Hierarquia visual igual a home
+SIDEBAR MOBILE (DRAWER):
+- Body scroll bloqueado quando drawer abre
+- ESC fecha o drawer
+- Clique fora fecha (ja existia)
+- Fecha automatico apos navegar (ja existia)
 
-Filtros (Conteudos + Comunidade):
-- bg-ink text-accent (invertido) -> bg-primary text-surface (premium)
-- hover:text-ink adicionado
+ASSETS OTIMIZADOS:
+- og-image.png: 2244KB -> 30KB (98% reducao, 1200x630 premium)
+- icon-mf.png: 1608KB -> 16KB (99% reducao, 128x128)
+- Removidos 5 logos antigos nao referenciados:
+  logo-branco.png, logo-casa-fassi.png, logo-marken-fassi.jpg,
+  logo-mf-verde-escuro.png, logo-verde-escuro.png
+- Total removido: ~3MB de assets nao utilizados
 
-Acessibilidade — focus-visible em todos os controles:
-- TopBar: menu mobile, busca, notificacoes
-- Sidebar: links de navegacao (ring-accent/40)
-- Vitrine: botao upload (ring-accent ring-offset-bg)
-- Perfil: botao trocar foto + aria-label
-- Assistente: botao enviar (ring-accent ring-offset-bg)
+CACHE:
+- _headers ja tem cache immutable para _next/static, webp, png, etc
+- HSTS ativo
 
-Assets:
-- Zero referencias a outros projetos (nexus, tigrebet, etc)
-- Todos thumbs/capas/ref sao /images/marken/*
+SEO:
+- robots.txt: /app/ e /onboarding/ disallow (correto)
+- sitemap.xml: 5 URLs publicas indexaveis
+- noindex nas paginas /app/ (metadata)
+
+TYPECHECK: 0 erros
+BUILD: 77 paginas, 0 erros
 
 Generated with [Devin](https://devin.ai)
 

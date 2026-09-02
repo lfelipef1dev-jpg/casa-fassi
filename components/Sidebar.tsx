@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 import {
   Home,
   BookOpen,
@@ -36,6 +37,21 @@ const navItems = [
 export function Sidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
   const pathname = usePathname();
   const { nome, loja, funcao, photo } = useGameStore();
+
+  // Bloquear scroll do body quando drawer abre + ESC para fechar
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+      const onKey = (e: KeyboardEvent) => {
+        if (e.key === "Escape") onClose();
+      };
+      document.addEventListener("keydown", onKey);
+      return () => {
+        document.body.style.overflow = "";
+        document.removeEventListener("keydown", onKey);
+      };
+    }
+  }, [open, onClose]);
 
   return (
     <>
