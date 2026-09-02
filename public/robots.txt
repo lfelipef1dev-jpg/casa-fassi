@@ -3,4 +3,4 @@ Allow: /
 Disallow: /app/
 Disallow: /onboarding/
 
-Sitemap: https://casafassi.expostacker.com.br/sitemap.xml
+Sitemap: https://marken.expostacker.com.br/sitemap.xml

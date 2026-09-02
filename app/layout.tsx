@@ -3,7 +3,7 @@ import { Inter, Cormorant_Garamond } from "next/font/google";
 import { JsonLd } from "@/components/JsonLd";
 import "./globals.css";
 
-const SITE_URL = "https://casafassi.expostacker.com.br";
+const SITE_URL = "https://marken.expostacker.com.br";
 
 const inter = Inter({
   subsets: ["latin"],

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const SITE_URL = "https://casafassi.expostacker.com.br";
+const SITE_URL = "https://marken.expostacker.com.br";
 
 const organizationSchema = {
   "@type": "Organization",
