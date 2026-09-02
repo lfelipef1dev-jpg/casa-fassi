@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
+import { JsonLd } from "@/components/JsonLd";
 import "./globals.css";
+
+const SITE_URL = "https://casafassi.expostacker.com.br";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,18 +22,47 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Casa Fassi — Ecossistema de Embaixadores Marken Fassi",
     template: "%s — Casa Fassi",
   },
   description:
     "Plataforma de capacitação, reconhecimento e comunidade para embaixadores da Marken Fassi. Universidade, conteúdos, certificados e benefícios para a rede comercial.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Casa Fassi — Ecossistema de Embaixadores Marken Fassi",
     description:
       "Plataforma de capacitação, reconhecimento e comunidade para embaixadores da Marken Fassi.",
     type: "website",
     locale: "pt_BR",
+    url: SITE_URL,
+    siteName: "Casa Fassi",
+    images: [
+      {
+        url: "/logo-marken-fassi.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Casa Fassi — Marken Fassi",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Casa Fassi — Ecossistema de Embaixadores Marken Fassi",
+    description:
+      "Plataforma de capacitação, reconhecimento e comunidade para embaixadores da Marken Fassi.",
+    images: ["/logo-marken-fassi.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
 };
 
@@ -47,6 +79,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${cormorant.variable}`}>
+      <head>
+        <JsonLd />
+      </head>
       <body className="font-sans antialiased bg-bg text-ink">
         {children}
       </body>

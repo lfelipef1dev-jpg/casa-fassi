@@ -1,38 +1,37 @@
-feat: refine Casa Fassi ambassador experience — premium B2B identity
+feat(seo): implementar Ordem Tecnica Obrigatorio SEO 2026
 
-Design system:
-- Nova paleta: marfim, carvao, dourado fosco, primary marrom, surface branco
-- Tokens CSS e Tailwind normalizados (radius, shadow, border, typography)
-- Classes utilitarias: btn-primary, btn-gold, btn-outline, input-fassi, label-fassi
-- prefers-reduced-motion respeitado, focus-visible em todos os elementos
+Fase 1 - Fundamentos:
+- HSTS adicionado ao _headers (max-age 63072000, includeSubDomains, preload)
+- X-Content-Type-Options, X-Frame-Options, Referrer-Policy adicionados
+- Cache-Control para imagens e fontes (31536000, immutable)
+- font-display: swap ja configurado em Inter e Cormorant Garamond
+- HTTPS e redirect 301 gerenciados pelo Cloudflare Pages
 
-Shell:
-- Sidebar premium com aria-current, aria-label, footer da marca
-- TopBar com titulo dinamico, busca com aria-label, notificacoes
-- AppShell com spacing melhorado (p-4 lg:p-8)
+Fase 2 - Crawl e indexacao:
+- robots.txt criado (Allow /, Disallow /app/ e /onboarding/, Sitemap absoluto)
+- sitemap.xml criado (apenas URL publica indexavel)
+- Canonical adicionado via metadata.alternates.canonical no layout raiz
+- noindex,nofollow em /app/* e /onboarding via metadata.robots
 
-Landing page e Dashboard:
-- Hero com fundo carvao (ink) e accent dourado
-- Paleta marfim/carfao/dourado substituindo verde escuro
-- Nomenclatura consistente: Casa Fassi
-- Selos com icones lucide em vez de emojis
+Fase 3 - On-page:
+- Title template com default e template %s - Casa Fassi
+- Meta description unica no layout raiz
+- H1 unico na landing page (verificado)
+- OG image configurada (logo-marken-fassi.jpg 1200x630)
+- Twitter Card summary_large_image
+- OpenGraph completo: title, description, url, siteName, locale, images
 
-Todas as paginas internas:
-- Cores normalizadas (bg-brand -> bg-primary, hex antigos -> novos tokens)
-- strokeWidth={1.75} em todos os icones lucide
-- Emojis removidos em todas as telas
-- Selos: campo icon (LucideIcon) substitui emoji
+Fase 4 - Schema.org:
+- JSON-LD injetado no head via componente JsonLd
+- Organization: name, url, logo, description, sameAs
+- WebSite: name, url, description, inLanguage, publisher
+- @graph + @id conectando entidades
 
-Metadata:
-- Title template, Open Graph, themeColor atualizado
-- maximumScale removido (acessibilidade)
-- manifest inexistente removido
+Fase 5 - Cadastro e monitoramento:
+- GSC e GA4: orientacao ao usuario (requer configuracao manual)
 
-Build:
-- ignoreBuildErrors e ignoreDuringBuilds removidos
-- TypeScript e ESLint agora validam de verdade
-- Build passa sem erros (73 paginas estaticas)
+Build: 73 paginas estaticas, 0 erros, TS e ESLint validando
 
 Generated with [Devin](https://devin.ai)
 
-Co-Authored-By: Devin <158243242+devin-ai-integration[bot]@users.noreply.github.com
+Co-Authored-By: Devin <158243242+devin-ai-integration[bot]@users.noreply.github.com>
