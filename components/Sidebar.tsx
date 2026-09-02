@@ -103,7 +103,7 @@ export function Sidebar({ open, onClose }: { open: boolean; onClose: () => void 
                 onClick={onClose}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 relative group",
+                  "flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40",
                   active
                     ? "bg-primary/8 text-primary"
                     : "text-muted hover:bg-surface-subtle hover:text-ink"

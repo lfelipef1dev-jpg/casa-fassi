@@ -58,17 +58,17 @@ export default function EquipePage() {
       <div className="grid grid-cols-3 gap-3">
         <div className="card-fassi p-4">
           <Users size={18} strokeWidth={1.75} className="text-primary mb-2" />
-          <p className="text-2xl font-bold text-ink">{equipe.length}</p>
+          <p className="font-serif text-2xl font-semibold text-ink tabular-nums">{equipe.length}</p>
           <p className="text-xs text-muted">Funcionários</p>
         </div>
         <div className="card-fassi p-4">
           <TrendingUp size={18} strokeWidth={1.75} className="text-primary mb-2" />
-          <p className="text-2xl font-bold text-ink">{mediaEquipe}%</p>
+          <p className="font-serif text-2xl font-semibold text-ink tabular-nums">{mediaEquipe}%</p>
           <p className="text-xs text-muted">Média da equipe</p>
         </div>
         <div className="card-fassi p-4">
           <Award size={18} strokeWidth={1.75} className="text-[#9A7E50] mb-2" />
-          <p className="text-2xl font-bold text-ink">{concluiram}</p>
+          <p className="font-serif text-2xl font-semibold text-ink tabular-nums">{concluiram}</p>
           <p className="text-xs text-muted">Concluíram tudo</p>
         </div>
       </div>
@@ -102,7 +102,7 @@ export default function EquipePage() {
               </div>
             </div>
             <div className="text-right flex-shrink-0">
-              <p className="text-lg font-bold text-ink">{f.pct}%</p>
+              <p className="font-serif text-lg font-semibold text-ink tabular-nums">{f.pct}%</p>
               <p className="text-[0.65rem] text-muted">
                 {f.feitas}/{total} lições
               </p>

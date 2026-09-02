@@ -85,8 +85,8 @@ export default function ConteudosPage() {
             className={cn(
               "px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border transition-all",
               filtroAtivo === f
-                ? "bg-ink text-accent border-ink"
-                : "bg-surface text-muted border-line hover:border-primary"
+                ? "bg-primary text-surface border-primary"
+                : "bg-surface text-muted border-line hover:border-primary hover:text-ink"
             )}
           >
             {f}

@@ -86,7 +86,8 @@ export default function PerfilPage() {
         <div className="flex flex-col sm:flex-row items-start gap-4 mb-6">
           <button
             onClick={() => fileRef.current?.click()}
-            className="w-20 h-20 rounded-full bg-bg border-2 border-line hover:border-primary flex items-center justify-center overflow-hidden flex-shrink-0 transition-all"
+            aria-label="Trocar foto"
+            className="w-20 h-20 rounded-full bg-bg border-2 border-line hover:border-primary flex items-center justify-center overflow-hidden flex-shrink-0 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
           >
             {photo ? (
               <img src={photo} alt="" width={80} height={80} loading="lazy" decoding="async" className="w-full h-full object-cover" />
@@ -136,7 +137,7 @@ export default function PerfilPage() {
           return (
             <div key={s.label} className="card-fassi p-4 text-center">
               <Icon size={20} strokeWidth={1.75} className="text-primary mx-auto mb-2" />
-              <div className="font-bold text-ink text-lg">{s.value}</div>
+              <div className="font-serif font-semibold text-ink text-lg tabular-nums">{s.value}</div>
               <div className="text-xs text-muted">{s.label}</div>
             </div>
           );

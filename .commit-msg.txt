@@ -1,27 +1,31 @@
-feat: sprint cirurgica 10/10 — ritmo, CTAs, acessibilidade, preview produto
+feat: auditoria app interna — padronizar linguagem premium
 
-HOME — ritmo editorial diferenciado:
-- Navegacao: 7 itens -> 4 (Universidade, Comunidade, Ambientacao, Beneficios)
-  Destaque maior no botao Entrar, institucionais reduzidos
-- Comunidade: adicionado quote editorial serif italic + icones por card
-  (Camera, HeartHandshake, Calendar) — voz mais humana
-- Beneficios: 9 cards iguais -> 3 principais em destaque (Certificados,
-  Lancamentos, Encontros) + 5 secundarios em lista compacta com bullets
-- Jornada: 4 cards textuais -> preview de produto com:
-  - Card principal: barra de progresso 40% + proxima aula
-  - 4 cards metrica: Certificados (3), Videos salvos (12),
-    Conteudos novos (5), Proximos passos (2)
-  - CTA "Acessar minha jornada"
-- CTA final: adicionado aria-label + focus-visible ring
+AUDITORIA COMPLETA DAS PAGINAS /app/*:
 
-HERO — acessibilidade WCAG 2.2:
-- Botao pause/play: w-9 h-9 (36px) -> w-11 h-11 (44px) = minimo WCAG
-- Indicadores: area touch 44x44 com dot visual menor dentro
-  (flex center + span 7px) — touch target sem mudar visual
-- focus-visible:ring-offset em todos os controles
+Tipografia:
+- Dashboard: font-bold -> font-serif font-semibold tabular-nums (progresso + 4 cards)
+- Perfil: font-bold -> font-serif font-semibold tabular-nums (4 stats)
+- Equipe: font-bold -> font-serif font-semibold tabular-nums (3 metricas + pct)
+- Padronizado com a home (numeros serif, nao sans bold)
 
-Header:
-- Botao Entrar: adicionado focus-visible ring
+Beneficios (app):
+- 9 cards iguais -> 3 principais em destaque (accent) + 6 secundarios compactos
+- Hierarquia visual igual a home
+
+Filtros (Conteudos + Comunidade):
+- bg-ink text-accent (invertido) -> bg-primary text-surface (premium)
+- hover:text-ink adicionado
+
+Acessibilidade — focus-visible em todos os controles:
+- TopBar: menu mobile, busca, notificacoes
+- Sidebar: links de navegacao (ring-accent/40)
+- Vitrine: botao upload (ring-accent ring-offset-bg)
+- Perfil: botao trocar foto + aria-label
+- Assistente: botao enviar (ring-accent ring-offset-bg)
+
+Assets:
+- Zero referencias a outros projetos (nexus, tigrebet, etc)
+- Todos thumbs/capas/ref sao /images/marken/*
 
 Generated with [Devin](https://devin.ai)
 

@@ -29,7 +29,7 @@ export function TopBar({ onMenuClick }: { onMenuClick: () => void }) {
     <header className="sticky top-0 z-30 h-16 bg-surface/90 backdrop-blur-md border-b border-line flex items-center gap-3 px-4 lg:px-6">
       <button
         onClick={onMenuClick}
-        className="lg:hidden text-ink hover:text-primary p-1.5 rounded-lg hover:bg-surface-subtle transition-colors"
+        className="lg:hidden text-ink hover:text-primary p-1.5 rounded-lg hover:bg-surface-subtle transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
         aria-label="Abrir menu"
         aria-expanded="false"
       >
@@ -47,13 +47,13 @@ export function TopBar({ onMenuClick }: { onMenuClick: () => void }) {
             type="text"
             placeholder="Buscar conteúdos, cursos, materiais..."
             aria-label="Buscar na plataforma"
-            className="w-full bg-surface-subtle border border-line rounded-xl pl-9 pr-3 py-2 text-sm text-ink placeholder:text-muted focus:outline-none focus:border-primary focus:bg-surface transition-colors"
+            className="w-full bg-surface-subtle border border-line rounded-xl pl-9 pr-3 py-2 text-sm text-ink placeholder:text-muted focus:outline-none focus:border-primary focus:bg-surface focus-visible:ring-2 focus-visible:ring-primary/20 transition-colors"
           />
         </div>
       </div>
 
       <button
-        className="text-muted hover:text-primary p-2 rounded-lg hover:bg-surface-subtle transition-colors flex-shrink-0"
+        className="text-muted hover:text-primary p-2 rounded-lg hover:bg-surface-subtle transition-colors flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
         aria-label="Notificações"
       >
         <Bell size={18} />

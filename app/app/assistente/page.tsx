@@ -93,7 +93,7 @@ export default function AssistentePage() {
           onClick={handleEnviar}
           disabled={!pergunta.trim()}
           aria-label="Enviar pergunta"
-          className="bg-primary hover:bg-primary-hover text-white px-5 rounded-xl font-semibold text-sm transition-all disabled:opacity-40 active:scale-95 flex items-center justify-center"
+          className="bg-primary hover:bg-primary-hover text-surface px-5 rounded-xl font-semibold text-sm transition-all disabled:opacity-40 active:scale-95 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
         >
           <Send size={16} strokeWidth={1.75} />
         </button>

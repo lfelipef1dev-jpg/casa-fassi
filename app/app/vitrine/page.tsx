@@ -92,7 +92,7 @@ export default function MinhaVitrinePage() {
       {/* Botão de upload */}
       <button
         onClick={() => setShowUpload(true)}
-        className="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-light text-surface px-6 py-3 rounded-xl font-semibold text-sm transition-all active:scale-95"
+        className="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-light text-surface px-6 py-3 rounded-xl font-semibold text-sm transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
       >
         <Camera size={18} strokeWidth={1.75} /> Enviar foto da vitrine
       </button>

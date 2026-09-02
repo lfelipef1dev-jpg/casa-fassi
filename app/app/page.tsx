@@ -65,7 +65,7 @@ export default function JornadaPage() {
               )}
             </div>
             <div className="text-right">
-              <div className="text-3xl font-bold text-surface">{pct}%</div>
+              <div className="font-serif text-3xl font-semibold text-surface tabular-nums">{pct}%</div>
               <div className="text-xs text-surface/50">seu progresso</div>
             </div>
           </div>
@@ -76,22 +76,22 @@ export default function JornadaPage() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         <div className="card-fassi p-5">
           <BookOpen size={20} className="text-primary mb-2" strokeWidth={1.75} />
-          <div className="text-2xl font-bold text-ink">{emAndamento.length + concluidos.length}</div>
+          <div className="font-serif text-2xl font-semibold text-ink tabular-nums">{emAndamento.length + concluidos.length}</div>
           <div className="text-xs text-muted">Cursos iniciados</div>
         </div>
         <div className="card-fassi p-5">
           <Award size={20} className="text-accent-dark mb-2" strokeWidth={1.75} />
-          <div className="text-2xl font-bold text-ink">{concluidos.length}</div>
+          <div className="font-serif text-2xl font-semibold text-ink tabular-nums">{concluidos.length}</div>
           <div className="text-xs text-muted">Cursos concluídos</div>
         </div>
         <div className="card-fassi p-5">
           <Bookmark size={20} className="text-primary mb-2" strokeWidth={1.75} />
-          <div className="text-2xl font-bold text-ink">{aulasSalvas.length + videosSalvos.length}</div>
+          <div className="font-serif text-2xl font-semibold text-ink tabular-nums">{aulasSalvas.length + videosSalvos.length}</div>
           <div className="text-xs text-muted">Vídeos salvos</div>
         </div>
         <div className="card-fassi p-5">
           <Clock size={20} className="text-primary mb-2" strokeWidth={1.75} />
-          <div className="text-2xl font-bold text-ink">{horasAssistidas.toFixed(1)}h</div>
+          <div className="font-serif text-2xl font-semibold text-ink tabular-nums">{horasAssistidas.toFixed(1)}h</div>
           <div className="text-xs text-muted">Horas assistidas</div>
         </div>
       </div>
