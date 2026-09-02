@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5F1EA"/>
+      <stop offset="50%" stop-color="#F5F1EA"/>
+      <stop offset="100%" stop-color="#E0D5C2"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="70%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#B89A6A" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#B89A6A" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="pat" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M10,2 L18,10 L10,18 L2,10 Z" fill="none" stroke="#C9B98E" stroke-width="0.5" opacity="0.25"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <rect width="800" height="1000" fill="url(#pat)"/>
+  <rect width="800" height="1000" fill="url(#glow)"/>
+  <rect x="40" y="40" width="720" height="920" fill="none" stroke="#B89A6A" stroke-width="1" opacity="0.25"/>
+  <rect x="48" y="48" width="704" height="904" fill="none" stroke="#B89A6A" stroke-width="0.5" opacity="0.15"/>
+  <g transform="translate(400, 460)">
+    <text x="0" y="0" font-family="Georgia, serif" font-size="100" font-weight="500" fill="#B89A6A" opacity="0.1" text-anchor="middle" letter-spacing="6">MF</text>
+  </g>
+  <text x="400" y="560" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#B89A6A" text-anchor="middle" letter-spacing="4" opacity="0.75">AMBIENTE</text>
+  <line x1="360" y1="580" x2="440" y2="580" stroke="#B89A6A" stroke-width="1" opacity="0.5"/>
+  <text x="400" y="620" font-family="Georgia, serif" font-size="28" font-weight="600" fill="#1F1C18" text-anchor="middle" opacity="0.85">Quarto Sofisticado</text>
+  <text x="400" y="650" font-family="Inter, sans-serif" font-size="11" fill="#706A62" text-anchor="middle" opacity="0.55" letter-spacing="2">INSPIRAÇÃO · LAYOUT</text>
+</svg>

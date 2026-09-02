@@ -45,13 +45,26 @@ const materialIcon: Record<string, typeof FileText> = {
   imagem: ImageIcon,
 };
 
-const imagensCursos = [
-  "/curso-1.png",
-  "/curso-2.png",
-  "/curso-3.png",
-  "/curso-4.png",
-  "/curso-5.png",
-];
+const capaPorCurso: Record<string, string> = {
+  "essencia-marken-fassi": "/images/marken/universidade/capa-essencia.svg",
+  "tecidos-fios": "/images/marken/universidade/capa-tecidos.svg",
+  "colecao-alameda": "/images/marken/universidade/capa-alameda.svg",
+  "atendimento-premium": "/images/marken/universidade/capa-atendimento.svg",
+  "vitrine-composicao": "/images/marken/universidade/capa-vitrine.svg",
+  "conteudo-digital": "/images/marken/universidade/capa-conteudo-digital.svg",
+  "vendas-marken-fassi": "/images/marken/universidade/capa-vendas.svg",
+};
+
+const capaAulaRapida: Record<string, string> = {
+  "live-alameda": "/images/marken/universidade/aula-live-alameda.svg",
+  "boas-praticas": "/images/marken/universidade/aula-boas-praticas.svg",
+  "tecidos-especialistas": "/images/marken/universidade/aula-tecidos-especialistas.svg",
+  "banho-ritual": "/images/marken/universidade/aula-banho-ritual.svg",
+};
+
+function getCapaCurso(cursoId: string): string {
+  return capaPorCurso[cursoId] || "/images/marken/universidade/capa-essencia.svg";
+}
 
 export default function UniversidadePage() {
   const { aulasConcluidas, role, funcao } = useGameStore();
@@ -108,7 +121,7 @@ export default function UniversidadePage() {
                 <Link key={c.id} href={`/app/universidade/curso/${c.id}`}>
                   <div className="card-fassi overflow-hidden group cursor-pointer h-full flex flex-col">
                     <img
-                      src={imagensCursos[cursos.findIndex((cc) => cc.id === c.id) % imagensCursos.length]}
+                      src={getCapaCurso(c.id)}
                       alt={`Capa — ${c.titulo}`}
                       loading="lazy"
                       decoding="async"
@@ -189,7 +202,7 @@ export default function UniversidadePage() {
             <Link key={a.id} href={`/app/universidade/aula/${a.id}`}>
               <div className="card-fassi overflow-hidden group cursor-pointer h-full flex flex-col">
                 <img
-                  src={imagensCursos[idx % imagensCursos.length]}
+                  src={capaAulaRapida[a.id] || "/images/marken/universidade/aula-boas-praticas.svg"}
                   alt={`Capa — ${a.titulo}`}
                   loading="lazy"
                   decoding="async"
@@ -370,8 +383,7 @@ function CursoCard({ curso, aulasConcluidas }: { curso: typeof cursos[0]; aulasC
   const totalModulos = curso.modulos.length;
   const concluido = feitas === ids.length && feitas > 0;
   const iniciado = feitas > 0 && !concluido;
-  const cursoIndex = cursos.findIndex((c) => c.id === curso.id);
-  const imagemCapa = curso.imagem || imagensCursos[cursoIndex % imagensCursos.length];
+  const imagemCapa = curso.imagem || getCapaCurso(curso.id);
 
   return (
     <Link href={`/app/universidade/curso/${curso.id}`}>

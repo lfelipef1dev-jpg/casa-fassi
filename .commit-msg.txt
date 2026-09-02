@@ -1,18 +1,35 @@
-fix: corrigir carousel hero — ID duplicado, setas, autoplay, contador
+fix: remover imagens erradas e criar biblioteca visual exclusiva Marken Fassi
 
-Correcoes:
-- Removido id="inicio" duplicado do wrapper div (HTML invalido)
-- Setas laterais: removido style inline opacity:0 que bloqueava group-hover
-- Setas agora usam apenas classes CSS: opacity-0 group-hover:opacity-100
-- Autoplay reescrito com setTimeout recursivo (mais robusto que setInterval)
-- Removido onFocus/onBlur da section inteira (pausava autoplay sem motivo)
-- Pausa apenas em hover real (isHovering state)
-- Adicionado contador visivel "01 / 03" no canto inferior direito
-- Adicionado label do slide no aria-label ("1 de 3: Institucional")
-- Overlay topo reforcado (from-ink/50)
-- Indicadores mais visiveis (28px ativo, 7px inativo)
-- Setas maiores (w-11 h-11, icon 22px)
-- group class movido para a section (era no wrapper div removido)
+PROBLEMA:
+- Universidade, Conteudos e Vitrine usavam imagens genericas dos Downloads
+- Essas imagens pertenciam a outros projetos ExpoStacker
+- Destruia a identidade visual da Marken Fassi
+
+CORRECAO:
+- Removidas todas as imagens erradas (curso-1 a 5, produto-1 a 3, conteudo-1 a 3, hero-marken-fassi)
+- Criada estrutura organizada: /public/images/marken/{universidade,conteudos,vitrine}/
+- Geradas 17 capas SVG editoriais exclusivas da Marken Fassi
+
+Biblioteca visual Marken Fassi:
+- 7 capas de cursos (essencia, tecidos, alameda, atendimento, vitrine, conteudo-digital, vendas)
+- 4 capas de aulas rapidas (live-alameda, boas-praticas, tecidos-especialistas, banho-ritual)
+- 3 thumbnails de conteudos (guia, argumento, tendencia)
+- 3 referencias de vitrine (composicao, detalhe, ambiente)
+
+Design das capas:
+- Paleta Marken Fassi: marfim, carvao, dourado fosco, marrom
+- Texturas: trama de tecido, linhas, diamantes, grid, pontos, diagonal
+- Monograma MF sutil ao centro
+- Categoria + linha decorativa + titulo + subtitulo
+- Frame editorial duplo
+- SVG vetorial (~2KB cada) — leve, escalavel, sem perda de qualidade
+
+Atualizacoes:
+- universidade/page.tsx: mapa capaPorCurso + capaAulaRapida por ID
+- conteudos/page.tsx: thumbnails SVG
+- vitrine/page.tsx: referencias SVG
+- page.tsx (landing): galeria editorial com capas SVG
+- Zero referencias a imagens antigas no codigo
 
 Generated with [Devin](https://devin.ai)
 

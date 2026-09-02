@@ -283,9 +283,9 @@ export default function RootPage() {
           </div>
           <div className="grid md:grid-cols-3 gap-4">
             {[
-              { src: "/curso-1.png", alt: "Detalhe de tecido e composição de cama premium Marken Fassi" },
-              { src: "/curso-2.png", alt: "Ambiente acolhedor com enxoval Marken Fassi" },
-              { src: "/curso-3.png", alt: "Composição editorial de bem-viver Marken Fassi" },
+              { src: "/images/marken/universidade/capa-essencia.svg", alt: "Essência Marken Fassi — história e valores" },
+              { src: "/images/marken/universidade/capa-tecidos.svg", alt: "Tecidos e fios premium Marken Fassi" },
+              { src: "/images/marken/universidade/capa-alameda.svg", alt: "Coleção Alameda — design e inspiração" },
             ].map((img, i) => (
               <m.div
                 key={img.src}

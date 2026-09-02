@@ -111,9 +111,9 @@ export default function MinhaVitrinePage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { src: "/produto-1.png", alt: "Referência de composição Marken Fassi", legenda: "Composição" },
-              { src: "/produto-2.png", alt: "Referência de detalhe Marken Fassi", legenda: "Detalhe" },
-              { src: "/produto-3.png", alt: "Referência de ambiente Marken Fassi", legenda: "Ambiente" },
+              { src: "/images/marken/vitrine/ref-composicao.svg", alt: "Referência de composição Marken Fassi", legenda: "Composição" },
+              { src: "/images/marken/vitrine/ref-detalhe.svg", alt: "Referência de detalhe Marken Fassi", legenda: "Detalhe" },
+              { src: "/images/marken/vitrine/ref-ambiente.svg", alt: "Referência de ambiente Marken Fassi", legenda: "Ambiente" },
             ].map((ref) => (
               <figure key={ref.src} className="card-fassi overflow-hidden">
                 <div className="aspect-[4/5] bg-bg">

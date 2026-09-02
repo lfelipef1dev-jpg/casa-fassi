@@ -102,7 +102,7 @@ export default function ConteudosPage() {
         </h2>
         <div className="grid md:grid-cols-2 gap-3">
           {conteudosRapidos.map((r, i) => {
-            const thumb = `/conteudo-${(i % 3) + 1}.png`;
+            const thumb = `/images/marken/conteudos/thumb-0${(i % 3) + 1}.svg`;
             return (
             <div key={r.id} className="card-fassi p-4 flex items-center gap-3 group cursor-pointer">
               <img
@@ -131,7 +131,7 @@ export default function ConteudosPage() {
           {filtrados.map((c, i) => {
             const config = formatoConfig[c.formato];
             const Icon = config.icon;
-            const thumb = `/conteudo-${(i % 3) + 1}.png`;
+            const thumb = `/images/marken/conteudos/thumb-0${(i % 3) + 1}.svg`;
             return (
               <div key={c.id} className="card-fassi p-4 flex items-center gap-4 group cursor-pointer">
                 <img
