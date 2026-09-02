@@ -428,35 +428,74 @@ export default function RootPage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-10 px-6 bg-bg border-t border-line">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row items-start justify-between gap-8 mb-8">
-            <div>
-              <LogoFull theme="light" height={28} />
-              <p className="text-xs text-muted mt-3 max-w-xs leading-relaxed">
-                Casa Fassi — conhecimento, cuidado e relacionamento.
+      <footer className="bg-ink text-surface">
+        {/* Topo — logo + tagline editorial */}
+        <div className="px-6 pt-16 pb-12 border-b border-white/10">
+          <div className="max-w-6xl mx-auto text-center">
+            <LogoFull theme="light" height={52} />
+            <p className="font-serif text-lg md:text-xl text-surface/70 mt-6 max-w-xl mx-auto leading-relaxed italic">
+              Conhecimento para orientar. Repertório para encantar.
+            </p>
+            <div className="w-16 h-px bg-accent mx-auto mt-6" />
+          </div>
+        </div>
+
+        {/* Centro — colunas de links */}
+        <div className="px-6 py-12">
+          <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+            <div className="col-span-2 md:col-span-1">
+              <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-4">A Casa Fassi</p>
+              <p className="text-sm text-surface/60 leading-relaxed max-w-xs">
+                Plataforma de capacitação, reconhecimento e comunidade para
+                embaixadores da Marken Fassi.
               </p>
             </div>
-            <div className="grid grid-cols-2 md:flex md:flex-wrap gap-x-8 gap-y-3">
-              <div className="flex flex-col gap-2">
-                <p className="text-xs font-semibold text-ink/70 uppercase tracking-wider mb-1">Navegação</p>
-                <a href="#universidade" className="text-xs text-muted hover:text-ink transition-colors">Universidade</a>
-                <a href="#pilares" className="text-xs text-muted hover:text-ink transition-colors">Conteúdos</a>
-                <a href="#comunidade" className="text-xs text-muted hover:text-ink transition-colors">Comunidade</a>
-                <a href="#beneficios" className="text-xs text-muted hover:text-ink transition-colors">Benefícios</a>
-              </div>
-              <div className="flex flex-col gap-2">
-                <p className="text-xs font-semibold text-ink/70 uppercase tracking-wider mb-1">Institucional</p>
-                <Link href="/sobre" className="text-xs text-muted hover:text-ink transition-colors">Sobre</Link>
-                <Link href="/contato" className="text-xs text-muted hover:text-ink transition-colors">Contato</Link>
-                <Link href="/privacidade" className="text-xs text-muted hover:text-ink transition-colors">Privacidade</Link>
-                <Link href="/termos" className="text-xs text-muted hover:text-ink transition-colors">Termos</Link>
-              </div>
+
+            <div>
+              <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-4">Plataforma</p>
+              <ul className="space-y-3">
+                <li><a href="#universidade" className="text-sm text-surface/70 hover:text-surface transition-colors">Universidade</a></li>
+                <li><a href="#pilares" className="text-sm text-surface/70 hover:text-surface transition-colors">Conteúdos</a></li>
+                <li><a href="#comunidade" className="text-sm text-surface/70 hover:text-surface transition-colors">Comunidade</a></li>
+                <li><a href="#beneficios" className="text-sm text-surface/70 hover:text-surface transition-colors">Benefícios</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-4">Institucional</p>
+              <ul className="space-y-3">
+                <li><Link href="/sobre" className="text-sm text-surface/70 hover:text-surface transition-colors">Sobre</Link></li>
+                <li><Link href="/contato" className="text-sm text-surface/70 hover:text-surface transition-colors">Contato</Link></li>
+                <li><Link href="/privacidade" className="text-sm text-surface/70 hover:text-surface transition-colors">Privacidade</Link></li>
+                <li><Link href="/termos" className="text-sm text-surface/70 hover:text-surface transition-colors">Termos de Uso</Link></li>
+              </ul>
+            </div>
+
+            <div>
+              <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-4">Acesso</p>
+              <ul className="space-y-3">
+                <li><Link href="/onboarding" className="text-sm text-surface/70 hover:text-surface transition-colors">Acessar plataforma</Link></li>
+                <li><Link href="/contato" className="text-sm text-surface/70 hover:text-surface transition-colors">Seja um parceiro</Link></li>
+              </ul>
+              <button
+                onClick={handleEntrar}
+                className="mt-5 inline-flex items-center gap-1.5 px-5 py-2.5 rounded-lg font-semibold text-sm bg-accent text-ink hover:bg-accent-dark transition-colors"
+              >
+                Entrar
+                <ArrowRight size={14} strokeWidth={2} />
+              </button>
             </div>
           </div>
-          <div className="pt-6 border-t border-line">
-            <p className="text-xs text-muted/70 leading-relaxed">
-              Marken Fassi — há quase 50 anos transformando tecidos, detalhes e histórias em
+        </div>
+
+        {/* Base — copyright + assinatura */}
+        <div className="px-6 py-8 border-t border-white/10">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-xs text-surface/50 leading-relaxed text-center md:text-left">
+              © {new Date().getFullYear()} Marken Fassi. Todos os direitos reservados.
+            </p>
+            <p className="text-xs text-surface/40 leading-relaxed text-center md:text-right">
+              Há quase 50 anos transformando tecidos, detalhes e histórias em
               experiências de bem-viver.
             </p>
           </div>

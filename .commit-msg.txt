@@ -1,26 +1,28 @@
-feat: criar paginas institucionais + footer com links
+feat: refazer footer profissionalmente (editorial premium)
 
-Paginas criadas (SEO + E-E-A-T):
-- /sobre: institucional Casa Fassi + Marken Fassi
-- /contato: emails de suporte + parceria + CTA plataforma
-- /privacidade: LGPD compliant (Lei 13.709/2018)
-- /termos: termos de uso (natureza nao-ecommerce)
+Footer redesignado com padroes de marcas premium (Frette, Abyss, Hermes):
 
-Cada pagina tem:
-- Metadata unica (title 50-60 chars, meta description 150-160)
-- Canonical absoluto
-- OpenGraph
-- H1 unico + H2 hierarquico
-- Header com logo + link voltar
-- Footer institucional
-- Conteudo original e util
+Estrutura em 3 niveis:
+1. TOPO: logo grande (52px) + tagline editorial serif italic + divisor dourado
+2. CENTRO: 4 colunas (A Casa Fassi, Plataforma, Institucional, Acesso)
+3. BASE: copyright dinamico + assinatura editorial
 
-Footer da home atualizado:
-- Coluna Navegacao (universidade, conteudos, comunidade, beneficios)
-- Coluna Institucional (sobre, contato, privacidade, termos)
-- Logo maior (26 -> 28px)
+Design:
+- Fundo escuro (bg-ink) com texto surface — contraste premium
+- Divisores sutis (border-white/10)
+- Labels em accent (dourado) uppercase tracking-wide
+- Links em surface/70 hover:surface
+- CTA "Entrar" em accent dourado
+- Tagline serif italic ("Conhecimento para orientar. Repertorio para encantar.")
+- Copyright com ano dinamico (new Date().getFullYear())
 
-Sitemap.xml atualizado com 5 URLs publicas indexaveis.
+Logo: 28px -> 52px (maior, presenca editorial)
+
+Colunas:
+- A Casa Fassi: descricao institucional
+- Plataforma: Universidade, Conteudos, Comunidade, Beneficios
+- Institucional: Sobre, Contato, Privacidade, Termos
+- Acesso: Acessar plataforma, Seja um parceiro + botao Entrar
 
 Generated with [Devin](https://devin.ai)
 
