@@ -1,45 +1,39 @@
-feat: passada visual final — novo logo, hero editorial, fotografia nas rotas
+feat: hero carousel editorial premium com 3 banners Marken Fassi
 
-Branding:
-- Novo logo Casa Fassi integrado (logo-casa-fassi.png)
-- Indice MF como favicon/app icon (icon-mf.png)
-- OG image atualizada (og-image.png)
-- Componente Logo reescrito para usar novos assets
-- JSON-LD Organization logo atualizado
-- Sidebar com novo branding, largura 72, barra accent no estado ativo
-- Logo antigo (logo-verde-escuro, logo-branco) nao referenciado no codigo
+3 banners integrados:
+- marken-hero-01.webp (Institucional — "Uma casa para quem transforma enxoval em experiencia")
+- marken-hero-02.webp (Universidade — "Conhecimento que inspira excelencia")
+- marken-hero-03.webp (Experiencia — "Relacionamento que gera valor")
+- Convertidos de PNG para WebP (qualidade 88): ~2MB -> ~165-230KB cada
+- Dimensoes originais preservadas: 1717x916 / 1672x941
 
-Hero editorial:
-- Fotografia premium de fundo (hero-marken-fassi.png)
-- Overlay escuro gradiente da esquerda para direita
-- Conteudo alinhado a esquerda (nao centralizado)
-- CTAs e texto em HTML responsivo sobre a imagem
-- fetchPriority high na imagem do hero
+Componente HeroCarousel:
+- Crossfade suave entre 3 slides (700ms)
+- Autoplay a cada 7 segundos
+- Pausa em hover, focus e aba nao visivel
+- prefers-reduced-motion: remove autoplay e transicoes
+- Swipe touch para mobile
+- Navegacao por teclado (ArrowLeft/Right)
+- Setas laterais discretas (desktop, hover)
+- Indicadores discretos (barras de progresso)
+- aria-roledescription="carousel", aria-label, aria-hidden
+- Banner 01: fetchPriority high + eager (LCP)
+- Banners 02 e 03: loading lazy
+- Aspect ratio 16/9 com maxHeight 88vh (evita CLS)
+- object-cover object-center (sem deformar)
+- NAO duplica headline da imagem em HTML
 
-Universidade:
-- Capa fotografica nos cards de "Continue de onde parou"
-- Capa nos cards de "Aulas rapidas"
-- CursoCard com imagem de capa (fallback distribuido entre 5 fotos)
-- Biblioteca de materiais e Agenda sem imagem (preservado)
+Header revisado:
+- bg-gradient from-ink/40 quando transparente (sobre o hero)
+- Links em text-surface/80 quando nao scrolled
+- Botao CTA em accent (dourado) sobre o hero
+- Logo preservado
 
-Conteudos:
-- Thumbnail fotografica nos cards da lista principal
-- Thumbnail menor nos "Conteudos rapidos"
-- Cycling entre 3 imagens editoriais
+Hero antigo removido:
+- hero-marken-fassi.png nao referenciado
+- Imports BookOpen e Sparkles removidos (nao usados)
 
-Vitrine:
-- Secao "Inspiracao de apresentacao" com 3 referencias editoriais
-- Aparece apenas quando o embaixador ainda nao enviou fotos
-- Sem preco, carrinho ou checkout
-
-Galeria editorial (landing):
-- Secao "Ambientacao" com 3 fotos em grid responsivo
-
-QA:
-- Zero referencias ao logo antigo no codigo
-- Zero emojis no codigo
-- Build passa sem erros TS/ESLint
-- 73 paginas estaticas geradas
+Build: 73 paginas estaticas, 0 erros TS/ESLint
 
 Generated with [Devin](https://devin.ai)
 

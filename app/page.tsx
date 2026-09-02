@@ -4,16 +4,15 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import {
-  BookOpen,
   Users,
   Gift,
   ArrowRight,
   GraduationCap,
   Library,
   HeartHandshake,
-  Sparkles,
 } from "lucide-react";
 import { LogoFull } from "@/components/Logo";
+import { HeroCarousel } from "@/components/HeroCarousel";
 import { useGameStore } from "@/lib/store";
 
 const pilares = [
@@ -102,7 +101,9 @@ export default function RootPage() {
       {/* Navbar */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-surface/90 backdrop-blur-md border-b border-line shadow-subtle" : "bg-transparent"
+          scrolled
+            ? "bg-surface/95 backdrop-blur-md border-b border-line shadow-subtle"
+            : "bg-gradient-to-b from-ink/40 to-transparent"
         }`}
       >
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -113,7 +114,9 @@ export default function RootPage() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-muted hover:text-ink transition-colors"
+                className={`text-sm font-medium transition-colors ${
+                  scrolled ? "text-muted hover:text-ink" : "text-surface/80 hover:text-surface"
+                }`}
               >
                 {link.label}
               </a>
@@ -123,7 +126,7 @@ export default function RootPage() {
           <button
             onClick={handleEntrar}
             aria-label={ctaLabel}
-            className="inline-flex items-center gap-1.5 px-5 py-2 rounded-lg font-semibold text-sm transition-all active:scale-95 bg-primary text-white hover:bg-primary-hover"
+            className="inline-flex items-center gap-1.5 px-5 py-2 rounded-lg font-semibold text-sm transition-all active:scale-95 bg-accent text-ink hover:bg-accent-dark"
           >
             {ctaLabel}
             <ArrowRight size={15} />
@@ -131,109 +134,10 @@ export default function RootPage() {
         </div>
       </header>
 
-      {/* Hero */}
-      <section
-        id="inicio"
-        className="relative min-h-[90vh] flex items-center overflow-hidden bg-ink"
-      >
-        {/* Fotografia editorial de fundo */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/hero-marken-fassi.png"
-            alt=""
-            aria-hidden="true"
-            className="w-full h-full object-cover object-center"
-            fetchPriority="high"
-          />
-        </div>
-        {/* Overlay escuro para legibilidade */}
-        <div className="absolute inset-0 z-[1] bg-gradient-to-r from-ink via-ink/85 to-ink/40" />
-        <div className="absolute inset-0 z-[1] bg-gradient-to-t from-ink/60 via-transparent to-ink/30 md:hidden" />
-
-        <div className="relative z-10 px-6 md:px-12 lg:px-20 max-w-2xl py-20 md:py-0">
-          <m.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-accent text-sm font-semibold tracking-[0.2em] uppercase mb-4"
-          >
-            Casa Fassi
-          </m.p>
-
-          <m.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="font-serif text-3xl md:text-5xl font-semibold text-surface leading-tight mb-6"
-          >
-            Uma casa para quem transforma enxoval em experiência
-          </m.h1>
-
-          <m.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-surface/75 text-base md:text-lg max-w-xl leading-relaxed mb-4"
-          >
-            A Casa Fassi é o espaço de formação, relacionamento e reconhecimento da Marken Fassi
-            para lojistas, vendedores, representantes e parceiros que levam o cuidado da nossa marca
-            até cada cliente.
-          </m.p>
-
-          <m.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-surface/55 text-sm md:text-base max-w-lg leading-relaxed mb-10"
-          >
-            Aqui, conhecimento, repertório e inspiração se encontram para tornar cada atendimento
-            ainda mais especial.
-          </m.p>
-
-          <m.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-start gap-4"
-          >
-            <button
-              onClick={() => router.push("/app/universidade")}
-              className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-ink px-8 py-4 rounded-xl font-semibold text-sm tracking-wide transition-all duration-300 hover:shadow-elevated active:scale-95"
-            >
-              Conheça a Universidade
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button
-              onClick={handleEntrar}
-              className="inline-flex items-center gap-2 border border-surface/25 text-surface hover:bg-surface/10 px-8 py-4 rounded-xl font-semibold text-sm tracking-wide transition-all"
-            >
-              Entrar na Casa Fassi
-            </button>
-          </m.div>
-
-          <m.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="mt-12 flex flex-wrap items-center gap-6 text-surface/60"
-          >
-            <div className="flex items-center gap-2">
-              <BookOpen size={16} className="text-accent" strokeWidth={1.75} />
-              <span className="text-xs font-medium">Formação contínua</span>
-            </div>
-            <div className="w-px h-4 bg-surface/20" />
-            <div className="flex items-center gap-2">
-              <Sparkles size={16} className="text-accent" strokeWidth={1.75} />
-              <span className="text-xs font-medium">Conteúdo para o atendimento</span>
-            </div>
-            <div className="w-px h-4 bg-surface/20" />
-            <div className="flex items-center gap-2">
-              <HeartHandshake size={16} className="text-accent" strokeWidth={1.75} />
-              <span className="text-xs font-medium">Relacionamento com a marca</span>
-            </div>
-          </m.div>
-        </div>
-      </section>
+      {/* Hero Carousel */}
+      <div className="group" id="inicio">
+        <HeroCarousel />
+      </div>
 
       {/* Apresentação da Casa Fassi */}
       <section id="pilares" className="py-20 px-6 bg-bg scroll-mt-16">
