@@ -1,20 +1,26 @@
-polish: logo sidebar maior + ritmo editorial da home
+feat: criar paginas institucionais + footer com links
 
-Ajustes sutis de polimento (sem redesenhar):
+Paginas criadas (SEO + E-E-A-T):
+- /sobre: institucional Casa Fassi + Marken Fassi
+- /contato: emails de suporte + parceria + CTA plataforma
+- /privacidade: LGPD compliant (Lei 13.709/2018)
+- /termos: termos de uso (natureza nao-ecommerce)
 
-Logo:
-- Sidebar: height 32px -> 36px (cabe confortavelmente no h-20)
+Cada pagina tem:
+- Metadata unica (title 50-60 chars, meta description 150-160)
+- Canonical absoluto
+- OpenGraph
+- H1 unico + H2 hierarquico
+- Header com logo + link voltar
+- Footer institucional
+- Conteudo original e util
 
-Ritmo editorial da home:
-- Comunidade: py-20 -> py-16 (secao mais compacta, e menor)
-- Beneficios: py-20 -> py-24 (mais respiracao para o grid de 9 itens)
-- Jornada: bg-bg -> bg-surface border-t (alternar com Beneficios)
+Footer da home atualizado:
+- Coluna Navegacao (universidade, conteudos, comunidade, beneficios)
+- Coluna Institucional (sobre, contato, privacidade, termos)
+- Logo maior (26 -> 28px)
 
-Ritmo final: bg-bg -> bg-surface -> bg-bg -> bg-surface -> bg-bg -> bg-surface -> bg-ink
-(alternancia proper, sem duas secoes ivory consecutivas no final)
-
-Universidade: confirmado que modulos/trilhas sao estruturais (sem fotos excessivas)
-Fotos apenas em: capas de cursos, aulas rapidas, conteudos, vitrine
+Sitemap.xml atualizado com 5 URLs publicas indexaveis.
 
 Generated with [Devin](https://devin.ai)
 

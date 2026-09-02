@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import {
   Users,
@@ -429,18 +430,28 @@ export default function RootPage() {
       {/* Footer */}
       <footer className="py-10 px-6 bg-bg border-t border-line">
         <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row items-start justify-between gap-6 mb-8">
+          <div className="flex flex-col md:flex-row items-start justify-between gap-8 mb-8">
             <div>
-              <LogoFull theme="light" height={26} />
+              <LogoFull theme="light" height={28} />
               <p className="text-xs text-muted mt-3 max-w-xs leading-relaxed">
                 Casa Fassi — conhecimento, cuidado e relacionamento.
               </p>
             </div>
-            <div className="flex flex-wrap gap-x-6 gap-y-2">
-              <a href="#universidade" className="text-xs text-muted hover:text-ink transition-colors">Universidade</a>
-              <a href="#pilares" className="text-xs text-muted hover:text-ink transition-colors">Conteúdos</a>
-              <a href="#comunidade" className="text-xs text-muted hover:text-ink transition-colors">Comunidade</a>
-              <a href="#beneficios" className="text-xs text-muted hover:text-ink transition-colors">Benefícios</a>
+            <div className="grid grid-cols-2 md:flex md:flex-wrap gap-x-8 gap-y-3">
+              <div className="flex flex-col gap-2">
+                <p className="text-xs font-semibold text-ink/70 uppercase tracking-wider mb-1">Navegação</p>
+                <a href="#universidade" className="text-xs text-muted hover:text-ink transition-colors">Universidade</a>
+                <a href="#pilares" className="text-xs text-muted hover:text-ink transition-colors">Conteúdos</a>
+                <a href="#comunidade" className="text-xs text-muted hover:text-ink transition-colors">Comunidade</a>
+                <a href="#beneficios" className="text-xs text-muted hover:text-ink transition-colors">Benefícios</a>
+              </div>
+              <div className="flex flex-col gap-2">
+                <p className="text-xs font-semibold text-ink/70 uppercase tracking-wider mb-1">Institucional</p>
+                <Link href="/sobre" className="text-xs text-muted hover:text-ink transition-colors">Sobre</Link>
+                <Link href="/contato" className="text-xs text-muted hover:text-ink transition-colors">Contato</Link>
+                <Link href="/privacidade" className="text-xs text-muted hover:text-ink transition-colors">Privacidade</Link>
+                <Link href="/termos" className="text-xs text-muted hover:text-ink transition-colors">Termos</Link>
+              </div>
             </div>
           </div>
           <div className="pt-6 border-t border-line">
