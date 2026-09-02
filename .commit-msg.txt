@@ -1,27 +1,30 @@
-fix: curadoria visual universidade — 13 imagens unicas, zero duplicatas
+fix: substituir imagens sinteticas por fotografia real Unsplash
 
 PROBLEMA:
-- 3 capas de cursos eram duplicatas exatas (mesmo MD5)
-- 6 aulas rapidas usavam TODAS a mesma imagem (mapping quebrado)
-- curso-vendas caia no fallback (ID errado no mapping)
-- conteudos repetia 3 thumbnails em 16 cards
+- 9 imagens geradas com Python/PIL eram sinteticas (blocos de cor solida)
+- Usuario reportou "formato zoom" / imagens nao apareciam corretamente
+- Confirmado via analise de desvio-padrao: 8 imagens com std < 20
 
-CORRECOES:
-- Geradas 9 novas capas editoriais com Python/PIL
-- Corrigido capaPorCurso: 3 IDs errados + fallback
-- Corrigido capaAulaRapida: mapping completo ar1-ar6
-- Corrigido curso-vendas: vendas-marken-fassi -> curso-vendas
-- Conteudos: mapeamento semantico por ID (12+4 items)
-- Home: atualizadas 2 referencias aos arquivos antigos
-- Removidos 7 arquivos duplicados
+CORRECAO:
+- Baixadas 9 fotografias reais do Unsplash (licenca livre)
+- Todas processadas: crop central 1200x675, WebP quality 78
+- Direcao de arte: quiet luxury, neutral, editorial
+- Categorias semânticas:
+  * capa-tecidos-fios: cream fabric folds (macro tecido)
+  * capa-colecao-alameda: modern bedroom neutral pillows
+  * capa-atendimento-premium: luxury retail boutique
+  * aula-ar1-tamanhos: modern bedroom neatly made bed
+  * aula-ar2-contagem-fios: folded linen texture
+  * aula-ar3-linhas-marken: fabric texture comparison
+  * aula-ar4-cuidados-algodao: hotel bed decorative pillows
+  * aula-ar5-montar-cama: modern bed white linens
+  * aula-ar6-objecao-preco: bedroom neutral pillows
 
-AUDITORIA VISUAL (Puppeteer):
-- 13 arquivos, 13 hashes unicos (zero duplicatas)
-- 14 imagens unicas na pagina (13 conteudo + 1 logo)
-- 6 aulas rapidas com 6 imagens unicas
-- Zero scroll horizontal (1920, 1366, 768, 375, 360)
-- Zero erros no console
+VERIFICACAO:
+- 13/13 imagens sao FOTO REAL (std > 20)
+- 13 hashes unicos (zero duplicatas)
+- Total: 650KB (vs 360KB sinteticas)
 
-Generated with [Devin](https://devin.ai)
+Generated with Devin
 
 Co-Authored-By: Devin <158243242+devin-ai-integration[bot]@users.noreply.github.com
