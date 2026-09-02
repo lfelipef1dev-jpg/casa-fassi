@@ -42,25 +42,25 @@ const conteudosRapidos = [
 ];
 
 const conteudoThumb: Record<string, string> = {
-  c1: "/images/marken/universidade/aula-ar2-contagem-fios.webp",
-  c2: "/images/marken/universidade/capa-tecidos-fios.webp",
-  c3: "/images/marken/universidade/aula-ar1-tamanhos.webp",
-  c4: "/images/marken/universidade/capa-tecidos-fios.webp",
-  c5: "/images/marken/universidade/capa-colecao-alameda.webp",
-  c6: "/images/marken/universidade/aula-ar5-montar-cama.webp",
-  c7: "/images/marken/universidade/capa-atendimento-premium.webp",
+  c1: "/images/marken/universidade/aula-ar2-contagem-fios-v2.webp",
+  c2: "/images/marken/universidade/capa-tecidos-fios-v2.webp",
+  c3: "/images/marken/universidade/aula-ar1-tamanhos-v2.webp",
+  c4: "/images/marken/universidade/capa-tecidos-fios-v2.webp",
+  c5: "/images/marken/universidade/capa-colecao-alameda-v2.webp",
+  c6: "/images/marken/universidade/aula-ar5-montar-cama-v2.webp",
+  c7: "/images/marken/universidade/capa-atendimento-premium-v2.webp",
   c8: "/images/marken/universidade/capa-conteudo-digital.webp",
-  c9: "/images/marken/universidade/aula-ar4-cuidados-algodao.webp",
-  c10: "/images/marken/universidade/aula-ar6-objecao-preco.webp",
+  c9: "/images/marken/universidade/aula-ar4-cuidados-algodao-v2.webp",
+  c10: "/images/marken/universidade/aula-ar6-objecao-preco-v2.webp",
   c11: "/images/marken/universidade/capa-vendas.webp",
   c12: "/images/marken/universidade/capa-vitrine.webp",
 };
 
 const rapidoThumb: Record<string, string> = {
-  r1: "/images/marken/universidade/aula-ar1-tamanhos.webp",
-  r2: "/images/marken/universidade/aula-ar2-contagem-fios.webp",
-  r3: "/images/marken/universidade/aula-ar3-linhas-marken.webp",
-  r4: "/images/marken/universidade/aula-ar4-cuidados-algodao.webp",
+  r1: "/images/marken/universidade/aula-ar1-tamanhos-v2.webp",
+  r2: "/images/marken/universidade/aula-ar2-contagem-fios-v2.webp",
+  r3: "/images/marken/universidade/aula-ar3-linhas-marken-v2.webp",
+  r4: "/images/marken/universidade/aula-ar4-cuidados-algodao-v2.webp",
 };
 
 const formatoConfig: Record<string, { icon: typeof Play; label: string; action: string }> = {

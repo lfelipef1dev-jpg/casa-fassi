@@ -47,21 +47,21 @@ const materialIcon: Record<string, typeof FileText> = {
 
 const capaPorCurso: Record<string, string> = {
   "essencia-marken-fassi": "/images/marken/universidade/capa-essencia.webp",
-  "tecidos-fios": "/images/marken/universidade/capa-tecidos-fios.webp",
-  "colecao-alameda": "/images/marken/universidade/capa-colecao-alameda.webp",
-  "atendimento-premium": "/images/marken/universidade/capa-atendimento-premium.webp",
+  "tecidos-fios": "/images/marken/universidade/capa-tecidos-fios-v2.webp",
+  "colecao-alameda": "/images/marken/universidade/capa-colecao-alameda-v2.webp",
+  "atendimento-premium": "/images/marken/universidade/capa-atendimento-premium-v2.webp",
   "vitrine-composicao": "/images/marken/universidade/capa-vitrine.webp",
   "conteudo-digital": "/images/marken/universidade/capa-conteudo-digital.webp",
   "curso-vendas": "/images/marken/universidade/capa-vendas.webp",
 };
 
 const capaAulaRapida: Record<string, string> = {
-  "ar1": "/images/marken/universidade/aula-ar1-tamanhos.webp",
-  "ar2": "/images/marken/universidade/aula-ar2-contagem-fios.webp",
-  "ar3": "/images/marken/universidade/aula-ar3-linhas-marken.webp",
-  "ar4": "/images/marken/universidade/aula-ar4-cuidados-algodao.webp",
-  "ar5": "/images/marken/universidade/aula-ar5-montar-cama.webp",
-  "ar6": "/images/marken/universidade/aula-ar6-objecao-preco.webp",
+  "ar1": "/images/marken/universidade/aula-ar1-tamanhos-v2.webp",
+  "ar2": "/images/marken/universidade/aula-ar2-contagem-fios-v2.webp",
+  "ar3": "/images/marken/universidade/aula-ar3-linhas-marken-v2.webp",
+  "ar4": "/images/marken/universidade/aula-ar4-cuidados-algodao-v2.webp",
+  "ar5": "/images/marken/universidade/aula-ar5-montar-cama-v2.webp",
+  "ar6": "/images/marken/universidade/aula-ar6-objecao-preco-v2.webp",
 };
 
 function getCapaCurso(cursoId: string): string {

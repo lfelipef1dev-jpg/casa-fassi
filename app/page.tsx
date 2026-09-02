@@ -303,8 +303,8 @@ export default function RootPage() {
           <div className="grid md:grid-cols-3 gap-4">
             {[
               { src: "/images/marken/universidade/capa-essencia.webp", alt: "Essência Marken Fassi — história e valores" },
-              { src: "/images/marken/universidade/capa-tecidos-fios.webp", alt: "Tecidos e fios premium Marken Fassi" },
-              { src: "/images/marken/universidade/capa-colecao-alameda.webp", alt: "Coleção Alameda — design e inspiração" },
+              { src: "/images/marken/universidade/capa-tecidos-fios-v2.webp", alt: "Tecidos e fios premium Marken Fassi" },
+              { src: "/images/marken/universidade/capa-colecao-alameda-v2.webp", alt: "Coleção Alameda — design e inspiração" },
             ].map((img, i) => (
               <m.div
                 key={img.src}

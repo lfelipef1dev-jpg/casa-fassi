@@ -1,29 +1,8 @@
-fix: substituir imagens sinteticas por fotografia real Unsplash
+fix: renomear imagens para bypassar cache CDN (fotografia real)
 
-PROBLEMA:
-- 9 imagens geradas com Python/PIL eram sinteticas (blocos de cor solida)
-- Usuario reportou "formato zoom" / imagens nao apareciam corretamente
-- Confirmado via analise de desvio-padrao: 8 imagens com std < 20
-
-CORRECAO:
-- Baixadas 9 fotografias reais do Unsplash (licenca livre)
-- Todas processadas: crop central 1200x675, WebP quality 78
-- Direcao de arte: quiet luxury, neutral, editorial
-- Categorias semânticas:
-  * capa-tecidos-fios: cream fabric folds (macro tecido)
-  * capa-colecao-alameda: modern bedroom neutral pillows
-  * capa-atendimento-premium: luxury retail boutique
-  * aula-ar1-tamanhos: modern bedroom neatly made bed
-  * aula-ar2-contagem-fios: folded linen texture
-  * aula-ar3-linhas-marken: fabric texture comparison
-  * aula-ar4-cuidados-algodao: hotel bed decorative pillows
-  * aula-ar5-montar-cama: modern bed white linens
-  * aula-ar6-objecao-preco: bedroom neutral pillows
-
-VERIFICACAO:
-- 13/13 imagens sao FOTO REAL (std > 20)
-- 13 hashes unicos (zero duplicatas)
-- Total: 650KB (vs 360KB sinteticas)
+Cache CDN Cloudflare servia versoes antigas (immutable 1yr).
+Purge falhou (token sem permissao zone cache purge).
+Renomeado 9 arquivos com sufixo -v2 para forcar CDN buscar novos.
 
 Generated with Devin
 
