@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Search, Send, Bot } from "lucide-react";
+import { Search, Send, Bot, MessageSquare } from "lucide-react";
 
 const sugestoes = [
   "Qual é a diferença entre algodão egípcio e Tencel™?",
@@ -24,34 +24,32 @@ function buscarResposta(pergunta: string): string {
   for (const [key, resp] of Object.entries(respostas)) {
     if (lower.includes(key)) return resp;
   }
-  return "Esta é uma pergunta interessante. Nossa base de conhecimentos está em construção. Em breve, o Assistente Casa Marken Fassi terá respostas completas para todas as suas dúvidas sobre produtos, tecidos, coleções e atendimento.";
+  return "Esta é uma pergunta interessante. Nossa base de conhecimentos está em construção. Em breve, o Assistente Casa Fassi terá respostas completas para todas as suas dúvidas sobre produtos, tecidos, coleções e atendimento.";
 }
 
 export default function AssistentePage() {
   const [pergunta, setPergunta] = useState("");
-  const [resposta, setResposta] = useState("");
   const [historico, setHistorico] = useState<{ pergunta: string; resposta: string }[]>([]);
 
   const handleEnviar = () => {
     if (!pergunta.trim()) return;
     const resp = buscarResposta(pergunta);
     setHistorico([...historico, { pergunta, resposta: resp }]);
-    setResposta(resp);
     setPergunta("");
   };
 
   return (
     <div className="space-y-6 animate-fade-in">
       <div>
-        <h1 className="font-serif text-2xl font-semibold text-ink">Assistente Casa Marken Fassi</h1>
+        <h1 className="font-serif text-2xl font-semibold text-ink">Assistente Casa Fassi</h1>
         <p className="text-sm text-muted mt-1">Encontre informações sempre que precisar</p>
       </div>
 
       {/* Intro */}
       <div className="card-fassi p-5">
         <div className="flex items-start gap-3">
-          <div className="w-11 h-11 rounded-xl bg-brand/10 flex items-center justify-center flex-shrink-0">
-            <Bot size={20} className="text-brand" />
+          <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+            <Bot size={20} className="text-primary" strokeWidth={1.75} />
           </div>
           <p className="text-sm text-ink/80 leading-relaxed">
             Encontre informações sobre produtos, tecidos, coleções, cuidados, medidas e argumentos
@@ -68,10 +66,8 @@ export default function AssistentePage() {
           {sugestoes.map((s) => (
             <button
               key={s}
-              onClick={() => {
-                setPergunta(s);
-              }}
-              className="text-xs px-3 py-2 rounded-full border border-line bg-card text-muted hover:border-brand hover:text-ink transition-all"
+              onClick={() => setPergunta(s)}
+              className="text-xs px-3 py-2 rounded-full border border-line bg-surface text-muted hover:border-primary hover:text-ink transition-all"
             >
               {s}
             </button>
@@ -82,41 +78,51 @@ export default function AssistentePage() {
       {/* Campo de busca */}
       <div className="flex gap-2">
         <div className="relative flex-1">
-          <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted" />
+          <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted" strokeWidth={1.75} />
           <input
             type="text"
+            aria-label="Digite sua pergunta"
             value={pergunta}
             onChange={(e) => setPergunta(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleEnviar()}
             placeholder="Digite sua pergunta..."
-            className="w-full bg-card border border-line rounded-xl pl-10 pr-4 py-3 text-sm text-ink placeholder:text-muted focus:outline-none focus:border-brand transition-colors"
+            className="w-full bg-surface border border-line rounded-xl pl-10 pr-4 py-3 text-sm text-ink placeholder:text-muted focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-colors"
           />
         </div>
         <button
           onClick={handleEnviar}
           disabled={!pergunta.trim()}
-          className="bg-brand hover:bg-brand-light text-card px-5 rounded-xl font-semibold text-sm transition-all disabled:opacity-40 active:scale-95"
+          aria-label="Enviar pergunta"
+          className="bg-primary hover:bg-primary-hover text-white px-5 rounded-xl font-semibold text-sm transition-all disabled:opacity-40 active:scale-95 flex items-center justify-center"
         >
-          <Send size={16} />
+          <Send size={16} strokeWidth={1.75} />
         </button>
       </div>
 
       {/* Histórico */}
-      {historico.length > 0 && (
+      {historico.length > 0 ? (
         <div className="space-y-4">
           {historico.map((h, i) => (
             <div key={i} className="space-y-2">
-              <div className="card-fassi p-4 bg-brand/5">
-                <p className="text-sm font-medium text-ink">{h.pergunta}</p>
+              <div className="card-fassi p-4 bg-primary/5">
+                <div className="flex items-start gap-2">
+                  <MessageSquare size={16} className="text-primary flex-shrink-0 mt-0.5" strokeWidth={1.75} />
+                  <p className="text-sm font-medium text-ink">{h.pergunta}</p>
+                </div>
               </div>
               <div className="card-fassi p-4">
                 <div className="flex items-start gap-3">
-                  <Bot size={18} className="text-brand flex-shrink-0 mt-0.5" />
+                  <Bot size={18} className="text-primary flex-shrink-0 mt-0.5" strokeWidth={1.75} />
                   <p className="text-sm text-ink/85 leading-relaxed">{h.resposta}</p>
                 </div>
               </div>
             </div>
           ))}
+        </div>
+      ) : (
+        <div className="card-fassi p-8 text-center">
+          <Bot size={32} className="text-muted/40 mx-auto mb-3" strokeWidth={1.5} />
+          <p className="text-sm text-muted">Faça uma pergunta ou escolha uma sugestão acima para começar.</p>
         </div>
       )}
     </div>

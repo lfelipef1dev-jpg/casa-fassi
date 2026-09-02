@@ -8,6 +8,7 @@ import {
   Upload,
   Camera,
   Sparkles,
+  Store,
   X,
 } from "lucide-react";
 import { useGameStore } from "@/lib/store";
@@ -54,14 +55,14 @@ export default function MinhaVitrinePage() {
     <div className="space-y-6 animate-fade-in">
       {/* Header */}
       <div
-        className="rounded-2xl p-6 md:p-8 text-card relative overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #1B3D2A 0%, #2A5640 60%, #1B3D2A 100%)" }}
+        className="rounded-2xl p-6 md:p-8 text-surface relative overflow-hidden"
+        style={{ background: "linear-gradient(135deg, #1F1C18 0%, #3D3833 60%, #1F1C18 100%)" }}
       >
         <div className="absolute inset-0 opacity-[0.06] pointer-events-none">
-          <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-[#D4AF37] blur-[100px]" />
+          <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-accent blur-[100px]" />
         </div>
         <div className="relative z-10">
-          <p className="text-[#D4AF37] text-xs font-semibold tracking-[0.15em] uppercase mb-2">Sua vitrine</p>
+          <p className="text-accent text-xs font-semibold tracking-[0.15em] uppercase mb-2">Sua vitrine</p>
           <h1 className="font-serif text-2xl md:text-3xl font-semibold mb-2">Minha Vitrine</h1>
           <p className="text-sm text-white/80 max-w-xl leading-relaxed">
             Compartilhe a montagem da sua loja. Mostre como você cuida de cada detalhe e inspire outros lojistas.
@@ -71,8 +72,8 @@ export default function MinhaVitrinePage() {
 
       {/* Aviso de selo */}
       {!temSeloVitrine && (
-        <div className="card-fassi p-4 flex items-center gap-3 border-[#D4AF37]/30">
-          <span className="text-2xl">🪟</span>
+        <div className="card-fassi p-4 flex items-center gap-3 border-accent/30">
+          <Store size={24} strokeWidth={1.75} className="text-accent flex-shrink-0" />
           <div className="flex-1">
             <p className="text-sm font-medium text-ink">Envie sua primeira foto e ganhe o selo Vitrine Marken Fassi!</p>
           </div>
@@ -80,7 +81,7 @@ export default function MinhaVitrinePage() {
       )}
       {temSeloVitrine && (
         <div className="card-fassi p-4 flex items-center gap-3">
-          <span className="text-2xl">🪟</span>
+          <Store size={24} strokeWidth={1.75} className="text-accent flex-shrink-0" />
           <div className="flex-1">
             <p className="text-sm font-medium text-ink">Selo Vitrine Marken Fassi conquistado!</p>
             <p className="text-xs text-muted">Continue compartilhando suas montagens.</p>
@@ -91,15 +92,15 @@ export default function MinhaVitrinePage() {
       {/* Botão de upload */}
       <button
         onClick={() => setShowUpload(true)}
-        className="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-light text-card px-6 py-3 rounded-xl font-semibold text-sm transition-all active:scale-95"
+        className="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-light text-surface px-6 py-3 rounded-xl font-semibold text-sm transition-all active:scale-95"
       >
-        <Camera size={18} /> Enviar foto da vitrine
+        <Camera size={18} strokeWidth={1.75} /> Enviar foto da vitrine
       </button>
 
       {/* Grid de fotos */}
       {fotosVitrine.length === 0 ? (
         <div className="card-fassi p-10 text-center">
-          <ImageIcon size={40} className="text-muted opacity-30 mx-auto mb-3" />
+          <ImageIcon size={40} strokeWidth={1.75} className="text-muted opacity-30 mx-auto mb-3" />
           <p className="text-sm text-muted">Nenhuma foto enviada ainda.</p>
           <p className="text-xs text-muted mt-1">Compartilhe a montagem da sua loja para inspirar a comunidade.</p>
         </div>
@@ -114,7 +115,7 @@ export default function MinhaVitrinePage() {
                     <img src={foto.url} alt={foto.legenda} loading="lazy" decoding="async" className="w-full h-full object-cover" />
                   ) : (
                     <div className="flex items-center justify-center h-full">
-                      <ImageIcon size={32} className="text-muted opacity-30" />
+                      <ImageIcon size={32} strokeWidth={1.75} className="text-muted opacity-30" />
                     </div>
                   )}
                 </div>
@@ -129,12 +130,13 @@ export default function MinhaVitrinePage() {
                       >
                         <Heart
                           size={14}
-                          className={curtida ? "text-brand fill-current" : "text-muted"}
+                          strokeWidth={1.75}
+                          className={curtida ? "text-primary fill-current" : "text-muted"}
                         />
                         <span>{foto.curtidas + (curtida ? 1 : 0)}</span>
                       </button>
                       <span className="flex items-center gap-1">
-                        <MessageCircle size={14} /> {foto.comentarios.length}
+                        <MessageCircle size={14} strokeWidth={1.75} /> {foto.comentarios.length}
                       </span>
                     </div>
                   </div>
@@ -172,7 +174,7 @@ export default function MinhaVitrinePage() {
             <div className="flex items-center justify-between mb-4">
               <h2 className="font-serif text-lg font-semibold text-ink">Enviar foto da vitrine</h2>
               <button onClick={() => setShowUpload(false)} className="text-muted hover:text-ink">
-                <X size={20} />
+                <X size={20} strokeWidth={1.75} />
               </button>
             </div>
 
@@ -194,9 +196,9 @@ export default function MinhaVitrinePage() {
             ) : (
               <button
                 onClick={() => fileInputRef.current?.click()}
-                className="w-full border-2 border-dashed border-line rounded-xl p-8 flex flex-col items-center gap-2 hover:border-brand transition-colors mb-4"
+                className="w-full border-2 border-dashed border-line rounded-xl p-8 flex flex-col items-center gap-2 hover:border-primary transition-colors mb-4"
               >
-                <Upload size={28} className="text-muted" />
+                <Upload size={28} strokeWidth={1.75} className="text-muted" />
                 <span className="text-sm text-muted">Clique para escolher uma foto</span>
                 <span className="text-xs text-muted/70">JPG ou PNG</span>
               </button>
@@ -217,12 +219,12 @@ export default function MinhaVitrinePage() {
                   value={legenda}
                   onChange={(e) => setLegenda(e.target.value)}
                   placeholder="Descreva sua vitrine (ex.: 'Nova coleção Alameda em destaque')"
-                  className="w-full bg-bg border border-line rounded-xl p-3 text-sm text-ink resize-none focus:outline-none focus:border-brand transition-colors mb-4"
+                  className="w-full bg-bg border border-line rounded-xl p-3 text-sm text-ink resize-none focus:outline-none focus:border-primary transition-colors mb-4"
                   rows={3}
                 />
                 <button
                   onClick={handleUpload}
-                  className="w-full bg-brand hover:bg-brand-light text-card py-3 rounded-xl font-semibold text-sm transition-all active:scale-95"
+                  className="w-full bg-primary hover:bg-primary-light text-surface py-3 rounded-xl font-semibold text-sm transition-all active:scale-95"
                 >
                   Publicar foto
                 </button>
@@ -249,7 +251,7 @@ function ComentarioInput({
     return (
       <button
         onClick={() => setAberto(true)}
-        className="mt-3 text-xs text-muted hover:text-brand transition-colors"
+        className="mt-3 text-xs text-muted hover:text-primary transition-colors"
       >
         + Comentar
       </button>
@@ -262,7 +264,7 @@ function ComentarioInput({
         value={texto}
         onChange={(e) => setTexto(e.target.value)}
         placeholder="Escreva um comentário..."
-        className="flex-1 bg-bg border border-line rounded-lg px-3 py-2 text-xs text-ink focus:outline-none focus:border-brand transition-colors"
+        className="flex-1 bg-bg border border-line rounded-lg px-3 py-2 text-xs text-ink focus:outline-none focus:border-primary transition-colors"
       />
       <button
         onClick={() => {
@@ -272,7 +274,7 @@ function ComentarioInput({
             setAberto(false);
           }
         }}
-        className="px-3 py-2 bg-brand text-card rounded-lg text-xs font-semibold transition-all active:scale-95"
+        className="px-3 py-2 bg-primary text-surface rounded-lg text-xs font-semibold transition-all active:scale-95"
       >
         Enviar
       </button>

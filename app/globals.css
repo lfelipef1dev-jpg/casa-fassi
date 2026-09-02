@@ -3,18 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --bg: #F7F4EF;
-  --ink: #1B3D2A;
-  --brand: #1B3D2A;
-  --brand-light: #2A5640;
-  --accent: #C9B37C;
-  --ad: #A68A4B;
-  --muted: #8A8278;
-  --line: #E8E2D8;
-  --card: #FFFCF7;
-  --sage: #7A8B6F;
+  --bg: #F8F6F1;
+  --surface: #FFFFFF;
+  --surface-subtle: #F2EEE7;
+  --ink: #1F1C18;
+  --ink-soft: #3D3833;
+  --muted: #706A62;
+  --primary: #7C6041;
+  --primary-hover: #674D33;
+  --accent: #B89A6A;
+  --accent-dark: #9A7E50;
+  --line: #E7E0D7;
+  --card: #FFFFFF;
+  --sage: #6B7A5E;
   --terra: #A47864;
-  --teal: #1B3D2A;
+  --success: #6B7A5E;
+  --warning: #B8860B;
+  --danger: #9E3B3B;
 }
 
 * {
@@ -34,6 +39,7 @@ body {
 
 ::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
@@ -49,24 +55,42 @@ body {
 @layer base {
   h1, h2, h3, h4 {
     font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  h1 { font-size: 2.25rem; line-height: 1.15; }
+  h2 { font-size: 1.75rem; line-height: 1.2; }
+  h3 { font-size: 1.375rem; line-height: 1.3; }
+  h4 { font-size: 1.125rem; line-height: 1.4; }
+  @media (min-width: 768px) {
+    h1 { font-size: 2.75rem; }
+    h2 { font-size: 2rem; }
+  }
+  *:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 2px;
   }
 }
 
 @layer components {
   .card-fassi {
-    @apply bg-card rounded-2xl border border-line shadow-sm transition-all duration-300;
+    @apply bg-card rounded-2xl border border-line shadow-subtle transition-all duration-300;
   }
   .card-fassi:hover {
-    @apply shadow-md border-accent/30;
+    @apply shadow-card border-accent/30;
   }
   .btn-primary {
-    @apply bg-ink text-accent px-6 py-3 rounded-xl font-medium text-sm tracking-wide transition-all duration-300 hover:bg-accent hover:text-ink active:scale-95;
+    @apply bg-primary text-white px-6 py-3 rounded-xl font-medium text-sm tracking-wide transition-all duration-300 hover:bg-primary-hover active:scale-[0.98];
   }
   .btn-gold {
-    @apply bg-gradient-to-r from-accent to-accent-dark text-ink px-6 py-3 rounded-xl font-semibold text-sm tracking-wide transition-all duration-300 hover:shadow-lg hover:shadow-accent/30 active:scale-95;
+    @apply bg-accent text-ink px-6 py-3 rounded-xl font-semibold text-sm tracking-wide transition-all duration-300 hover:bg-accent-dark hover:shadow-elevated active:scale-[0.98];
   }
   .btn-ghost {
-    @apply bg-transparent text-ink px-4 py-2 rounded-xl font-medium text-sm border border-line transition-all duration-200 hover:border-accent hover:bg-accent/5;
+    @apply bg-transparent text-ink px-4 py-2.5 rounded-xl font-medium text-sm border border-line transition-all duration-200 hover:border-primary hover:bg-primary/5;
+  }
+  .btn-outline {
+    @apply bg-transparent text-primary px-6 py-3 rounded-xl font-medium text-sm tracking-wide border border-primary/30 transition-all duration-300 hover:bg-primary hover:text-white active:scale-[0.98];
   }
   .section-title {
     @apply font-serif text-2xl font-semibold text-ink mb-1;
@@ -80,20 +104,29 @@ body {
   .badge-gold {
     @apply inline-flex items-center gap-1.5 bg-accent/15 text-accent-dark px-3 py-1 rounded-full text-xs font-semibold;
   }
+  .badge-primary {
+    @apply inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold;
+  }
   .badge-dark {
-    @apply inline-flex items-center gap-1.5 bg-ink text-accent px-3 py-1 rounded-full text-xs font-semibold;
+    @apply inline-flex items-center gap-1.5 bg-ink text-white px-3 py-1 rounded-full text-xs font-semibold;
+  }
+  .input-fassi {
+    @apply w-full bg-surface border border-line rounded-xl px-4 py-2.5 text-sm text-ink placeholder:text-muted focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-colors;
+  }
+  .label-fassi {
+    @apply block text-xs font-semibold text-ink-soft mb-1.5 tracking-wide uppercase;
   }
 }
 
 .gold-gradient-text {
-  background: linear-gradient(135deg, #C9B37C, #A68A4B);
+  background: linear-gradient(135deg, #B89A6A, #9A7E50);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .brand-gradient-text {
-  background: linear-gradient(135deg, #1B3D2A, #2A5640);
+  background: linear-gradient(135deg, #7C6041, #674D33);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -111,4 +144,13 @@ body {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

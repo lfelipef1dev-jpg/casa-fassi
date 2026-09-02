@@ -57,7 +57,7 @@ export default function OnboardingPage() {
   return (
     <div
       className="min-h-screen flex items-center justify-center px-4 py-8 relative overflow-hidden"
-      style={{ background: "linear-gradient(135deg, #1B3D2A 0%, #2A5640 50%, #1B3D2A 100%)" }}
+      style={{ background: "linear-gradient(135deg, #1F1C18 0%, #3D3833 50%, #1F1C18 100%)" }}
     >
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-accent blur-[120px]" />
@@ -82,7 +82,7 @@ export default function OnboardingPage() {
         >
           <div className="h-1 bg-line">
             <motion.div
-              className="h-full bg-gradient-to-r from-brand to-brand-light"
+              className="h-full bg-gradient-to-r from-primary to-primary-light"
               animate={{ width: step === 0 ? "50%" : "100%" }}
               transition={{ duration: 0.4 }}
             />
@@ -116,12 +116,12 @@ export default function OnboardingPage() {
                     <div className="flex flex-col items-center">
                       <button
                         onClick={() => fileRef.current?.click()}
-                        className="w-20 h-20 rounded-full bg-bg border-2 border-line hover:border-brand flex items-center justify-center overflow-hidden transition-all"
+                        className="w-20 h-20 rounded-full bg-bg border-2 border-line hover:border-primary flex items-center justify-center overflow-hidden transition-all"
                       >
                         {photo ? (
                           <img src={photo} alt="" width={80} height={80} loading="lazy" decoding="async" className="w-full h-full object-cover" />
                         ) : (
-                          <Camera size={24} className="text-muted" />
+                          <Camera size={24} strokeWidth={1.75} className="text-muted" />
                         )}
                       </button>
                       <input
@@ -143,7 +143,7 @@ export default function OnboardingPage() {
                         value={nome}
                         onChange={(e) => setNome(e.target.value)}
                         placeholder="Como você gosta de ser chamado?"
-                        className="w-full bg-bg border border-line rounded-xl px-4 py-3 text-sm text-ink outline-none focus:border-brand transition-colors"
+                        className="w-full bg-bg border border-line rounded-xl px-4 py-3 text-sm text-ink outline-none focus:border-primary transition-colors"
                         autoFocus
                       />
                     </div>
@@ -157,7 +157,7 @@ export default function OnboardingPage() {
                         value={loja}
                         onChange={(e) => setLoja(e.target.value)}
                         placeholder="Onde você trabalha?"
-                        className="w-full bg-bg border border-line rounded-xl px-4 py-3 text-sm text-ink outline-none focus:border-brand transition-colors"
+                        className="w-full bg-bg border border-line rounded-xl px-4 py-3 text-sm text-ink outline-none focus:border-primary transition-colors"
                       />
                     </div>
                   </div>
@@ -165,10 +165,10 @@ export default function OnboardingPage() {
                   <button
                     onClick={() => nome.trim() && loja.trim() && setStep(1)}
                     disabled={!nome.trim() || !loja.trim()}
-                    className="w-full mt-6 inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-light text-card px-6 py-3 rounded-xl font-semibold text-sm tracking-wide transition-all disabled:opacity-40 disabled:cursor-not-allowed active:scale-95"
+                    className="w-full mt-6 inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-light text-surface px-6 py-3 rounded-xl font-semibold text-sm tracking-wide transition-all disabled:opacity-40 disabled:cursor-not-allowed active:scale-95"
                   >
                     Continuar
-                    <ArrowRight size={18} />
+                    <ArrowRight size={18} strokeWidth={1.75} />
                   </button>
                 </motion.div>
               )}
@@ -203,22 +203,22 @@ export default function OnboardingPage() {
                           onClick={() => setFuncao(f)}
                           className={`w-full p-4 rounded-xl flex items-center gap-3 text-left transition-all border ${
                             selecionado
-                              ? "border-brand bg-brand/5"
-                              : "border-line bg-bg hover:border-brand/40"
+                              ? "border-primary bg-primary/5"
+                              : "border-line bg-bg hover:border-primary/40"
                           }`}
                         >
                           <div
                             className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors ${
-                              selecionado ? "bg-brand text-card" : "bg-brand/10 text-brand"
+                              selecionado ? "bg-primary text-surface" : "bg-primary/10 text-primary"
                             }`}
                           >
-                            <User size={20} />
+                            <User size={20} strokeWidth={1.75} />
                           </div>
                           <span className="flex-1 text-sm font-medium text-ink">{f}</span>
                           {selecionado ? (
-                            <Sparkles size={18} className="text-brand flex-shrink-0" />
+                            <Sparkles size={18} strokeWidth={1.75} className="text-primary flex-shrink-0" />
                           ) : (
-                            <ChevronRight size={18} className="text-muted flex-shrink-0" />
+                            <ChevronRight size={18} strokeWidth={1.75} className="text-muted flex-shrink-0" />
                           )}
                         </button>
                       );
@@ -230,15 +230,15 @@ export default function OnboardingPage() {
                       onClick={() => setStep(0)}
                       className="inline-flex items-center justify-center gap-1 bg-transparent text-muted hover:text-ink px-4 py-3 rounded-xl font-medium text-sm border border-line transition-all"
                     >
-                      <ChevronLeft size={16} />
+                      <ChevronLeft size={16} strokeWidth={1.75} />
                       Voltar
                     </button>
                     <button
                       onClick={handleFinalizar}
                       disabled={!funcao}
-                      className="flex-1 inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-light text-card px-6 py-3 rounded-xl font-semibold text-sm tracking-wide transition-all disabled:opacity-40 disabled:cursor-not-allowed active:scale-95"
+                      className="flex-1 inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-light text-surface px-6 py-3 rounded-xl font-semibold text-sm tracking-wide transition-all disabled:opacity-40 disabled:cursor-not-allowed active:scale-95"
                     >
-                      <Sparkles size={18} />
+                      <Sparkles size={18} strokeWidth={1.75} />
                       Entrar na Casa Marken Fassi
                     </button>
                   </div>
@@ -253,7 +253,7 @@ export default function OnboardingPage() {
             <div
               key={i}
               className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === step ? "w-8 bg-accent" : i < step ? "w-4 bg-accent/50" : "w-4 bg-card/20"
+                i === step ? "w-8 bg-accent" : i < step ? "w-4 bg-accent/50" : "w-4 bg-surface/20"
               }`}
             />
           ))}

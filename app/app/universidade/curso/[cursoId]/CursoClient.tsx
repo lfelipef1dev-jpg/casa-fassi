@@ -56,25 +56,25 @@ export default function CursoPage() {
         href="/app/universidade"
         className="inline-flex items-center gap-2 text-sm text-muted hover:text-ink transition-colors"
       >
-        <ArrowLeft size={16} /> Universidade
+        <ArrowLeft size={16} strokeWidth={1.75} /> Universidade
       </Link>
 
       {/* Header do curso */}
       <div
         className="rounded-2xl overflow-hidden relative"
-        style={{ background: "linear-gradient(135deg, #1B3D2A 0%, #2A5640 100%)" }}
+        style={{ background: "linear-gradient(135deg, #1F1C18 0%, #3D3833 100%)" }}
       >
         <div className="absolute inset-0 opacity-[0.06] pointer-events-none">
-          <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-[#D4AF37] blur-[100px]" />
+          <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-[#B89A6A] blur-[100px]" />
         </div>
-        <div className="relative z-10 p-6 md:p-8 text-card">
+        <div className="relative z-10 p-6 md:p-8 text-surface">
           <div className="flex items-center gap-2 mb-3">
             <span className="text-[0.65rem] px-2 py-0.5 rounded-full bg-white/15 text-white font-medium">
               {curso.categoria}
             </span>
             {curso.certificado && (
-              <span className="text-[0.65rem] px-2 py-0.5 rounded-full bg-[#D4AF37]/20 text-[#D4AF37] font-medium flex items-center gap-1">
-                <Award size={10} /> Certificado disponível
+              <span className="text-[0.65rem] px-2 py-0.5 rounded-full bg-[#B89A6A]/20 text-[#B89A6A] font-medium flex items-center gap-1">
+                <Award size={10} strokeWidth={1.75} /> Certificado disponível
               </span>
             )}
           </div>
@@ -83,11 +83,11 @@ export default function CursoPage() {
 
           {/* Meta info */}
           <div className="flex flex-wrap items-center gap-4 text-xs text-white/70 mb-4">
-            <span className="flex items-center gap-1"><User size={13} /> {curso.professor}</span>
-            <span className="flex items-center gap-1"><BookOpen size={13} /> {curso.modulos.length} módulos</span>
-            <span className="flex items-center gap-1"><Play size={13} /> {totalAulas} aulas</span>
-            <span className="flex items-center gap-1"><Clock size={13} /> {curso.duracaoTotal}</span>
-            <span className="flex items-center gap-1"><User size={13} /> {curso.publico}</span>
+            <span className="flex items-center gap-1"><User size={13} strokeWidth={1.75} /> {curso.professor}</span>
+            <span className="flex items-center gap-1"><BookOpen size={13} strokeWidth={1.75} /> {curso.modulos.length} módulos</span>
+            <span className="flex items-center gap-1"><Play size={13} strokeWidth={1.75} /> {totalAulas} aulas</span>
+            <span className="flex items-center gap-1"><Clock size={13} strokeWidth={1.75} /> {curso.duracaoTotal}</span>
+            <span className="flex items-center gap-1"><User size={13} strokeWidth={1.75} /> {curso.publico}</span>
           </div>
 
           {/* Progresso */}
@@ -95,10 +95,10 @@ export default function CursoPage() {
             <div className="mb-4 max-w-md">
               <div className="flex justify-between text-xs mb-1">
                 <span className="text-white/70">Seu progresso</span>
-                <span className="text-[#D4AF37] font-semibold">{pct}%</span>
+                <span className="text-[#B89A6A] font-semibold">{pct}%</span>
               </div>
               <div className="h-2 bg-white/15 rounded-full overflow-hidden">
-                <div className="h-full bg-[#D4AF37] rounded-full transition-all" style={{ width: `${pct}%` }} />
+                <div className="h-full bg-[#B89A6A] rounded-full transition-all" style={{ width: `${pct}%` }} />
               </div>
             </div>
           )}
@@ -112,9 +112,9 @@ export default function CursoPage() {
                 router.push(`/app/universidade/aula/${ids[0]}`);
               }
             }}
-            className="inline-flex items-center gap-2 bg-[#D4AF37] hover:bg-[#B8860B] text-[#1B3D2A] px-6 py-3 rounded-xl font-semibold text-sm transition-all active:scale-95"
+            className="inline-flex items-center gap-2 bg-[#B89A6A] hover:bg-[#9A7E50] text-[#7C6041] px-6 py-3 rounded-xl font-semibold text-sm transition-all active:scale-95"
           >
-            <Play size={18} />
+            <Play size={18} strokeWidth={1.75} />
             {concluido ? "Rever curso" : iniciado ? "Continuar curso" : "Iniciar curso"}
           </button>
         </div>
@@ -126,7 +126,7 @@ export default function CursoPage() {
         <ul className="space-y-2">
           {curso.modulos.map((m) => (
             <li key={m.id} className="flex items-start gap-2 text-sm text-ink/80">
-              <Check size={16} className="text-brand flex-shrink-0 mt-0.5" />
+              <Check size={16} strokeWidth={1.75} className="text-primary flex-shrink-0 mt-0.5" />
               <span>{m.nome.replace(/^Módulo \d+ — /, "")}</span>
             </li>
           ))}
@@ -153,9 +153,9 @@ export default function CursoPage() {
                 >
                   <div className={cn(
                     "w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 font-bold text-sm",
-                    completo ? "bg-brand/15 text-brand" : emAndamento ? "bg-[#D4AF37]/15 text-[#B8860B]" : "bg-line text-muted"
+                    completo ? "bg-primary/15 text-primary" : emAndamento ? "bg-[#B89A6A]/15 text-[#9A7E50]" : "bg-line text-muted"
                   )}>
-                    {completo ? <Check size={18} /> : idx + 1}
+                    {completo ? <Check size={18} strokeWidth={1.75} /> : idx + 1}
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-semibold text-sm text-ink">{m.nome}</h3>
@@ -164,12 +164,13 @@ export default function CursoPage() {
                       <span>{m.aulas.length} aulas</span>
                       <span>·</span>
                       <span>{feitasMod}/{m.aulas.length} concluídas</span>
-                      {completo && <span className="text-brand font-medium">· Concluído</span>}
-                      {emAndamento && <span className="text-[#B8860B] font-medium">· Em andamento</span>}
+                      {completo && <span className="text-primary font-medium">· Concluído</span>}
+                      {emAndamento && <span className="text-[#9A7E50] font-medium">· Em andamento</span>}
                     </div>
                   </div>
                   <ChevronDown
                     size={18}
+                    strokeWidth={1.75}
                     className={cn("text-muted transition-transform flex-shrink-0", expandido && "rotate-180")}
                   />
                 </button>
@@ -187,14 +188,14 @@ export default function CursoPage() {
                           >
                             <div className={cn(
                               "w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0",
-                              concluida ? "bg-brand/10 text-brand" : "bg-line text-muted"
+                              concluida ? "bg-primary/10 text-primary" : "bg-line text-muted"
                             )}>
-                              {concluida ? <Check size={14} /> : <Play size={13} />}
+                              {concluida ? <Check size={14} strokeWidth={1.75} /> : <Play size={13} strokeWidth={1.75} />}
                             </div>
                             <div className="flex-1 min-w-0">
                               <div className="text-sm text-ink truncate">{a.titulo}</div>
                               <div className="text-[0.7rem] text-muted flex items-center gap-2">
-                                <span className="flex items-center gap-0.5"><Clock size={10} /> {a.duracao}</span>
+                                <span className="flex items-center gap-0.5"><Clock size={10} strokeWidth={1.75} /> {a.duracao}</span>
                                 <span>· {a.professor}</span>
                               </div>
                             </div>
@@ -205,7 +206,8 @@ export default function CursoPage() {
                           >
                             <Bookmark
                               size={15}
-                              className={salva ? "text-brand fill-current" : "text-muted"}
+                              strokeWidth={1.75}
+                              className={salva ? "text-primary fill-current" : "text-muted"}
                             />
                           </button>
                         </div>
@@ -222,20 +224,20 @@ export default function CursoPage() {
       {/* Materiais incluídos */}
       <div className="card-fassi p-5">
         <h2 className="font-serif text-lg font-semibold text-ink mb-3 flex items-center gap-2">
-          <Download size={18} className="text-brand" /> Materiais incluídos
+          <Download size={18} strokeWidth={1.75} className="text-primary" /> Materiais incluídos
         </h2>
         <div className="grid md:grid-cols-2 gap-3">
           {curso.modulos.flatMap((m) => m.aulas).flatMap((a) => a.materiais || []).map((mat) => (
             <div key={mat.id} className="flex items-center gap-3 p-3 rounded-xl border border-line bg-bg">
-              <div className="w-9 h-9 rounded-lg bg-brand/10 flex items-center justify-center flex-shrink-0">
-                <FileText size={16} className="text-brand" />
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <FileText size={16} strokeWidth={1.75} className="text-primary" />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="text-sm font-medium text-ink truncate">{mat.nome}</div>
                 <div className="text-xs text-muted">{mat.descricao}</div>
               </div>
-              <button className="text-xs font-semibold text-brand flex items-center gap-1 flex-shrink-0">
-                <Download size={12} /> Baixar
+              <button className="text-xs font-semibold text-primary flex items-center gap-1 flex-shrink-0">
+                <Download size={12} strokeWidth={1.75} /> Baixar
               </button>
             </div>
           ))}

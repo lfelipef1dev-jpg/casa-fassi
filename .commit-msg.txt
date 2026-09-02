@@ -1,5 +1,38 @@
-fix: allow localhost and 127.0.0.1 in frame-ancestors CSP for local preview
+feat: refine Casa Fassi ambassador experience — premium B2B identity
+
+Design system:
+- Nova paleta: marfim, carvao, dourado fosco, primary marrom, surface branco
+- Tokens CSS e Tailwind normalizados (radius, shadow, border, typography)
+- Classes utilitarias: btn-primary, btn-gold, btn-outline, input-fassi, label-fassi
+- prefers-reduced-motion respeitado, focus-visible em todos os elementos
+
+Shell:
+- Sidebar premium com aria-current, aria-label, footer da marca
+- TopBar com titulo dinamico, busca com aria-label, notificacoes
+- AppShell com spacing melhorado (p-4 lg:p-8)
+
+Landing page e Dashboard:
+- Hero com fundo carvao (ink) e accent dourado
+- Paleta marfim/carfao/dourado substituindo verde escuro
+- Nomenclatura consistente: Casa Fassi
+- Selos com icones lucide em vez de emojis
+
+Todas as paginas internas:
+- Cores normalizadas (bg-brand -> bg-primary, hex antigos -> novos tokens)
+- strokeWidth={1.75} em todos os icones lucide
+- Emojis removidos em todas as telas
+- Selos: campo icon (LucideIcon) substitui emoji
+
+Metadata:
+- Title template, Open Graph, themeColor atualizado
+- maximumScale removido (acessibilidade)
+- manifest inexistente removido
+
+Build:
+- ignoreBuildErrors e ignoreDuringBuilds removidos
+- TypeScript e ESLint agora validam de verdade
+- Build passa sem erros (73 paginas estaticas)
 
 Generated with [Devin](https://devin.ai)
 
-Co-Authored-By: Devin <158243242+devin-ai-integration[bot]@users.noreply.github.com>
+Co-Authored-By: Devin <158243242+devin-ai-integration[bot]@users.noreply.github.com

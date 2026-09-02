@@ -13,15 +13,15 @@ export default function EquipePage() {
   if (role !== "lojista") {
     return (
       <div className="max-w-md mx-auto text-center py-20 space-y-4">
-        <div className="w-14 h-14 rounded-2xl bg-brand/10 flex items-center justify-center mx-auto">
-          <Lock size={24} className="text-brand" />
+        <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto">
+          <Lock size={24} strokeWidth={1.75} className="text-primary" />
         </div>
         <h1 className="font-serif text-xl font-semibold text-ink">Área do Lojista</h1>
         <p className="text-sm text-muted">
           O painel da equipe está disponível apenas para o dono da loja.
         </p>
         <Link href="/app/universidade" className="btn-ghost inline-flex items-center gap-2">
-          <ArrowLeft size={16} /> Voltar à Universidade
+          <ArrowLeft size={16} strokeWidth={1.75} /> Voltar à Universidade
         </Link>
       </div>
     );
@@ -46,7 +46,7 @@ export default function EquipePage() {
         href="/app/universidade"
         className="inline-flex items-center gap-2 text-sm text-muted hover:text-ink transition-colors"
       >
-        <ArrowLeft size={16} /> Universidade
+        <ArrowLeft size={16} strokeWidth={1.75} /> Universidade
       </Link>
 
       <div>
@@ -57,17 +57,17 @@ export default function EquipePage() {
       {/* Métricas */}
       <div className="grid grid-cols-3 gap-3">
         <div className="card-fassi p-4">
-          <Users size={18} className="text-brand mb-2" />
+          <Users size={18} strokeWidth={1.75} className="text-primary mb-2" />
           <p className="text-2xl font-bold text-ink">{equipe.length}</p>
           <p className="text-xs text-muted">Funcionários</p>
         </div>
         <div className="card-fassi p-4">
-          <TrendingUp size={18} className="text-brand mb-2" />
+          <TrendingUp size={18} strokeWidth={1.75} className="text-primary mb-2" />
           <p className="text-2xl font-bold text-ink">{mediaEquipe}%</p>
           <p className="text-xs text-muted">Média da equipe</p>
         </div>
         <div className="card-fassi p-4">
-          <Award size={18} className="text-[#B8860B] mb-2" />
+          <Award size={18} strokeWidth={1.75} className="text-[#9A7E50] mb-2" />
           <p className="text-2xl font-bold text-ink">{concluiram}</p>
           <p className="text-xs text-muted">Concluíram tudo</p>
         </div>
@@ -78,7 +78,7 @@ export default function EquipePage() {
         {equipe.map((f, i) => (
           <div key={f.id} className="flex items-center gap-4 p-4">
             <span className="text-sm font-bold text-muted w-5 text-center">{i + 1}</span>
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand to-brand-light flex items-center justify-center text-sm font-bold text-card flex-shrink-0">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-light flex items-center justify-center text-sm font-bold text-surface flex-shrink-0">
               {f.avatar}
             </div>
             <div className="flex-1 min-w-0">
@@ -86,7 +86,7 @@ export default function EquipePage() {
                 <p className="text-sm font-semibold text-ink truncate">{f.nome}</p>
                 {f.pct === 100 && (
                   <span className="badge-gold text-[0.6rem]">
-                    <Award size={9} /> Certificado
+                    <Award size={9} strokeWidth={1.75} /> Certificado
                   </span>
                 )}
               </div>
@@ -96,7 +96,7 @@ export default function EquipePage() {
                   className={cn("h-full rounded-full transition-all duration-500")}
                   style={{
                     width: `${f.pct}%`,
-                    background: f.pct === 100 ? "#D4AF37" : "#1B3D2A",
+                    background: f.pct === 100 ? "#B89A6A" : "#7C6041",
                   }}
                 />
               </div>

@@ -51,7 +51,7 @@ export default function ReconhecimentoPage() {
   return (
     <div className="space-y-6 animate-fade-in">
       <div>
-        <h1 className="font-serif text-2xl font-semibold text-ink">Histórias que inspiram a Casa Marken Fassi</h1>
+        <h1 className="font-serif text-2xl font-semibold text-ink">Histórias que inspiram a Casa Fassi</h1>
         <p className="text-sm text-muted mt-1">Reconhecimento para quem cuida da marca</p>
       </div>
 
@@ -71,8 +71,8 @@ export default function ReconhecimentoPage() {
           return (
             <div key={c.titulo} className="card-fassi p-5">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-11 h-11 rounded-xl bg-brand/10 flex items-center justify-center flex-shrink-0">
-                  <Icon size={20} className="text-brand" />
+                <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Icon size={20} className="text-primary" strokeWidth={1.75} />
                 </div>
                 <h3 className="font-serif text-base font-semibold text-ink">{c.titulo}</h3>
               </div>

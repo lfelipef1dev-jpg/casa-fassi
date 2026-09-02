@@ -19,15 +19,25 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Casa Marken Fassi — Ecossistema Marken Fassi",
-  description: "O clube dos especialistas em bem-viver. A plataforma de relacionamento, aprendizado e reconhecimento da Marken Fassi.",
+  title: {
+    default: "Casa Fassi — Ecossistema de Embaixadores Marken Fassi",
+    template: "%s — Casa Fassi",
+  },
+  description:
+    "Plataforma de capacitação, reconhecimento e comunidade para embaixadores da Marken Fassi. Universidade, conteúdos, certificados e benefícios para a rede comercial.",
+  openGraph: {
+    title: "Casa Fassi — Ecossistema de Embaixadores Marken Fassi",
+    description:
+      "Plataforma de capacitação, reconhecimento e comunidade para embaixadores da Marken Fassi.",
+    type: "website",
+    locale: "pt_BR",
+  },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  themeColor: "#F7F4EF",
+  themeColor: "#F8F6F1",
 };
 
 export default function RootLayout({
@@ -37,10 +47,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${cormorant.variable}`}>
-      <head>
-        <link rel="manifest" href="/manifest.json" />
-      </head>
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased bg-bg text-ink">
         {children}
       </body>
     </html>

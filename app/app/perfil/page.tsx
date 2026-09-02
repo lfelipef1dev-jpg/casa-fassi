@@ -13,6 +13,7 @@ import {
   Clock,
   Share2,
   Image as ImageIcon,
+  Lock,
 } from "lucide-react";
 import { useGameStore } from "@/lib/store";
 import { modulos, totalLicoes } from "@/lib/universidade";
@@ -85,12 +86,12 @@ export default function PerfilPage() {
         <div className="flex flex-col sm:flex-row items-start gap-4 mb-6">
           <button
             onClick={() => fileRef.current?.click()}
-            className="w-20 h-20 rounded-full bg-bg border-2 border-line hover:border-brand flex items-center justify-center overflow-hidden flex-shrink-0 transition-all"
+            className="w-20 h-20 rounded-full bg-bg border-2 border-line hover:border-primary flex items-center justify-center overflow-hidden flex-shrink-0 transition-all"
           >
             {photo ? (
               <img src={photo} alt="" width={80} height={80} loading="lazy" decoding="async" className="w-full h-full object-cover" />
             ) : (
-              <Camera size={22} className="text-muted" />
+              <Camera size={22} strokeWidth={1.75} className="text-muted" />
             )}
           </button>
           <input ref={fileRef} type="file" accept="image/*" onChange={handlePhoto} className="hidden" />
@@ -98,18 +99,18 @@ export default function PerfilPage() {
           <div className="flex-1 min-w-0 w-full">
             <h1 className="font-serif text-2xl font-semibold text-ink">{nome || "Participante"}</h1>
             <div className="flex flex-wrap items-center gap-3 text-sm text-muted mt-1">
-              {funcao && <span className="flex items-center gap-1"><User size={14} /> {funcao}</span>}
-              {loja && <span className="flex items-center gap-1"><Store size={14} /> {loja}</span>}
+              {funcao && <span className="flex items-center gap-1"><User size={14} strokeWidth={1.75} /> {funcao}</span>}
+              {loja && <span className="flex items-center gap-1"><Store size={14} strokeWidth={1.75} /> {loja}</span>}
             </div>
             {/* Cidade editável */}
             <div className="flex items-center gap-2 mt-2">
-              <MapPin size={14} className="text-muted" />
+              <MapPin size={14} strokeWidth={1.75} className="text-muted" />
               <input
                 ref={cidadeRef}
                 defaultValue={cidade}
                 onBlur={(e) => setCidade(e.target.value)}
                 placeholder="Sua cidade"
-                className="text-sm text-muted bg-transparent border-b border-line focus:border-brand focus:outline-none transition-colors max-w-[200px]"
+                className="text-sm text-muted bg-transparent border-b border-line focus:border-primary focus:outline-none transition-colors max-w-[200px]"
               />
             </div>
             <div className="mt-3">
@@ -119,7 +120,7 @@ export default function PerfilPage() {
               </div>
               <div className="h-2 bg-line rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-brand to-brand-light rounded-full transition-all duration-700"
+                  className="h-full bg-gradient-to-r from-primary to-primary-light rounded-full transition-all duration-700"
                   style={{ width: `${pct}%` }}
                 />
               </div>
@@ -134,7 +135,7 @@ export default function PerfilPage() {
           const Icon = s.icon;
           return (
             <div key={s.label} className="card-fassi p-4 text-center">
-              <Icon size={20} className="text-brand mx-auto mb-2" />
+              <Icon size={20} strokeWidth={1.75} className="text-primary mx-auto mb-2" />
               <div className="font-bold text-ink text-lg">{s.value}</div>
               <div className="text-xs text-muted">{s.label}</div>
             </div>
@@ -160,12 +161,16 @@ export default function PerfilPage() {
                 className={cn(
                   "rounded-xl border p-3 text-center transition-all",
                   conquistado
-                    ? "border-[#D4AF37]/30 bg-[#D4AF37]/5"
+                    ? "border-accent/30 bg-accent/5"
                     : "border-line bg-bg opacity-50"
                 )}
               >
-                <div className={cn("text-3xl mb-1", !conquistado && "grayscale opacity-30")}>
-                  {conquistado ? s.emoji : "🔒"}
+                <div className={cn("flex items-center justify-center mb-1", !conquistado && "grayscale opacity-30")}>
+                  {conquistado ? (
+                    <s.icon size={28} strokeWidth={1.75} className="text-accent" />
+                  ) : (
+                    <Lock size={28} strokeWidth={1.75} className="text-muted" />
+                  )}
                 </div>
                 <div className={cn(
                   "text-[0.7rem] font-medium leading-tight",
@@ -186,32 +191,32 @@ export default function PerfilPage() {
       <div className="card-fassi p-5">
         <h3 className="font-serif text-lg font-semibold text-ink mb-4">Certificados</h3>
         <div className="grid md:grid-cols-3 gap-3">
-          <Link href="/app/certificados/produto" className="border border-line rounded-xl p-4 hover:border-brand transition-colors group">
+          <Link href="/app/certificados/produto" className="border border-line rounded-xl p-4 hover:border-primary transition-colors group">
             <div className="flex items-center gap-3 mb-2">
-              <Award size={18} className={pctProduto === 100 ? "text-[#B8860B]" : "text-muted"} />
+              <Award size={18} strokeWidth={1.75} className={pctProduto === 100 ? "text-accent-dark" : "text-muted"} />
               <span className="text-sm font-medium text-ink">Especialista em Produto</span>
             </div>
             <div className="text-xs text-muted mb-2">{pctProduto === 100 ? "Disponível" : `${pctProduto}% concluído`}</div>
             <div className="h-1.5 bg-line rounded-full overflow-hidden">
-              <div className="h-full bg-brand rounded-full" style={{ width: `${pctProduto}%` }} />
+              <div className="h-full bg-primary rounded-full" style={{ width: `${pctProduto}%` }} />
             </div>
           </Link>
-          <Link href="/app/certificados/vendas" className="border border-line rounded-xl p-4 hover:border-brand transition-colors group">
+          <Link href="/app/certificados/vendas" className="border border-line rounded-xl p-4 hover:border-primary transition-colors group">
             <div className="flex items-center gap-3 mb-2">
-              <Award size={18} className={pctVendas === 100 ? "text-[#B8860B]" : "text-muted"} />
+              <Award size={18} strokeWidth={1.75} className={pctVendas === 100 ? "text-accent-dark" : "text-muted"} />
               <span className="text-sm font-medium text-ink">Especialista em Vendas</span>
             </div>
             <div className="text-xs text-muted mb-2">{pctVendas === 100 ? "Disponível" : `${pctVendas}% concluído`}</div>
             <div className="h-1.5 bg-line rounded-full overflow-hidden">
-              <div className="h-full bg-brand rounded-full" style={{ width: `${pctVendas}%` }} />
+              <div className="h-full bg-primary rounded-full" style={{ width: `${pctVendas}%` }} />
             </div>
           </Link>
           <Link
             href="/app/certificados/master"
-            className="border border-line rounded-xl p-4 hover:border-brand transition-colors group"
+            className="border border-line rounded-xl p-4 hover:border-primary transition-colors group"
           >
             <div className="flex items-center gap-3 mb-2">
-              <Award size={18} className={pctProduto === 100 && pctVendas === 100 ? "text-[#B8860B]" : "text-muted"} />
+              <Award size={18} strokeWidth={1.75} className={pctProduto === 100 && pctVendas === 100 ? "text-accent-dark" : "text-muted"} />
               <span className="text-sm font-medium text-ink">Especialista Master</span>
             </div>
             <div className="text-xs text-muted mb-2">
@@ -225,15 +230,15 @@ export default function PerfilPage() {
       <div className="card-fassi p-5">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-serif text-lg font-semibold text-ink">Minha Vitrine</h3>
-          <Link href="/app/vitrine" className="text-xs font-semibold text-brand">
+          <Link href="/app/vitrine" className="text-xs font-semibold text-primary">
             Gerenciar →
           </Link>
         </div>
         {fotosVitrine.length === 0 ? (
           <div className="text-center py-6">
-            <ImageIcon size={28} className="text-muted opacity-30 mx-auto mb-2" />
+            <ImageIcon size={28} strokeWidth={1.75} className="text-muted opacity-30 mx-auto mb-2" />
             <p className="text-sm text-muted">Nenhuma foto enviada ainda.</p>
-            <Link href="/app/vitrine" className="text-xs font-semibold text-brand mt-2 inline-block">
+            <Link href="/app/vitrine" className="text-xs font-semibold text-primary mt-2 inline-block">
               Enviar primeira foto →
             </Link>
           </div>

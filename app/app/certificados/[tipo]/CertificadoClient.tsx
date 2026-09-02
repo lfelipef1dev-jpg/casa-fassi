@@ -83,8 +83,8 @@ export default function CertificadoPage() {
 
   const textosCompartilhar = {
     instagram: {
-      story: `Sou ${cert.titulo} da Universidade Marken Fassi! 🎉`,
-      feed: `Mais um passo na minha formação como parceiro(a) Marken Fassi. Concluí a trilha de ${cert.subtitulo} 🧵✨`,
+      story: `Sou ${cert.titulo} da Universidade Marken Fassi!`,
+      feed: `Mais um passo na minha formação como parceiro(a) Marken Fassi. Concluí a trilha de ${cert.subtitulo}.`,
     },
     linkedin: {
       feed: `Concluí a trilha "${cert.subtitulo}" na Universidade Marken Fassi, obtendo o certificado de ${cert.titulo}. Mais um passo na minha formação como parceiro da marca. #MarkenFassi #Formação`,
@@ -97,14 +97,14 @@ export default function CertificadoPage() {
         href="/app/perfil"
         className="inline-flex items-center gap-2 text-sm text-muted hover:text-ink transition-colors"
       >
-        <ArrowLeft size={16} /> Perfil
+        <ArrowLeft size={16} strokeWidth={1.75} /> Perfil
       </Link>
 
       {/* Status do certificado */}
       {!cert.completo && (
-        <div className="card-fassi p-5 border-amber-200 bg-amber-50">
+        <div className="card-fassi p-5 border-amber-200 bg-accent/10">
           <div className="flex items-center gap-3">
-            <Award size={20} className="text-amber-600" />
+            <Award size={20} className="text-accent-dark" strokeWidth={1.75} />
             <div className="flex-1">
               <h3 className="font-semibold text-sm text-ink">Certificado ainda não disponível</h3>
               <p className="text-xs text-muted mt-0.5">
@@ -113,12 +113,12 @@ export default function CertificadoPage() {
             </div>
           </div>
           <div className="mt-3 h-2 bg-amber-100 rounded-full overflow-hidden">
-            <div className="h-full bg-amber-500 rounded-full transition-all" style={{ width: `${cert.pct}%` }} />
+            <div className="h-full bg-accent rounded-full transition-all" style={{ width: `${cert.pct}%` }} />
           </div>
           {tipo === "vendas" && cert.curso && (
             <Link
               href={`/app/universidade/curso/${cert.curso.id}`}
-              className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-brand"
+              className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-primary"
             >
               Continuar trilha →
             </Link>
@@ -126,7 +126,7 @@ export default function CertificadoPage() {
           {tipo === "produto" && (
             <Link
               href="/app/universidade"
-              className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-brand"
+              className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-primary"
             >
               Continuar trilha de produto →
             </Link>
@@ -137,18 +137,18 @@ export default function CertificadoPage() {
       {/* Certificado */}
       <div
         className="rounded-2xl overflow-hidden relative print:rounded-none print:shadow-none"
-        style={{ background: "linear-gradient(135deg, #FAF8F5 0%, #F5F0E8 100%)" }}
+        style={{ background: "linear-gradient(135deg, #F8F6F1 0%, #F2EEE7 100%)" }}
         id="certificado"
       >
         {/* Borda decorativa */}
-        <div className="absolute inset-2 border-2 border-[#D4AF37]/30 rounded-xl pointer-events-none" />
-        <div className="absolute inset-3 border border-[#D4AF37]/20 rounded-xl pointer-events-none" />
+        <div className="absolute inset-2 border-2 border-[#B89A6A]/30 rounded-xl pointer-events-none" />
+        <div className="absolute inset-3 border border-[#B89A6A]/20 rounded-xl pointer-events-none" />
 
         <div className="relative z-10 p-6 md:p-10 text-center">
           {/* Logo / Marca */}
           <div className="mb-6">
-            <p className="font-serif text-xs tracking-[0.3em] uppercase text-[#D4AF37]">Universidade Marken Fassi</p>
-            <div className="w-16 h-px bg-[#D4AF37] mx-auto mt-2" />
+            <p className="font-serif text-xs tracking-[0.3em] uppercase text-[#B89A6A]">Universidade Marken Fassi</p>
+            <div className="w-16 h-px bg-[#B89A6A] mx-auto mt-2" />
           </div>
 
           {/* Título */}
@@ -167,7 +167,7 @@ export default function CertificadoPage() {
               <img
                 src={photo}
                 alt=""
-                className="w-20 h-20 rounded-full object-cover mx-auto border-2 border-[#D4AF37]/30"
+                className="w-20 h-20 rounded-full object-cover mx-auto border-2 border-[#B89A6A]/30"
               />
             </div>
           )}
@@ -186,7 +186,9 @@ export default function CertificadoPage() {
               <div className="flex flex-wrap justify-center gap-3">
                 {selosGanhos.map((s) => s && (
                   <div key={s.id} className="flex flex-col items-center">
-                    <span className="text-2xl">{s.emoji}</span>
+                    <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
+                      <s.icon size={20} strokeWidth={1.75} className="text-accent-dark" />
+                    </div>
                     <span className="text-[0.6rem] text-muted mt-1 max-w-[80px] text-center leading-tight">
                       {s.nome}
                     </span>
@@ -222,15 +224,15 @@ export default function CertificadoPage() {
         <div className="flex flex-wrap gap-3 print:hidden">
           <button
             onClick={() => window.print()}
-            className="inline-flex items-center gap-2 bg-brand hover:bg-brand-light text-card px-5 py-3 rounded-xl font-semibold text-sm transition-all active:scale-95"
+            className="inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-surface px-5 py-3 rounded-xl font-semibold text-sm transition-all active:scale-95"
           >
-            <Printer size={18} /> Imprimir certificado
+            <Printer size={18} strokeWidth={1.75} /> Imprimir certificado
           </button>
           <button
             onClick={() => setCompartilharAberto(!compartilharAberto)}
-            className="inline-flex items-center gap-2 border border-line text-ink hover:border-brand px-5 py-3 rounded-xl font-semibold text-sm transition-all"
+            className="inline-flex items-center gap-2 border border-line text-ink hover:border-primary px-5 py-3 rounded-xl font-semibold text-sm transition-all"
           >
-            <Share2 size={18} /> Compartilhar conquista
+            <Share2 size={18} strokeWidth={1.75} /> Compartilhar conquista
           </button>
         </div>
       )}
@@ -251,9 +253,9 @@ export default function CertificadoPage() {
                 {/* Variação 1 — Verde escuro */}
                 <div
                   className="rounded-xl p-4 text-center"
-                  style={{ background: "linear-gradient(135deg, #1B3D2A 0%, #2A5640 100%)", aspectRatio: "9/16" }}
+                  style={{ background: "linear-gradient(135deg, #1F1C18 0%, #3D3833 100%)", aspectRatio: "9/16" }}
                 >
-                  <p className="text-[#D4AF37] text-[0.5rem] uppercase tracking-widest mb-2">Universidade Marken Fassi</p>
+                  <p className="text-[#B89A6A] text-[0.5rem] uppercase tracking-widest mb-2">Universidade Marken Fassi</p>
                   <p className="text-white text-[0.65rem] font-serif font-semibold mb-1">{cert.titulo}</p>
                   <p className="text-white/70 text-[0.5rem]">{nome}</p>
                   <p className="text-white/50 text-[0.45rem] mt-2">@markenfassi</p>
@@ -261,9 +263,9 @@ export default function CertificadoPage() {
                 {/* Variação 2 — Dourado */}
                 <div
                   className="rounded-xl p-4 text-center"
-                  style={{ background: "linear-gradient(135deg, #D4AF37 0%, #B8860B 100%)", aspectRatio: "9/16" }}
+                  style={{ background: "linear-gradient(135deg, #B89A6A 0%, #9A7E50 100%)", aspectRatio: "9/16" }}
                 >
-                  <p className="text-[#1B3D2A] text-[0.5rem] uppercase tracking-widest mb-2">Universidade Marken Fassi</p>
+                  <p className="text-[#7C6041] text-[0.5rem] uppercase tracking-widest mb-2">Universidade Marken Fassi</p>
                   <p className="text-white text-[0.65rem] font-serif font-semibold mb-1">{cert.titulo}</p>
                   <p className="text-white/80 text-[0.5rem]">{nome}</p>
                   <p className="text-white/60 text-[0.45rem] mt-2">@markenfassi</p>
@@ -271,16 +273,16 @@ export default function CertificadoPage() {
                 {/* Variação 3 — Marfim */}
                 <div
                   className="rounded-xl p-4 text-center border border-line"
-                  style={{ background: "linear-gradient(135deg, #FAF8F5 0%, #F5F0E8 100%)", aspectRatio: "9/16" }}
+                  style={{ background: "linear-gradient(135deg, #F8F6F1 0%, #F2EEE7 100%)", aspectRatio: "9/16" }}
                 >
-                  <p className="text-[#D4AF37] text-[0.5rem] uppercase tracking-widest mb-2">Universidade Marken Fassi</p>
-                  <p className="text-[#1B3D2A] text-[0.65rem] font-serif font-semibold mb-1">{cert.titulo}</p>
+                  <p className="text-[#B89A6A] text-[0.5rem] uppercase tracking-widest mb-2">Universidade Marken Fassi</p>
+                  <p className="text-[#7C6041] text-[0.65rem] font-serif font-semibold mb-1">{cert.titulo}</p>
                   <p className="text-ink/70 text-[0.5rem]">{nome}</p>
                   <p className="text-muted text-[0.45rem] mt-2">@markenfassi</p>
                 </div>
               </div>
               <p className="text-xs text-muted">{textosCompartilhar.instagram.story}</p>
-              <button className="text-xs font-semibold text-brand mt-2">Baixar imagem</button>
+              <button className="text-xs font-semibold text-primary mt-2">Baixar imagem</button>
             </div>
 
             {/* Instagram Feed — 3 variações */}
@@ -293,33 +295,33 @@ export default function CertificadoPage() {
                 {/* Variação 1 — Verde escuro */}
                 <div
                   className="rounded-xl p-4 text-center"
-                  style={{ background: "linear-gradient(135deg, #1B3D2A 0%, #2A5640 100%)", aspectRatio: "1/1" }}
+                  style={{ background: "linear-gradient(135deg, #1F1C18 0%, #3D3833 100%)", aspectRatio: "1/1" }}
                 >
-                  <p className="text-[#D4AF37] text-[0.55rem] uppercase tracking-widest mb-3">Universidade Marken Fassi</p>
+                  <p className="text-[#B89A6A] text-[0.55rem] uppercase tracking-widest mb-3">Universidade Marken Fassi</p>
                   <p className="text-white text-[0.7rem] font-serif font-semibold mb-1">{cert.titulo}</p>
                   <p className="text-white/70 text-[0.55rem]">{nome} · {loja}</p>
                 </div>
                 {/* Variação 2 — Dourado */}
                 <div
                   className="rounded-xl p-4 text-center"
-                  style={{ background: "linear-gradient(135deg, #D4AF37 0%, #B8860B 100%)", aspectRatio: "1/1" }}
+                  style={{ background: "linear-gradient(135deg, #B89A6A 0%, #9A7E50 100%)", aspectRatio: "1/1" }}
                 >
-                  <p className="text-[#1B3D2A] text-[0.55rem] uppercase tracking-widest mb-3">Universidade Marken Fassi</p>
+                  <p className="text-[#7C6041] text-[0.55rem] uppercase tracking-widest mb-3">Universidade Marken Fassi</p>
                   <p className="text-white text-[0.7rem] font-serif font-semibold mb-1">{cert.titulo}</p>
                   <p className="text-white/80 text-[0.55rem]">{nome} · {loja}</p>
                 </div>
                 {/* Variação 3 — Marfim */}
                 <div
                   className="rounded-xl p-4 text-center border border-line"
-                  style={{ background: "linear-gradient(135deg, #FAF8F5 0%, #F5F0E8 100%)", aspectRatio: "1/1" }}
+                  style={{ background: "linear-gradient(135deg, #F8F6F1 0%, #F2EEE7 100%)", aspectRatio: "1/1" }}
                 >
-                  <p className="text-[#D4AF37] text-[0.55rem] uppercase tracking-widest mb-3">Universidade Marken Fassi</p>
-                  <p className="text-[#1B3D2A] text-[0.7rem] font-serif font-semibold mb-1">{cert.titulo}</p>
+                  <p className="text-[#B89A6A] text-[0.55rem] uppercase tracking-widest mb-3">Universidade Marken Fassi</p>
+                  <p className="text-[#7C6041] text-[0.7rem] font-serif font-semibold mb-1">{cert.titulo}</p>
                   <p className="text-ink/70 text-[0.55rem]">{nome} · {loja}</p>
                 </div>
               </div>
               <p className="text-xs text-muted">{textosCompartilhar.instagram.feed}</p>
-              <button className="text-xs font-semibold text-brand mt-2">Baixar imagem</button>
+              <button className="text-xs font-semibold text-primary mt-2">Baixar imagem</button>
             </div>
 
             {/* LinkedIn texto */}
@@ -328,7 +330,7 @@ export default function CertificadoPage() {
                 <span className="text-xs font-semibold text-ink">LinkedIn (texto profissional)</span>
               </div>
               <p className="text-xs text-muted leading-relaxed bg-bg rounded-lg p-3">{textosCompartilhar.linkedin.feed}</p>
-              <button className="text-xs font-semibold text-brand mt-2">Copiar texto</button>
+              <button className="text-xs font-semibold text-primary mt-2">Copiar texto</button>
             </div>
           </div>
         </div>
@@ -352,9 +354,9 @@ export default function CertificadoPage() {
                 <div className="flex items-center gap-3 mb-3">
                   <div className={cn(
                     "w-10 h-10 rounded-xl flex items-center justify-center",
-                    c.completo ? "bg-[#D4AF37]/15 text-[#B8860B]" : "bg-line text-muted"
+                    c.completo ? "bg-[#B89A6A]/15 text-[#9A7E50]" : "bg-line text-muted"
                   )}>
-                    {c.completo ? <Award size={18} /> : <Award size={18} className="opacity-40" />}
+                    {c.completo ? <Award size={18} strokeWidth={1.75} /> : <Award size={18} className="opacity-40" strokeWidth={1.75} />}
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-semibold text-sm text-ink truncate">{c.titulo}</h3>
@@ -362,10 +364,10 @@ export default function CertificadoPage() {
                   </div>
                 </div>
                 <div className="flex items-center justify-between text-xs">
-                  <span className={c.completo ? "text-brand font-medium" : "text-muted"}>
+                  <span className={c.completo ? "text-primary font-medium" : "text-muted"}>
                     {c.completo ? "Disponível" : `${c.pct}% concluído`}
                   </span>
-                  {c.completo && <Check size={14} className="text-brand" />}
+                  {c.completo && <Check size={14} className="text-primary" strokeWidth={1.75} />}
                 </div>
               </Link>
             );

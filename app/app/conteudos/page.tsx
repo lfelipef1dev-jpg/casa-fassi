@@ -72,7 +72,7 @@ export default function ConteudosPage() {
           value={busca}
           onChange={(e) => setBusca(e.target.value)}
           placeholder="Buscar conteúdo..."
-          className="w-full bg-card border border-line rounded-xl pl-10 pr-4 py-3 text-sm text-ink placeholder:text-muted focus:outline-none focus:border-brand transition-colors"
+          className="w-full bg-surface border border-line rounded-xl pl-10 pr-4 py-3 text-sm text-ink placeholder:text-muted focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-colors"
         />
       </div>
 
@@ -86,7 +86,7 @@ export default function ConteudosPage() {
               "px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border transition-all",
               filtroAtivo === f
                 ? "bg-ink text-accent border-ink"
-                : "bg-card text-muted border-line hover:border-brand"
+                : "bg-surface text-muted border-line hover:border-primary"
             )}
           >
             {f}
@@ -97,14 +97,14 @@ export default function ConteudosPage() {
       {/* Conteúdos rápidos */}
       <div>
         <h2 className="font-serif text-lg font-semibold text-ink mb-3 flex items-center gap-2">
-          <Sparkles size={18} className="text-brand" />
+          <Sparkles size={18} className="text-primary" strokeWidth={1.75} />
           Conteúdos rápidos para a rotina
         </h2>
         <div className="grid md:grid-cols-2 gap-3">
           {conteudosRapidos.map((r) => (
             <div key={r.id} className="card-fassi p-4 flex items-center gap-3 group cursor-pointer">
-              <div className="w-10 h-10 rounded-xl bg-brand/10 flex items-center justify-center flex-shrink-0">
-                <Video size={18} className="text-brand" />
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <Video size={18} className="text-primary" strokeWidth={1.75} />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="text-sm font-medium text-ink truncate">{r.titulo}</div>
@@ -112,7 +112,7 @@ export default function ConteudosPage() {
                   <Clock size={11} /> {r.duracao}
                 </div>
               </div>
-              <Play size={16} className="text-muted group-hover:text-brand transition-colors" />
+              <Play size={16} className="text-muted group-hover:text-primary transition-colors" strokeWidth={1.75} />
             </div>
           ))}
         </div>
@@ -127,8 +127,8 @@ export default function ConteudosPage() {
             const Icon = config.icon;
             return (
               <div key={c.id} className="card-fassi p-4 flex items-center gap-4 group cursor-pointer">
-                <div className="w-11 h-11 rounded-xl bg-brand/10 flex items-center justify-center flex-shrink-0">
-                  <Icon size={20} className="text-brand" />
+                <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Icon size={20} className="text-primary" strokeWidth={1.75} />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="text-sm font-semibold text-ink truncate">{c.titulo}</div>
@@ -146,7 +146,7 @@ export default function ConteudosPage() {
                     <span>{c.data}</span>
                   </div>
                 </div>
-                <button className="text-xs font-semibold text-brand hover:text-brand-light flex items-center gap-1 flex-shrink-0">
+                <button className="text-xs font-semibold text-primary hover:text-primary-hover flex items-center gap-1 flex-shrink-0">
                   {config.action === "Baixar" ? <Download size={14} /> : <Play size={14} />}
                   {config.action}
                 </button>

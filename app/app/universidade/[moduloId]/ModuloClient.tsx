@@ -59,7 +59,7 @@ export default function ModuloClient() {
         href="/app/universidade"
         className="inline-flex items-center gap-2 text-sm text-muted hover:text-ink transition-colors"
       >
-        <ArrowLeft size={16} /> Universidade
+        <ArrowLeft size={16} strokeWidth={1.75} /> Universidade
       </Link>
 
       <div className="flex items-center gap-3">
@@ -67,7 +67,7 @@ export default function ModuloClient() {
           className="w-12 h-12 rounded-xl flex items-center justify-center"
           style={{ background: `${modulo.cor}18` }}
         >
-          <Icon size={22} style={{ color: modulo.cor }} />
+          <Icon size={22} strokeWidth={1.75} style={{ color: modulo.cor }} />
         </div>
         <div>
           <h1 className="font-serif text-2xl font-semibold text-ink">{modulo.titulo}</h1>
@@ -96,7 +96,7 @@ export default function ModuloClient() {
                   : "bg-card text-muted border-line hover:border-accent"
               )}
             >
-              {done ? <Check size={14} /> : <span className="w-5 text-center">{i + 1}</span>}
+              {done ? <Check size={14} strokeWidth={1.75} /> : <span className="w-5 text-center">{i + 1}</span>}
               {l.titulo}
             </button>
           );
@@ -110,7 +110,7 @@ export default function ModuloClient() {
             <h2 className="font-serif text-xl font-semibold text-ink">{licao.titulo}</h2>
             {concluida && (
               <span className="badge-gold text-[0.65rem]">
-                <Check size={10} /> Concluída
+                <Check size={10} strokeWidth={1.75} /> Concluída
               </span>
             )}
           </div>
@@ -121,7 +121,7 @@ export default function ModuloClient() {
         <div
           className="rounded-xl border border-dashed border-line bg-bg flex flex-col items-center justify-center py-10 text-muted"
         >
-          <ImageIcon size={28} className="mb-2 opacity-60" />
+          <ImageIcon size={28} strokeWidth={1.75} className="mb-2 opacity-60" />
           <p className="text-xs">Foto/vídeo desta lição em breve</p>
         </div>
 
@@ -132,7 +132,7 @@ export default function ModuloClient() {
             {licao.passos.map((p, i) => (
               <li key={i} className="flex gap-3">
                 <span
-                  className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-card flex-shrink-0"
+                  className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-surface flex-shrink-0"
                   style={{ background: modulo.cor }}
                 >
                   {i + 1}
@@ -146,9 +146,9 @@ export default function ModuloClient() {
         {/* Dica Marken Fassi */}
         <div
           className="rounded-xl p-4 flex gap-3 items-start"
-          style={{ background: "#D4AF3718", border: "1px solid #D4AF3740" }}
+          style={{ background: "#B89A6A18", border: "1px solid #B89A6A40" }}
         >
-          <Lightbulb size={18} className="text-[#B8860B] flex-shrink-0 mt-0.5" />
+          <Lightbulb size={18} strokeWidth={1.75} className="text-[#9A7E50] flex-shrink-0 mt-0.5" />
           <p className="text-sm text-ink/90 leading-relaxed">{licao.dica}</p>
         </div>
 
@@ -156,7 +156,7 @@ export default function ModuloClient() {
         {licao.checklist && licao.checklist.length > 0 && (
           <div>
             <h3 className="text-sm font-semibold text-ink mb-3 flex items-center gap-2">
-              <ListChecks size={16} className="text-brand" /> Checklist
+              <ListChecks size={16} strokeWidth={1.75} className="text-primary" /> Checklist
             </h3>
             <div className="space-y-2">
               {licao.checklist.map((c, i) => {
@@ -174,6 +174,7 @@ export default function ModuloClient() {
                   >
                     <CheckCircle2
                       size={16}
+                      strokeWidth={1.75}
                       className={marcado ? "text-sage" : "text-muted"}
                     />
                     {c}
@@ -188,7 +189,7 @@ export default function ModuloClient() {
         {licao.errosComuns && licao.errosComuns.length > 0 && (
           <div>
             <h3 className="text-sm font-semibold text-ink mb-3 flex items-center gap-2">
-              <AlertTriangle size={16} className="text-red-500" /> Erros comuns
+              <AlertTriangle size={16} strokeWidth={1.75} className="text-red-500" /> Erros comuns
             </h3>
             <ul className="space-y-2">
               {licao.errosComuns.map((e, i) => (
@@ -207,13 +208,13 @@ export default function ModuloClient() {
           onClick={handleConcluir}
           className="btn-gold w-full inline-flex items-center justify-center gap-2"
         >
-          <Check size={18} />
+          <Check size={18} strokeWidth={1.75} />
           {concluida
             ? licaoAtual < modulo.licoes.length - 1
               ? "Próxima lição"
               : "Voltar ao módulo"
             : "Concluir lição"}
-          <ArrowRight size={18} />
+          <ArrowRight size={18} strokeWidth={1.75} />
         </button>
       </div>
     </div>

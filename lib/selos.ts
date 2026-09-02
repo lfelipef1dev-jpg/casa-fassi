@@ -1,7 +1,21 @@
+import {
+  Bath,
+  BedDouble,
+  Store,
+  HandHeart,
+  Video,
+  Users,
+  TrendingUp,
+  Shirt,
+  Award,
+  type LucideIcon,
+} from "lucide-react";
+
 export type Selo = {
   id: string;
   nome: string;
   emoji: string;
+  icon: LucideIcon;
   descricao: string;
   conquista: string;
   categoria: "modulo" | "trilha" | "perfil" | "vitrine" | "social" | "presenca";
@@ -11,7 +25,8 @@ export const selos: Selo[] = [
   {
     id: "toalha-rosto",
     nome: "Toalha de Rosto",
-    emoji: "🧺",
+    emoji: "",
+    icon: Bath,
     descricao: "Concluiu o 1º módulo de qualquer trilha",
     conquista: "1 módulo concluído",
     categoria: "modulo",
@@ -19,7 +34,8 @@ export const selos: Selo[] = [
   {
     id: "toalha-banho",
     nome: "Toalha de Banho",
-    emoji: "🧺",
+    emoji: "",
+    icon: Bath,
     descricao: "Concluiu 2 módulos na Casa",
     conquista: "2 módulos concluídos",
     categoria: "modulo",
@@ -27,7 +43,8 @@ export const selos: Selo[] = [
   {
     id: "jogo-cama",
     nome: "Jogo de Cama",
-    emoji: "🛏️",
+    emoji: "",
+    icon: BedDouble,
     descricao: "Concluiu 3 módulos na Casa",
     conquista: "3 módulos concluídos",
     categoria: "modulo",
@@ -35,7 +52,8 @@ export const selos: Selo[] = [
   {
     id: "vitrine-marken",
     nome: "Vitrine Marken Fassi",
-    emoji: "🪟",
+    emoji: "",
+    icon: Store,
     descricao: "Enviou foto da vitrine da própria loja",
     conquista: "1 foto de vitrine enviada",
     categoria: "vitrine",
@@ -43,7 +61,8 @@ export const selos: Selo[] = [
   {
     id: "boas-vindas",
     nome: "Boas-Vindas",
-    emoji: "👋",
+    emoji: "",
+    icon: HandHeart,
     descricao: "Completou o perfil (foto, loja, cidade)",
     conquista: "Perfil completo",
     categoria: "perfil",
@@ -51,7 +70,8 @@ export const selos: Selo[] = [
   {
     id: "presenca",
     nome: "Presença",
-    emoji: "🎥",
+    emoji: "",
+    icon: Video,
     descricao: "Assistiu a uma live ou encontro ao vivo",
     conquista: "1 live/encontro assistido",
     categoria: "presenca",
@@ -59,7 +79,8 @@ export const selos: Selo[] = [
   {
     id: "embaixador",
     nome: "Embaixador",
-    emoji: "🤝",
+    emoji: "",
+    icon: Users,
     descricao: "Indicou outro lojista para a Casa",
     conquista: "1 indicação realizada",
     categoria: "social",
@@ -67,7 +88,8 @@ export const selos: Selo[] = [
   {
     id: "especialista-produto",
     nome: "Especialista em Produto",
-    emoji: "🧵",
+    emoji: "",
+    icon: Shirt,
     descricao: "Completou a trilha de Produto/Enxoval inteira",
     conquista: "Trilha de Produto concluída",
     categoria: "trilha",
@@ -75,7 +97,8 @@ export const selos: Selo[] = [
   {
     id: "especialista-vendas",
     nome: "Especialista em Vendas",
-    emoji: "📈",
+    emoji: "",
+    icon: TrendingUp,
     descricao: "Completou a trilha de Vendas inteira",
     conquista: "Trilha de Vendas concluída",
     categoria: "trilha",
@@ -83,7 +106,8 @@ export const selos: Selo[] = [
   {
     id: "especialista-master",
     nome: "Especialista Master Marken Fassi",
-    emoji: "🏅",
+    emoji: "",
+    icon: Award,
     descricao: "Completou as duas trilhas (Produto + Vendas)",
     conquista: "Duas trilhas concluídas",
     categoria: "trilha",

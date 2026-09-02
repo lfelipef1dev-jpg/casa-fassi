@@ -25,7 +25,7 @@ export default function BeneficiosPage() {
       {/* Intro */}
       <div className="card-fassi p-5">
         <p className="text-sm text-ink/80 leading-relaxed">
-          A participação nas formações, encontros e ações da Casa Marken Fassi pode dar acesso a benefícios
+          A participação nas formações, encontros e ações da Casa Fassi pode dar acesso a benefícios
           pensados para valorizar quem faz parte da nossa história.
         </p>
       </div>
@@ -36,8 +36,8 @@ export default function BeneficiosPage() {
           const Icon = b.icon;
           return (
             <div key={b.titulo} className="card-fassi p-5">
-              <div className="w-11 h-11 rounded-xl bg-brand/10 flex items-center justify-center mb-3">
-                <Icon size={20} className="text-brand" />
+              <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
+                <Icon size={20} className="text-primary" strokeWidth={1.75} />
               </div>
               <h3 className="font-serif text-base font-semibold text-ink mb-1">{b.titulo}</h3>
               <p className="text-sm text-muted leading-relaxed">{b.desc}</p>
@@ -48,7 +48,7 @@ export default function BeneficiosPage() {
 
       <div className="card-fassi p-5 text-center">
         <p className="text-xs text-muted italic">
-          Os benefícios podem variar conforme a participação nas formações e ações da Casa Marken Fassi.
+          Os benefícios podem variar conforme a participação nas formações e ações da Casa Fassi.
         </p>
       </div>
     </div>
