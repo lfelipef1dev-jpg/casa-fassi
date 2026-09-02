@@ -91,6 +91,7 @@ export default function RootPage() {
     { label: "Universidade", href: "#universidade" },
     { label: "Conteúdos", href: "#pilares" },
     { label: "Comunidade", href: "#comunidade" },
+    { label: "Ambientação", href: "#galeria" },
     { label: "Benefícios", href: "#beneficios" },
     { label: "Minha jornada", href: "#jornada" },
   ];
@@ -354,8 +355,52 @@ export default function RootPage() {
         </div>
       </section>
 
+      {/* Galeria editorial */}
+      <section id="galeria" className="py-20 px-6 bg-surface border-y border-line scroll-mt-16">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-accent-dark text-sm font-semibold tracking-[0.15em] uppercase mb-3">
+              Ambientação
+            </p>
+            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-ink mb-4">
+              O universo do bem-viver em detalhes
+            </h2>
+            <p className="text-muted text-base max-w-2xl mx-auto leading-relaxed">
+              Tecidos, texturas e ambientes que traduzem o cuidado da Marken Fassi em cada composição.
+            </p>
+            <div className="w-12 h-px bg-accent mx-auto mt-6" />
+          </div>
+          <div className="grid md:grid-cols-3 gap-4">
+            {[
+              { src: "/ambientacao-1.png", alt: "Detalhe de tecido e composição de cama premium Marken Fassi" },
+              { src: "/ambientacao-2.png", alt: "Ambiente acolhedor com enxoval Marken Fassi" },
+              { src: "/ambientacao-3.png", alt: "Composição editorial de bem-viver Marken Fassi" },
+            ].map((img, i) => (
+              <m.div
+                key={img.src}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="relative overflow-hidden rounded-2xl border border-line group aspect-[4/3]"
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  width={600}
+                  height={450}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </m.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Benefícios */}
-      <section id="beneficios" className="py-20 px-6 bg-surface border-y border-line scroll-mt-16">
+      <section id="beneficios" className="py-20 px-6 bg-bg scroll-mt-16">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-accent-dark text-sm font-semibold tracking-[0.15em] uppercase mb-3">
             Benefícios

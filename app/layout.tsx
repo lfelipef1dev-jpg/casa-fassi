@@ -42,10 +42,10 @@ export const metadata: Metadata = {
     siteName: "Casa Fassi",
     images: [
       {
-        url: "/logo-marken-fassi.jpg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Casa Fassi — Marken Fassi",
+        alt: "Casa Fassi — Ecossistema de Embaixadores Marken Fassi",
       },
     ],
   },
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     title: "Casa Fassi — Ecossistema de Embaixadores Marken Fassi",
     description:
       "Plataforma de capacitação, reconhecimento e comunidade para embaixadores da Marken Fassi.",
-    images: ["/logo-marken-fassi.jpg"],
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,

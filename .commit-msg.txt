@@ -1,36 +1,11 @@
-feat(seo): implementar Ordem Tecnica Obrigatorio SEO 2026
+feat: adicionar fotos de ambientacao + favicon + OG image
 
-Fase 1 - Fundamentos:
-- HSTS adicionado ao _headers (max-age 63072000, includeSubDomains, preload)
-- X-Content-Type-Options, X-Frame-Options, Referrer-Policy adicionados
-- Cache-Control para imagens e fontes (31536000, immutable)
-- font-display: swap ja configurado em Inter e Cormorant Garamond
-- HTTPS e redirect 301 gerenciados pelo Cloudflare Pages
-
-Fase 2 - Crawl e indexacao:
-- robots.txt criado (Allow /, Disallow /app/ e /onboarding/, Sitemap absoluto)
-- sitemap.xml criado (apenas URL publica indexavel)
-- Canonical adicionado via metadata.alternates.canonical no layout raiz
-- noindex,nofollow em /app/* e /onboarding via metadata.robots
-
-Fase 3 - On-page:
-- Title template com default e template %s - Casa Fassi
-- Meta description unica no layout raiz
-- H1 unico na landing page (verificado)
-- OG image configurada (logo-marken-fassi.jpg 1200x630)
-- Twitter Card summary_large_image
-- OpenGraph completo: title, description, url, siteName, locale, images
-
-Fase 4 - Schema.org:
-- JSON-LD injetado no head via componente JsonLd
-- Organization: name, url, logo, description, sameAs
-- WebSite: name, url, description, inLanguage, publisher
-- @graph + @id conectando entidades
-
-Fase 5 - Cadastro e monitoramento:
-- GSC e GA4: orientacao ao usuario (requer configuracao manual)
-
-Build: 73 paginas estaticas, 0 erros, TS e ESLint validando
+- 3 fotos de ambientacao editorial adicionadas (public/ambientacao-1/2/3.png)
+- Galeria editorial na landing page (secao "Ambientacao")
+- Nav link "Ambientacao" adicionado
+- OG image atualizada para og-image.png
+- Favicon/app icon criados (app/icon.png, app/apple-icon.png)
+- JSON-LD Organization logo atualizado para logo-verde-escuro.png
 
 Generated with [Devin](https://devin.ai)
 
