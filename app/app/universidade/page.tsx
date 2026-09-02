@@ -47,19 +47,21 @@ const materialIcon: Record<string, typeof FileText> = {
 
 const capaPorCurso: Record<string, string> = {
   "essencia-marken-fassi": "/images/marken/universidade/capa-essencia.webp",
-  "tecidos-fios": "/images/marken/universidade/capa-tecidos.webp",
-  "colecao-alameda": "/images/marken/universidade/capa-alameda.webp",
-  "atendimento-premium": "/images/marken/universidade/capa-atendimento.webp",
+  "tecidos-fios": "/images/marken/universidade/capa-tecidos-fios.webp",
+  "colecao-alameda": "/images/marken/universidade/capa-colecao-alameda.webp",
+  "atendimento-premium": "/images/marken/universidade/capa-atendimento-premium.webp",
   "vitrine-composicao": "/images/marken/universidade/capa-vitrine.webp",
   "conteudo-digital": "/images/marken/universidade/capa-conteudo-digital.webp",
-  "vendas-marken-fassi": "/images/marken/universidade/capa-vendas.webp",
+  "curso-vendas": "/images/marken/universidade/capa-vendas.webp",
 };
 
 const capaAulaRapida: Record<string, string> = {
-  "live-alameda": "/images/marken/universidade/aula-live-alameda.webp",
-  "boas-praticas": "/images/marken/universidade/aula-boas-praticas.webp",
-  "tecidos-especialistas": "/images/marken/universidade/aula-tecidos-especialistas.webp",
-  "banho-ritual": "/images/marken/universidade/aula-banho-ritual.webp",
+  "ar1": "/images/marken/universidade/aula-ar1-tamanhos.webp",
+  "ar2": "/images/marken/universidade/aula-ar2-contagem-fios.webp",
+  "ar3": "/images/marken/universidade/aula-ar3-linhas-marken.webp",
+  "ar4": "/images/marken/universidade/aula-ar4-cuidados-algodao.webp",
+  "ar5": "/images/marken/universidade/aula-ar5-montar-cama.webp",
+  "ar6": "/images/marken/universidade/aula-ar6-objecao-preco.webp",
 };
 
 function getCapaCurso(cursoId: string): string {
@@ -202,7 +204,7 @@ export default function UniversidadePage() {
             <Link key={a.id} href={`/app/universidade/aula/${a.id}`}>
               <div className="card-fassi overflow-hidden group cursor-pointer h-full flex flex-col">
                 <img
-                  src={capaAulaRapida[a.id] || "/images/marken/universidade/aula-boas-praticas.webp"}
+                  src={capaAulaRapida[a.id] || "/images/marken/universidade/capa-essencia.webp"}
                   alt={`Capa — ${a.titulo}`}
                   loading="lazy"
                   decoding="async"

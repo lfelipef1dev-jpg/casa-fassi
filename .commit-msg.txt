@@ -1,0 +1,27 @@
+fix: curadoria visual universidade — 13 imagens unicas, zero duplicatas
+
+PROBLEMA:
+- 3 capas de cursos eram duplicatas exatas (mesmo MD5)
+- 6 aulas rapidas usavam TODAS a mesma imagem (mapping quebrado)
+- curso-vendas caia no fallback (ID errado no mapping)
+- conteudos repetia 3 thumbnails em 16 cards
+
+CORRECOES:
+- Geradas 9 novas capas editoriais com Python/PIL
+- Corrigido capaPorCurso: 3 IDs errados + fallback
+- Corrigido capaAulaRapida: mapping completo ar1-ar6
+- Corrigido curso-vendas: vendas-marken-fassi -> curso-vendas
+- Conteudos: mapeamento semantico por ID (12+4 items)
+- Home: atualizadas 2 referencias aos arquivos antigos
+- Removidos 7 arquivos duplicados
+
+AUDITORIA VISUAL (Puppeteer):
+- 13 arquivos, 13 hashes unicos (zero duplicatas)
+- 14 imagens unicas na pagina (13 conteudo + 1 logo)
+- 6 aulas rapidas com 6 imagens unicas
+- Zero scroll horizontal (1920, 1366, 768, 375, 360)
+- Zero erros no console
+
+Generated with [Devin](https://devin.ai)
+
+Co-Authored-By: Devin <158243242+devin-ai-integration[bot]@users.noreply.github.com

@@ -41,6 +41,28 @@ const conteudosRapidos = [
   { id: "r4", titulo: "Como cuidar de produtos de algodão egípcio", duracao: "3 min" },
 ];
 
+const conteudoThumb: Record<string, string> = {
+  c1: "/images/marken/universidade/aula-ar2-contagem-fios.webp",
+  c2: "/images/marken/universidade/capa-tecidos-fios.webp",
+  c3: "/images/marken/universidade/aula-ar1-tamanhos.webp",
+  c4: "/images/marken/universidade/capa-tecidos-fios.webp",
+  c5: "/images/marken/universidade/capa-colecao-alameda.webp",
+  c6: "/images/marken/universidade/aula-ar5-montar-cama.webp",
+  c7: "/images/marken/universidade/capa-atendimento-premium.webp",
+  c8: "/images/marken/universidade/capa-conteudo-digital.webp",
+  c9: "/images/marken/universidade/aula-ar4-cuidados-algodao.webp",
+  c10: "/images/marken/universidade/aula-ar6-objecao-preco.webp",
+  c11: "/images/marken/universidade/capa-vendas.webp",
+  c12: "/images/marken/universidade/capa-vitrine.webp",
+};
+
+const rapidoThumb: Record<string, string> = {
+  r1: "/images/marken/universidade/aula-ar1-tamanhos.webp",
+  r2: "/images/marken/universidade/aula-ar2-contagem-fios.webp",
+  r3: "/images/marken/universidade/aula-ar3-linhas-marken.webp",
+  r4: "/images/marken/universidade/aula-ar4-cuidados-algodao.webp",
+};
+
 const formatoConfig: Record<string, { icon: typeof Play; label: string; action: string }> = {
   video: { icon: Play, label: "Vídeo", action: "Assistir" },
   pdf: { icon: FileText, label: "Material", action: "Baixar" },
@@ -102,7 +124,7 @@ export default function ConteudosPage() {
         </h2>
         <div className="grid md:grid-cols-2 gap-3">
           {conteudosRapidos.map((r, i) => {
-            const thumb = `/images/marken/conteudos/thumb-0${(i % 3) + 1}.webp`;
+            const thumb = rapidoThumb[r.id] || `/images/marken/conteudos/thumb-0${(i % 3) + 1}.webp`;
             return (
             <div key={r.id} className="card-fassi p-4 flex items-center gap-3 group cursor-pointer">
               <img
@@ -131,7 +153,7 @@ export default function ConteudosPage() {
           {filtrados.map((c, i) => {
             const config = formatoConfig[c.formato];
             const Icon = config.icon;
-            const thumb = `/images/marken/conteudos/thumb-0${(i % 3) + 1}.webp`;
+            const thumb = conteudoThumb[c.id] || `/images/marken/conteudos/thumb-0${(i % 3) + 1}.webp`;
             return (
               <div key={c.id} className="card-fassi p-4 flex items-center gap-4 group cursor-pointer">
                 <img
