@@ -395,7 +395,7 @@ export default function RootPage() {
             transition={{ duration: 0.6 }}
           >
             <div className="mb-8 flex justify-center">
-              <LogoFull theme="dark" height={40} />
+              <LogoFull theme="dark" height={52} />
             </div>
             <h2 className="font-serif text-3xl md:text-4xl font-semibold text-surface mb-4">
               Você faz parte desta história
